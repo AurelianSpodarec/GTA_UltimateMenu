@@ -1,9 +1,9 @@
-local CustomData = {
+local customData = {
 
     vehicles = {
 
         police = {
-            name = "Police Vehicles"
+            name = "Police Vehicles",
             {
                 name = "Cars",
                 children = {
@@ -46,7 +46,7 @@ local CustomData = {
                     }
                 }
             }
-        }
+        },
 
         military = {
             name = "Military Vehicles",
@@ -88,11 +88,10 @@ local CustomData = {
                         name = "Rhino", 
                         category = "Car"
                     },
-                
                     {
                         name = 'APC',
                         hash = 0x2189D250
-                    },
+                    }
                 }
             },
             {
@@ -158,13 +157,23 @@ local CustomData = {
             }
         }
 
-    }
+    },
 
     sms_text = {}
 
 }
+-- local customData = {
+--     vehicles = {
+--         police = {
+--             name = "Police Vehicles",
+--            {
+--             "hi"
+--            }
+--         }
+--     }
+-- }
 
-return CustomData
+return customData
 
 
 

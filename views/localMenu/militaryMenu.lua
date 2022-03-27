@@ -1,24 +1,26 @@
 local CustomData = require('GTA_LawEnforcement.Data.CustomData')
+
 -- local MenuData = require('GTA_LawEnforcement.Data.MenuData')
 
 -- create a list from UI, parse JSON list
 
 -- Data, Parent
--- function createList(data, parent)
---     for i = 1, #data do
---         local item = data[i]
---         local parent = menu.add_feature(item.Name, "parent", parent.id)
+function createList(data, parent)
+    for i = 1, #data do
+        local item = data[i]
+        local parent = menu.add_feature(item.Name, "parent", parent.id)
         
---         for j=1,#item.Children do
---             local area = item.Children[j]
+        for j=1,#item.Children do
+            local area = item.Children[j]
             
---             menu.add_feature(area.Name, "action", parent.id, nil)
---         end
---     end
--- end
+            menu.add_feature(area.Name, "action", parent.id, nil)
+        end
+    end
+    log(data)
+end
 
 
-function MilitaryMenu(parent)
+function militaryMenu(parent)
 
  
 
