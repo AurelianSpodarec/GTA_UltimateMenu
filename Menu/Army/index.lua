@@ -7,6 +7,9 @@ local Spawn = require('GTA_LawEnforcement.Utils.Spawn')
 
 
 
+
+
+
  
 -- local armmySubMenu = {
 --     {
@@ -178,9 +181,15 @@ local menuData = {
 
 }
 
+-- function spawnByHash(hash)
+--     Spawn.Vehicle(hash, player.get_player_coords(player.player_id()), entity.get_entity_heading(player.get_player_ped(player.player_id()))
+-- end
+
+-- backup
+-- swat, police, army: will follow around X player as bodyguards, if someone attacks, they go chase after them
+
 
 function createArmyMenu(parent, config)
-
 
     
     militarySubmenu = menu.add_feature(menuData.military.name, "parent", parent.id, nil)
@@ -195,7 +204,11 @@ function createArmyMenu(parent, config)
         for j = 1, #item.children do
             local submenu = item.children[j]
 
-            menu.add_feature(submenu.name, "action", parent.id, nil)
+            menu.add_feature(submenu.name, "action", parent.id,  function(f) 
+                -- Spawn.Vehicle(782665360, player.get_player_coords(player.player_id()), entity.get_entity_heading(player.get_player_ped(player.player_id()))
+                Spawn.Vehicle(submenu.hash, player.get_player_coords(player.player_id()), entity.get_entity_heading(player.get_player_ped(player.player_id())))
+            end)
+            -- spawn the vehicle
         end
 
     end
@@ -204,113 +217,17 @@ function createArmyMenu(parent, config)
     militaryTrolling = menu.add_feature(menuData.military.trolling.name, "parent", militarySubmenu.id, nil)
     militaryPeaceful = menu.add_feature(menuData.military.peaceful.name, "parent", militarySubmenu.id, nil)
 
-    
-    -- for index = 1, #menuData.military.children do 
-        
-
-    --     local item = menuData.military.children[index]
-    --     local parent = menu.add_feature(item.name, "parent", armySubmenu.id, nil)
-
-
-    --     for j = 1, #item.children do
-
-    --         local subMenu = item.children[j]
-    --         -- if subMenu.name ~= nil return 
-            
-    --         menu.add_feature(subMenu.name, "action", parent, nil)
-            
-
-    --     end
-
-        -- local item = menuData.military.children[index]
-
-        -- for j = 1 #menuData.military.children do
-        --     menu.add_feature(item.name, "action", parent, nil)
-        -- end
-        
-        -- local item = menuData.military.children[index]
-        -- local parent = menu.add_feature(menuData.military.name, "parent", parent.id, nil)
-
-        -- for j = 1, #menuData.military.children do
-        --     menu.add_feature(item.name, "action", parent, nil)
-        -- end
-        -- menu.add_feature(item.name, "parent", parent.id, nil)
-    -- end
-
-    -- local parent = menu.add_feature(menuData.police.name, "parent", parent.id, nil)
-
 
 end
 
      
-  
--- }
-
--- for i=1,#customData.block_locations do
---     local location = customData.block_locations[i]
---     local parent = menu.add_feature(location.name, "parent", _2t1script.parent['Block Areas']).id
     
---     for j=1,#location.Children do
---         local area = location.Children[j]
-        
---         menu.add_feature("Block " .. area.name, "action", parent, block_area).data = area
---     end
--- end
-    
-
-    -- for index = 1, #customData.military_vehicles do 
-
-    --     local item = military_vehicles.children[j]
-    --     local parent = menu.add_feature(military_vehicles.name, "parent", parent.id, nil)
-
-    --     for j = 1, #military_vehicles.children do
-    --         menu.add_feature(item.name, "action", parent, nil)
-    --     end
-    -- end
-    
-    
-
-
-    -- for i=1, #customData.military_vehicles do
-    --     local militaryVehicles = menuData.military_vehicles[i]
-    --     local parent = menu.add_feature(location.name, "parent", _2t1script.parent['Block Areas']).id
-        
-    --     for j=1, #location.Children do
-    --         local area = location.Children[j]
-            
-    --         menu.add_feature("Block " .. area.name, "action", parent, block_area).data = area
-    --     end
-    -- end
-
-
-
-
-
-
-    -- armySubmenu_vehicles = menu.add_feature('Spawn Military Vehicles', "parent", armySubmenu.id, nil)
-    -- -- renderMenuList(militaryVehicles, armySubmenu_vehicles.id)
-
-
-    -- for i=1,#customData.block_locations do
-    --     local location = customData.block_locations[i]
-    --     local parent = menu.add_feature(location.name, "parent", _2t1script.parent['Block Areas']).id
-        
-    --     for j=1,#location.Children do
-    --         local area = location.Children[j]
-            
-    --         menu.add_feature("Block " .. area.name, "action", parent, block_area).data = area
-    --     end
-    -- end
 
     -- for key in pairs(militaryVehicles) do
     --     menu.add_feature(militaryVehicles[key]['name'], "action", armySubmenu_vehicles.id,  Spawn.Vehicle(militaryVehicles[key]['hash'], player.get_player_coords(player.player_id()), entity.get_entity_heading(player.get_player_ped(player.player_id())))
     -- )
     -- end
     
-
-
-    -- tank = menu.add_feature('Tank', "action", armySubmenu_vehicles.id, armyVehicles)
-
    
 
 
