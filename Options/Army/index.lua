@@ -7,8 +7,6 @@ require("GTA_LawEnforcement/Menu/Army/features/armyPersonel")
 require("GTA_LawEnforcement/Menu/Army/features/armyTanks")
 require("GTA_LawEnforcement/Menu/Army/features/armyVehicles")
 
--- backup
--- swat, police, army: will follow around X player as bodyguards, if someone attacks, they go chase after them
 
 function createArmyMenu(parent, config)
 
@@ -31,14 +29,17 @@ function createArmyMenu(parent, config)
 
     end
 
-
     militaryTrolling = menu.add_feature(MenuData.military.trolling.name, "parent", militarySubmenu.id, nil)
     militaryPeaceful = menu.add_feature(MenuData.military.peaceful.name, "parent", militarySubmenu.id, nil)
 
 
 end
 
+
      
+-- backup
+-- swat, police, army: will follow around X player as bodyguards, if someone attacks, they go chase after them
+
      
 
 
