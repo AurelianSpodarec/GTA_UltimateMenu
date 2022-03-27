@@ -1,0 +1,23 @@
+-- Law Enforcement
+-------------------------------------------
+
+-- Police
+-- -- Chasing people
+-- -- -- Message Shortcuts: 
+-- -- -- -- swat stop car: Stop your car now! 
+-- Spawn: FBI Unit, 7 SWAT officers a SWAT SUV
+
+-- Presidential Motorade
+-- -- Go to X waypoint
+-- -- -- Veichles Containing: Motorcycle - Police Car - Police Vav - FBI Cruiser - Armored Veichle - Limo, armored Veichle, FBI Cruiser, Motorcycle, Police Car
+-- -- Create hostile Ai/gang to attack the police
+
+-- Army
+-- -- Send tanks on X player OR send tanks to the city wandering around chasing players 
+-- -- Block roads with tanks
+
+
+// Send Jets 16
+// Send Tanks 5
+// Send Chopers 5
+Send SWAT Units 2 (1unit = suv and 8swat agents)
