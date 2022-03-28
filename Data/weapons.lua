@@ -1,3 +1,6 @@
+-- https://wiki.gtanet.work/index.php?title=Weapons_Models
+
+
 weapons <const> = {
     -- all weapons = {}
     melee = {

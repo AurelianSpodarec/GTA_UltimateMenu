@@ -13,18 +13,17 @@ local ULT_Ped = {};
 
 function ULT_Ped.setAllGodmode(feat)
 
-    while feat.on do  
-
-        local peds <const> = ped.get_all_peds()
-        for i = 1, #peds do
-            if HP_Entity.request_control(peds[i], 25) then
-                entity.set_entity_god_mode(peds[i], true)
-            end
+    local peds <const> = ped.get_all_peds()
+    for i = 1, #peds do
+        if HP_Entity.request_control(peds[i], 25) then
+            entity.set_entity_god_mode(peds[i], true)
         end
-        
-        system.wait(100)
-    end     
-    
+    end
+
+end
+
+function ULT_Ped.removeAllGodmode(feat) 
+
     local peds <const> = ped.get_all_peds()
     for i = 1, #peds do
         if HP_Entity.request_control(peds[i], 25) then
@@ -36,27 +35,87 @@ function ULT_Ped.setAllGodmode(feat)
 end
 
 
+
+
+function ULT_Ped.removePeds(feat)
+  
+    local peds <const> = ped.get_all_peds()
+    menu.create_thread(function(peds)
+        for i = 1, #peds do
+            if not ped.is_ped_a_player(peds[i]) then
+                if HP_Entity.request_control(peds[i], 25) then
+                    entity.delete_entity(peds[i])
+                end
+            end
+        end
+    end, peds)
+
+end
+
+
+-- _2t1script.feature['Delete All Peds'] = menu.add_feature('Delete All Peds', 'toggle', _2t1script.parent['Ped Manager'], function(f)
+--     while f.on do
+--         local peds = ped.get_all_peds()
+--         menu.create_thread(function(peds)
+--             for i = 1, #peds do
+--                 if not ped.is_ped_a_player(peds[i]) then
+--                     utility.request_ctrl(peds[i])
+--                     entity.delete_entity(peds[i])
+--                 end
+--             end
+--         end, peds)
+--         system.wait(500)
+--     end
+-- end)
+
+
+function ULT_Ped.ressurectAll(feat)
+    -- resurrect_ped
+end
+
+function ULT_Ped.attackPlayer(feat)
+    -- if has weapon use it
+    local peds <const> = ped.get_all_peds()
+
+    for i = 1, #peds do
+        if HP_Entity.request_control(peds[i], 25) then
+            ai.task_combat_ped(peds[i], player.get_player_ped(player.player_id()), 0, 16)
+        end
+    end
+       
+end
+
+
+
+function ULT_Ped.setAllWeapon(feat)
+
+    local peds <const> = ped.get_all_peds()
+    for i = 1, #peds do
+        if not ped.is_ped_a_player(peds[i]) then
+            if HP_Entity.request_control(peds[i], 25) then
+                weapon.give_delayed_weapon_to_ped(peds[i],  0x476BF155, 10000, true)
+            end
+        end
+    end 
+
+end
+
+
 return ULT_Ped;
 
--- function ULT_Ped.removeAllGodmode(feat, data) 
 
--- end
+-- #### void               set_create_random_cops(bool t)
+-- #### bool               can_create_random_cops()
 
 
--- function ULT_Ped.attackPlayer(feat)
-    
---     while feat.on do
---         local peds <const> = ped.get_all_peds()
 
---         for i = 1, #peds do
---             if HP_Entity.request_control(peds[i], 25) then
---                 ai.task_combat_ped(peds[i], player.get_player_ped(player.player_id()), 0, 16)
---             end
---         end
---         system.wait(100)
---     end  
-        
--- end
+-- ped.set_ped_can_switch_weapons(Ped, true)
+-- ped.set_ped_combat_ability(Ped, 100)
+
+
+
+
+
 
 
 -- function ULT_Peds.setHealth(feat)
