@@ -1,8 +1,10 @@
+require('GTA_LawEnforcement.views.onlineMenu.trollMenu')
 
 
+function onlineMenu()
+    onlineMenu_lawEnforcement = menu.add_player_feature("Law Enforcement", "parent", 0, nil).id;
 
-function OnlineMenu()
-    lawEnforcementPlayerMenu = menu.add_player_feature("Law Enforcement", "parent", 0, nil);
-
+    trollMenu(onlineMenu_lawEnforcement)
     
+
 end
