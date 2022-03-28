@@ -52,6 +52,9 @@ function ULT_Ped.removePeds(feat)
 
 end
 
+function ULT_Ped.density(feat)
+
+end
 
 -- _2t1script.feature['Delete All Peds'] = menu.add_feature('Delete All Peds', 'toggle', _2t1script.parent['Ped Manager'], function(f)
 --     while f.on do
