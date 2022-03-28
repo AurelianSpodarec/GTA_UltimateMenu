@@ -1,4 +1,4 @@
-local HP_Spawn = {}
+local HP_Spawn = {};
 
 local function request_model(Hash)
     if Hash and not streaming.has_model_loaded(Hash) then
@@ -86,4 +86,4 @@ function HP_Spawn.Worldobject(Hash, Position, Networked, Dynamic)
     return Worldobject
 end
 
-return HP_Spawn
+return HP_Spawn;

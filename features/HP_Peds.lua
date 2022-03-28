@@ -1,9 +1,7 @@
 local HP_Entity <const> = require('GTA_LawEnforcement.helpers.HP_Entity')
 
 
-
 local HP_Peds = {};
-
 
 function HP_Peds.godmode(feat) 
 

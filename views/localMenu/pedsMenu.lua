@@ -1,37 +1,31 @@
-local HP_Peds <const> = require('GTA_LawEnforcement.features.HP_Peds');
- 
+local ULT_Ped <const> = require('GTA_LawEnforcement.models.ULT_Ped');
 
 function pedsMenu(parent)
     local_pedsMenu = menu.add_feature("Pedestrians", "parent", parent, nil).id;
     
-    local__pedsMenu_godMode = menu.add_feature("Godmode", "toggle", local_pedsMenu, function(feat) HP_Peds.godmode(feat) end);
-    local__pedsMenu_weapons = menu.add_feature("Attack Player", "toggle", local_pedsMenu, function(feat) HP_Peds.attackPlayer(feat); end);
-    local__pedsMenu_godMode = menu.add_feature("Set Weapon to All", "toggle", local_pedsMenu, function(feat) HP_Peds.setWeaponToAll(feat) end);
+    local__pedsMenu_godMode = menu.add_feature("Godmode", "toggle", local_pedsMenu, function(feat) ULT_Ped.setAllGodmode(feat); end);
+    -- local__pedsMenu_weapons = menu.add_feature("Attack Player", "toggle", local_pedsMenu, function(feat) ULT_Ped.attackPlayer(feat); end);
+    -- local__pedsMenu_godMode = menu.add_feature("Set Weapon to All", "toggle", local_pedsMenu, function(feat) ULT_Ped.setAllWeapon(feat) end);
 
-    local__pedsMenu_weeeeeee = menu.add_feature("All Weapons", "action", local_pedsMenu, function(feat)
+    -- local__pedsMenu_weeeeeee = menu.add_feature("All Weapons", "action", local_pedsMenu, function(feat)
         
-        local all_weapons = weapon.get_all_weapon_hashes()
+    --     local all_weapons = weapon.get_all_weapon_hashes()
 
-        mappedWeapons = {}
+    --     mappedWeapons = {}
 
-        for index = 1, #all_weapons do
-            weaponHash = all_weapons[index]
+    --     -- for index = 1, #all_weapons do
+    --     --     weaponHash = all_weapons[index]
 
-            weaponName = weapon.get_weapon_name(weaponHash)
+    --     --     weaponName = weapon.get_weapon_name(weaponHash)
 
 
-            hi = table.insert(mappedWeapons, {
-                ['name'] = weaponName,
-                ['hash'] = weaponHash
-            })
             
-        
 
-        end
-
+    --     -- end
 
 
-    end);
+
+    -- end);
 
     -- {
     --     name
@@ -40,7 +34,7 @@ function pedsMenu(parent)
 
 
     
-end;
+end
 
 
 -- function chaseVehicle(feat, slot)

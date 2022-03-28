@@ -1,5 +1,5 @@
 weapons <const> = {
--- all weapons = {}
+    -- all weapons = {}
     melee = {
         name = "Melee",
         children = {
