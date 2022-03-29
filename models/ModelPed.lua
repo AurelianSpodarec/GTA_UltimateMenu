@@ -97,7 +97,7 @@ function ModelPed.setAllWeapon()
     for i = 1, #peds do
         if not ped.is_ped_a_player(peds[i]) then
             if HP_Entity.request_control(peds[i], 25) then
-                weapon.give_delayed_weapon_to_ped(peds[i], 0x476BF155, 10000, true)
+                weapon.give_delayed_weapon_to_ped(peds[i], 0xBFE256D4, 10000, true)
             end
         end
     end 
@@ -117,18 +117,6 @@ function ModelPed.setWeapon(ult_weapon)
     end 
 
 end
-
--- function ModelPed.setWeapon(ult_weapon)
---     print(ult_weapon)
---     local peds <const> = ped.get_all_peds()
---     for i = 1, #peds do
---         if not ped.is_ped_a_player(peds[i]) then
---             if HP_Entity.request_control(peds[i], 25) then
---                 weapon.give_delayed_weapon_to_ped(peds[i], ult_weapon, 10000, true)
---             end
---         end
---     end 
--- end
 
 
 function ModelPed.removeAllWeapon()
