@@ -1,5 +1,5 @@
 local data = require('GTA_LawEnforcement.data.weapons')
-ModelPed = require('GTA_LawEnforcement.models.ModelPed')
+local ModelPed = require('GTA_LawEnforcement.models.ModelPed')
 
 local controllerWeapon = {}
  
@@ -9,14 +9,20 @@ function controllerWeapon.all(parent, callback)
         local ult_category = data[index]
 
         local ult_categoryName = ult_category.name
-        local ModelWeapons = ult_category.children
+        local ult_weapons = ult_category.children
 
         local ult_categoryParent = menu.add_feature(ult_categoryName, "parent", parent, nil).id
 
-        for j = 1, #ModelWeapons do
-            ModelWeapon = ModelWeapons[j]
-            menu.add_feature(ModelWeapon.name, "action", ult_categoryParent, function(feat)                   
-                callback(ModelWeapon.hash)
+        for j = 1, #ult_weapons do
+            ult_weapon = ult_weapons[j]
+            menu.add_feature(ult_weapon.name, "action", ult_categoryParent, function()                   
+                callback(ult_weapon.hash)
+                -- ModelPed.setWeapon(ult_weapon.hash) -- functoin that's being passsed, doesn't work
+                -- ModelPed.setWeapon(0x476BF155) 
+
+                -- ModelPed.setAllWeapon() -- works
+                -- ModelPed.setWeapon(ult_weapon.hash) -- doesn't
+            
             end)
         end
 

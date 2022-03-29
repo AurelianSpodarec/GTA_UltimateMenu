@@ -1,10 +1,10 @@
 local controllerWeapon = require('GTA_LawEnforcement.controllers.controller_weapon')
-ModelPed = require('GTA_LawEnforcement.models.ModelPed')
+local ModelPed = require('GTA_LawEnforcement.models.ModelPed')
 
 
-local state = {
-    viewsLoaded = false
-}
+-- local state = {
+--     viewsLoaded = false
+-- }
 
 function pedestriansMenu_weapon(parent)
     pedestriansMenu_weapon = menu.add_feature('Weapons', 'parent', parent, nil).id
@@ -13,10 +13,10 @@ function pedestriansMenu_weapon(parent)
     pedestriansMenu_giveAllweapon = menu.add_feature('Give All Weapons', 'action', pedestriansMenu_weapon, function() ModelPed.setAllWeapon() end).id
 
     pedestriansMenu_setWeapon = menu.add_feature('Set a Weapon', 'parent', pedestriansMenu_weapon, function() 
-        if not state.viewsLoaded then
-            controllerWeapon.all(pedestriansMenu_setWeapon, ModelPed.setWeapon)
-        end
-        state.viewsLoaded = true
+        -- if not state.viewsLoaded then
+            return controllerWeapon.all(pedestriansMenu_setWeapon, ModelPed.setWeapon)
+        -- end
+        -- state.viewsLoaded = true
     end).id
 
     pedestriansMenu_removeAllWeapon = menu.add_feature('Remove Weapons', 'action', pedestriansMenu_weapon, function() ModelPed.removeAllWeapon() end).id
