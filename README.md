@@ -100,7 +100,24 @@ SMS phases
 
 
  
-  
+    --/ Confirmed
+        -- [1074272427, 1074528293] - when they are on the traffic, you stand on the way, they honk at you, and go around you 
+        
+
+        --/ Spectaculation
+        -- 2883755 - comes to you, could be use for delivery
+
+        -- Using the `ai.task_vehicle_follow` method, here are the findings
+        -- While outside the car
+        -- 1076631588 - drives off, goes somewhere, comebacks from whatever direction, rams you - repeat (kinda like hit and run)
+
+        -- While in car 
+        -- 537657515 - gentle follow (could be good to use for motorcade?)
+        -- 1090781748- pit manouver?
+        -- 1076631588 - drives off, drives by you? tries to stop you by going in front?
+
+        -- 34340900 - pit manover?
+        -- 17039360 - pretty aggressive 
 
 
 

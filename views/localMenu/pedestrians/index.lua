@@ -1,34 +1,43 @@
 local ULT_Ped <const> = require('GTA_LawEnforcement.models.ULT_Ped');
+local HP_Spawn <const> = require('GTA_LawEnforcement.helpers.HP_Spawn')
+local HP_Entity <const> = require('GTA_LawEnforcement.helpers.HP_Entity')
 
-
-function pedestriansMenu(parent)
+function index(parent)
     local_pedsMenu = menu.add_feature("Pedestrians", "parent", parent, nil).id;
     
-    local__pedsMenu_godMode = menu.add_feature("Godmode", "toggle", local_pedsMenu, function(feat) 
-        while feat.on do  
-            ULT_Ped.setAllGodmode(feat); 
-            system.wait(100)
-        end     
-        ULT_Ped.removeAllGodmode(feat); 
-    end);
-    local__pedsMenu_weapons = menu.add_feature("Attack Player", "toggle", local_pedsMenu, function(feat) 
-        while feat.on do
-            ULT_Ped.attackPlayer(feat); 
-            system.wait(100)
-        end  
-    end);
 
-    local__pedsMenu_arm = menu.add_feature("Arm Peds", "action", local_pedsMenu, function(feat) ULT_Ped.setAllWeapon(feat); end);
+   
+    -- local__pedsMenu_godMode = menu.add_feature("Godmode", "toggle", local_pedsMenu, function(feat) 
+    --     while feat.on do  
+    --         ULT_Ped.setAllGodmode(feat); 
+    --         system.wait(100)
+    --     end     
+    --     ULT_Ped.removeAllGodmode(feat); 
+    -- end);
+    -- local__pedsMenu_weapons = menu.add_feature("Attack Player", "toggle", local_pedsMenu, function(feat) 
+    --     while feat.on do
+    --         ULT_Ped.attackPlayer(feat); 
+    --         system.wait(100)
+    --     end  
+    -- end);
+
+
+
+    
+    -- local__pedsMenu_arm = menu.add_feature("Arm Peds", "action", local_pedsMenu, function(feat) ULT_Ped.setAllWeapon(feat); end);
     
     
-    local__pedsMenu_remove = menu.add_feature("Remove All Peds", "toggle", local_pedsMenu, function(feat) 
-        while feat.on do
-            ULT_Ped.removePeds(feat); 
-            system.wait(100)
-        end  
-    end);
-    
-    
+    -- local__pedsMenu_remove = menu.add_feature("Remove All Peds", "action", local_pedsMenu, function(feat) 
+    --     -- while feat.on do
+    --         ULT_Ped.removePeds(feat); 
+    --     --     system.wait(100)
+    --     -- end  
+    -- end);
+
+
+
+
+
 end
 
 
@@ -83,6 +92,44 @@ end
     --/ Firefighter peds
     --/ Paramedic peds - fire
     ---------------------------------
+
+    -- Give soundto peds? 
+    
+
+
+
+
+      -- protection_menu = menu.add_feature("Protection", "parent", lawEnforcementMenu, nil);
+
+    -- protection_godMode = menu.add_feature("God Mode", "toggle", protection_menu.id, function(f) 
+    
+    --     print(player.get_player_ped(player.player_id()))
+    --     entity.set_entity_god_mode(player.get_player_ped(player.player_id()), true)
+    -- end);
+
+
+    -- _2t1script.feature['Turn All Peds Invincible'] = menu.add_feature('Turn All Peds Invincible', 'toggle', _2t1script.parent['Ped Manager'], function(f)
+    --     while f.on do
+    --         local peds = ped.get_all_peds()
+    --         for i = 1, #peds do
+    --             if not ped.is_ped_a_player(peds[i]) then
+    --                 utility.request_ctrl(peds[i])
+    --                 entity.set_entity_god_mode(peds[i], true)
+    --             end
+    --         end
+    --         system.wait(500)
+    --     end
+    --     local peds = ped.get_all_peds()
+    --     for i = 1, #peds do
+    --         if not ped.is_ped_a_player(peds[i]) then
+    --             utility.request_ctrl(peds[i])
+    --             entity.set_entity_god_mode(peds[i], false)
+    --         end
+    --     end
+    -- end)
+
+
+
     
 
     -- test = menu.add_feature("Test sound", "toggle", local_pedsMenu, function(feat) 
