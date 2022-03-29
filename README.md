@@ -1,8 +1,10 @@
 
 # Ultimate Menu - GTA Feature Enhancement
-![image](https://i.imgur.com/Bn4WjlL.png)
+![image](https://i.imgur.com/HaGvlUb.png)
 
-Ultimate Menu is open source enhancement for GTA5 game, based on 2take1 API framework that offers highly customisable features, weather thtats pedestrian, player, ambient, vehicles,,perhaps set cops to chase, or see a plane kamikadze on a payer. 
+Ultimate Menu is open source enhancement for GTA5 game, based on 2take1 API framework.
+
+The menu offers a robust amount of highly customisable features, changing how the pedestrian walks to a kamikadze plane on a player selected by your choise 😉
 
 
 # Contributions
@@ -19,7 +21,7 @@ Written something cool with 2take1 Lua API? Please tell us about it in the disco
 
 ![image](https://i.imgur.com/7OhXRXB.jpg)
 
-Created by Aurelian Spodarec.
+Created by Aurelian Spodarec. Powered by...
  
 
 
