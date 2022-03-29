@@ -1,8 +1,8 @@
-local HP_Entity = {}
+local HelperEntity = {}
 
 
 -- Utility
-function HP_Entity.request_control(Entity, time)
+function HelperEntity.request_control(Entity, time)
     local time = utils.time_ms() + (time or 2000)
     network.request_control_of_entity(Entity)
 
@@ -13,4 +13,5 @@ function HP_Entity.request_control(Entity, time)
     return network.has_control_of_entity(Entity)
 end
 
-return HP_Entity
+
+return HelperEntity

@@ -1,4 +1,4 @@
-local controllerWeapon = require('GTA_LawEnforcement.controllers.controller_weapon')
+local weaponController = require('GTA_LawEnforcement.controllers.weaponController')
 local ModelPed = require('GTA_LawEnforcement.models.ModelPed')
 
 
@@ -14,7 +14,7 @@ function pedestriansMenu_weapon(parent)
 
     pedestriansMenu_setWeapon = menu.add_feature('Set a Weapon', 'parent', pedestriansMenu_weapon, function() 
         if not state.viewsLoaded then
-            return controllerWeapon.all(pedestriansMenu_setWeapon, ModelPed.setWeapon)
+            return weaponController.all(pedestriansMenu_setWeapon, ModelPed.setWeapon)
         end
         state.viewsLoaded = true
     end).id
@@ -86,12 +86,12 @@ end
     
 --             -- This works,it loads once but... there's extra wrapper that will need to be repeated many times, with a new state above each file
 --             -- if not isLoaded then
---             --     controllerWeapon.all(pedestriansMenu_weapon)
+--             --     weaponController.all(pedestriansMenu_weapon)
 --             -- end
 --             -- isLoaded = true
     
     
 --             -- load this once, so far it loads each time the dropdown is clicked
---             loadController(controllerWeapon.all(pedestriansMenu_weapon))
+--             loadController(weaponController.all(pedestriansMenu_weapon))
 --         end).id
 --     ```

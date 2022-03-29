@@ -2,9 +2,9 @@ local ModelSpawn <const> = require('GTA_LawEnforcement.model.ModelSpawn')
 
 
 
-local HP_MenuParser = {}
+local HelpMenuParser = {}
 
-function HP_MenuParser.createActionList(data, parent)
+function HelpMenuParser.createActionList(data, parent)
 
     for i = 1, #data do
 
@@ -24,4 +24,4 @@ function HP_MenuParser.createActionList(data, parent)
 
 end
 
-return HP_MenuParser;
+return HelpMenuParser;

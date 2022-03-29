@@ -1,25 +1,25 @@
-local HP_Entity <const> = require('GTA_LawEnforcement.helpers.HP_Entity')
+local HelpEntity <const> = require('GTA_LawEnforcement.helpers.HelpEntity')
 
 
 
-local HP_Vehicles = {};
+local ModelVehicle = {};
 
 -- chase player
 -- change color
 
-function HP_Vehicles.preventLockOn(feat)
+function ModelVehicle.preventLockOn(feat)
 
 end
 
 
-function HP_Vehicles.allPreventLockOn(feat)
+function ModelVehicle.preventAllLockOn(feat)
 
 
 
 end
  
 
-return HP_Vehicles;
+return ModelVehicle;
 
 
 

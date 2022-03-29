@@ -28,8 +28,8 @@ end
 
 -- ai.task_parachute(Pilot, true, true)
   -- ai.task_parachute_to_target(Pilot, v3(playerPos.x, playerPos.y, 0), coord)
-            -- if HP_Entity.request_control(pedA, 25) then
-            --     if HP_Entity.request_control(PlaneA, 25) then
+            -- if HelpEntity.request_control(pedA, 25) then
+            --     if HelpEntity.request_control(PlaneA, 25) then
 
         -- end
             -- end
@@ -55,8 +55,8 @@ end
 
     --     ai.task_parachute(Pilot, true, true)
     --     -- ai.task_parachute_to_target(Pilot, v3(playerPos.x, playerPos.y, 0), coord)
-    --     -- if HP_Entity.request_control(pedA, 25) then
-    --     --     if HP_Entity.request_control(PlaneA, 25) then
+    --     -- if HelpEntity.request_control(pedA, 25) then
+    --     --     if HelpEntity.request_control(PlaneA, 25) then
     --     ped.set_ped_into_vehicle(Pilot, Plane, -1)
 
     --     vehicle.set_vehicle_engine_on(Plane, true, true, false)
