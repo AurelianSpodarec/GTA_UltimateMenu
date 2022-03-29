@@ -9,7 +9,7 @@
 
 local weapons = {
 
-    melee = {
+    {
         name = "Melee",
         children = {
 
@@ -85,7 +85,7 @@ local weapons = {
         }
     },
 
-    handguns = {
+    {
         name = "Handguns",
         children = {
 
@@ -141,7 +141,7 @@ local weapons = {
         }
     },
 
-    machineGuns = {
+    {
         name = "Machine Guns",
         children = {
           
@@ -193,7 +193,7 @@ local weapons = {
         }
     },
 
-    assaultRifles = {
+    {
         name = "Assault Rifles",
         children = {
 
@@ -233,7 +233,7 @@ local weapons = {
         }
     },
 
-    sniperRifles = {
+    {
         name = "Sniper Rifles",
         children = {
 
@@ -257,7 +257,7 @@ local weapons = {
         }
     },
 
-    shotguns = {
+    {
         name = "Shotguns",
         children = {
             
@@ -297,7 +297,7 @@ local weapons = {
         }
     },
 
-    heavy_weapons = {
+    {
         name = "Heavy Weapons",
         children = {
                 
@@ -337,7 +337,7 @@ local weapons = {
         }
     },
 
-    thrown_weapons = {
+    {
         name = "Thrown Weapons",
         children = {
 
