@@ -1,11 +1,14 @@
-require('GTA_LawEnforcement.views.localMenu.trolling.kamikadzePlane.kamikadzePlane')
+-- require('GTA_LawEnforcement.views.localMenu.trolling.trollingMenu_carAccident')
+require('GTA_LawEnforcement.views.localMenu.trolling.kamikadzePlane')
 
 
 
 function trollingMenu(parent)
-    local_trollingMenu = menu.add_feature("Trolling", "parent", parent, nil).id
+    trollingMenu = menu.add_feature("Trolling", "parent", parent, nil).id
 
-    trollingMenu_kamikadzePlane(local_trollingMenu)
+
+    -- trollingMenu_carAccident(trollingMenu)
+    trollingMenu_kamikadzePlane(trollingMenu)
 
 end
 

@@ -1,11 +1,20 @@
-local ULT_Ped <const> = require('GTA_LawEnforcement.models.ULT_Ped');
-local HP_Spawn <const> = require('GTA_LawEnforcement.helpers.HP_Spawn')
-local HP_Entity <const> = require('GTA_LawEnforcement.helpers.HP_Entity')
+-- local ULT_Ped <const> = require('GTA_LawEnforcement.models.ULT_Ped');
+-- local ULT_Spawn <const> = require('GTA_LawEnforcement.models.ULT_Spawn')
+-- local HP_Entity <const> = require('GTA_LawEnforcement.helpers.HP_Entity')
 
-function index(parent)
-    local_pedsMenu = menu.add_feature("Pedestrians", "parent", parent, nil).id;
-    
+require('GTA_LawEnforcement.views.localMenu.pedestrians.weapon.index')
 
+function pedestriansMenu(parent)
+    local pedestriansMenu = menu.add_feature("Pedestrians", "parent", parent, nil).id;
+     
+
+    pedestriansMenu_weapon(pedestriansMenu)
+    -- All Pedestrians
+    -- Spawn Pedestrians
+    -- Player Pedestrian
+
+
+end
    
     -- local__pedsMenu_godMode = menu.add_feature("Godmode", "toggle", local_pedsMenu, function(feat) 
     --     while feat.on do  
@@ -36,9 +45,6 @@ function index(parent)
 
 
 
-
-
-end
 
 
 -- if entity.get_entity_coords(Entity):magnitude(entity.get_entity_coords(Entity2) < range then

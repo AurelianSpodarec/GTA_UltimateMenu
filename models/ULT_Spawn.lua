@@ -1,5 +1,7 @@
-local HP_Spawn = {};
+local ULT_Spawn = {};
 
+
+-- start put it in a utility
 local function request_model(Hash)
     if Hash and not streaming.has_model_loaded(Hash) then
         streaming.request_model(Hash)
@@ -18,8 +20,11 @@ local function request_model(Hash)
 
     return true
 end
+-- end put it in a utility
 
-function HP_Spawn.Ped(Hash, Position, PedType, Heading, Networked, unk1)
+
+
+function ULT_Spawn.Ped(Hash, Position, PedType, Heading, Networked, unk1)
     if not Hash or not streaming.is_model_a_ped(Hash) then
         return
     end
@@ -37,7 +42,7 @@ function HP_Spawn.Ped(Hash, Position, PedType, Heading, Networked, unk1)
     return Ped
 end
 
-function HP_Spawn.Vehicle(Hash, Position, Heading, Networked, unk1)
+function ULT_Spawn.Vehicle(Hash, Position, Heading, Networked, unk1)
     if not Hash or not streaming.is_model_a_vehicle(Hash) then
         return
     end
@@ -54,7 +59,7 @@ function HP_Spawn.Vehicle(Hash, Position, Heading, Networked, unk1)
     return Vehicle
 end
 
-function HP_Spawn.Object(Hash, Position, Networked, Dynamic)
+function ULT_Spawn.Object(Hash, Position, Networked, Dynamic)
     if not Hash or not streaming.is_model_an_object(Hash) then
         return
     end
@@ -70,7 +75,7 @@ function HP_Spawn.Object(Hash, Position, Networked, Dynamic)
     return Object
 end
 
-function HP_Spawn.Worldobject(Hash, Position, Networked, Dynamic)
+function ULT_Spawn.Worldobject(Hash, Position, Networked, Dynamic)
     if not Hash or not streaming.is_model_a_world_object(Hash) then
         return
     end
@@ -86,4 +91,4 @@ function HP_Spawn.Worldobject(Hash, Position, Networked, Dynamic)
     return Worldobject
 end
 
-return HP_Spawn;
+return ULT_Spawn;

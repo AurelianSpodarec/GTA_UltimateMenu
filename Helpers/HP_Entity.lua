@@ -1,5 +1,7 @@
 local HP_Entity = {}
 
+
+-- Utility
 function HP_Entity.request_control(Entity, time)
     local time = utils.time_ms() + (time or 2000)
     network.request_control_of_entity(Entity)
