@@ -1,10 +1,10 @@
 
-# Ultimate Menu - GTA5 Feature Enhancement
+# The Ultimate Menu - GTA5 Feature Enhancement
 ![image](https://i.imgur.com/HaGvlUb.png)
 
-The*Ultimate Menu*is open source enhancement for GTA5 game, based on the 2take1 Lua script.
+The *Ultimate Menu* is open source enhancement for GTA5 game, based on the 2take1 Lua script.
 
-The menu offers a robust amount of highly customisable features, changing how the pedestrian walks, vehicle max speed to a kamikadze plane sent by you on a player of your choice 😜
+The menu offers a robust amount of **highly customisable** features, changing how the pedestrian walks, vehicle MAX speed to a kAmiKadzE plane sent by you on a player of your choice 😜
 
 # Trello
 
@@ -13,11 +13,9 @@ The menu offers a robust amount of highly customisable features, changing how th
 # Contributions
 The Contributors Guide contains full details on how to help with Ultimate Menu development. The main points are:
 
-Found a bug? Report it on GitHub Issues and include a code sample. Please state which version of Ultimate Menu you are using! This is vitally important.
-
-Before submitting a Pull Request run your code through ES Lint using our config and respect our Editor Config.
-
-Before contributing read the code of conduct.
+- Found a bug? Report it on GitHub Issues and include a code sample. Please state which version of Ultimate Menu you are using! This is vitally important.
+- Before submitting a Pull Request run your code through ES Lint using our config and respect our Editor Config.
+- Before contributing read the [code of conduct].
 
 Written something cool with 2take1 Lua API? Please tell us about it in the discord server!
 
@@ -30,8 +28,11 @@ https://github.com/DemonKiya/2Take1Script-Revive
 
 ![image](https://i.imgur.com/7OhXRXB.jpg)
 
-Created by*Aurelian Spodarec*. Powered by...
+Created by *Aurelian Spodarec* . Powered by...
  
+
+
+[code of conduct]: https://github.com/AurelianSpodarec/GTA_UltimateMenu/blob/master/docs/code-of-conduct.md
 
 
 
