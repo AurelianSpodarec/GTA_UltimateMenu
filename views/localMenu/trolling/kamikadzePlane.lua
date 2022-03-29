@@ -3,8 +3,8 @@ function trollingMenu_kamikadzePlane(parent)
 
     local_trollingMenu_kamikadzePlane = menu.add_feature("Kamikadze Plane", "parent", parent, function(feat) 
         
-        local Plane = ULT_Spawn.Vehicle(-1214505995, player.get_player_coords(player.player_id()) + v3(math.random(-200, 200), math.random(-400, 400), math.random(70, 94)), math.random(0, 0))
-            local Pilot = ULT_Spawn.Ped(-413447396)
+        local Plane = ModelSpawn.Vehicle(-1214505995, player.get_player_coords(player.player_id()) + v3(math.random(-200, 200), math.random(-400, 400), math.random(70, 94)), math.random(0, 0))
+            local Pilot = ModelSpawn.Ped(-413447396)
             local playerPos = player.get_player_coords(player.player_id())
     
             ped.set_ped_into_vehicle(Pilot, Plane, -1)
@@ -46,11 +46,11 @@ end
     -- Kamikaze Planes
     -- local__pedsMenu_plane = menu.add_feature("Falling Plane from the sky", "action", local_pedsMenu, function(feat) 
     --     -- while feat.on do
-    --     --     ULT_Ped.removePeds(feat); 
+    --     --     ModelPed.removePeds(feat); 
     --     --     system.wait(100)
     --     -- end  
-    --     local Plane = ULT_Spawn.Vehicle(-1214505995, player.get_player_coords(player.player_id()) + v3(math.random(-200, 200), math.random(-400, 400), math.random(70, 94)), math.random(0, 0))
-    --     local Pilot = ULT_Spawn.Ped(-413447396)
+    --     local Plane = ModelSpawn.Vehicle(-1214505995, player.get_player_coords(player.player_id()) + v3(math.random(-200, 200), math.random(-400, 400), math.random(70, 94)), math.random(0, 0))
+    --     local Pilot = ModelSpawn.Ped(-413447396)
     --     local playerPos = player.get_player_coords(player.player_id())
 
     --     ai.task_parachute(Pilot, true, true)

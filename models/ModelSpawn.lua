@@ -1,4 +1,4 @@
-local ULT_Spawn = {};
+local ModelSpawn = {};
 
 
 -- start put it in a utility
@@ -24,7 +24,7 @@ end
 
 
 
-function ULT_Spawn.Ped(Hash, Position, PedType, Heading, Networked, unk1)
+function ModelSpawn.Ped(Hash, Position, PedType, Heading, Networked, unk1)
     if not Hash or not streaming.is_model_a_ped(Hash) then
         return
     end
@@ -42,7 +42,7 @@ function ULT_Spawn.Ped(Hash, Position, PedType, Heading, Networked, unk1)
     return Ped
 end
 
-function ULT_Spawn.Vehicle(Hash, Position, Heading, Networked, unk1)
+function ModelSpawn.Vehicle(Hash, Position, Heading, Networked, unk1)
     if not Hash or not streaming.is_model_a_vehicle(Hash) then
         return
     end
@@ -59,7 +59,7 @@ function ULT_Spawn.Vehicle(Hash, Position, Heading, Networked, unk1)
     return Vehicle
 end
 
-function ULT_Spawn.Object(Hash, Position, Networked, Dynamic)
+function ModelSpawn.Object(Hash, Position, Networked, Dynamic)
     if not Hash or not streaming.is_model_an_object(Hash) then
         return
     end
@@ -75,7 +75,7 @@ function ULT_Spawn.Object(Hash, Position, Networked, Dynamic)
     return Object
 end
 
-function ULT_Spawn.Worldobject(Hash, Position, Networked, Dynamic)
+function ModelSpawn.Worldobject(Hash, Position, Networked, Dynamic)
     if not Hash or not streaming.is_model_a_world_object(Hash) then
         return
     end
@@ -91,4 +91,4 @@ function ULT_Spawn.Worldobject(Hash, Position, Networked, Dynamic)
     return Worldobject
 end
 
-return ULT_Spawn;
+return ModelSpawn;

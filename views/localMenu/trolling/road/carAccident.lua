@@ -6,8 +6,8 @@ function trollingMenu_carAccident(parent)
 
     local__pedsMenu_carram = menu.add_feature("Car Accident", "action", local_pedsMenu, function(feat) 
         
-        local car = ULT_Spawn.Vehicle(-2048333973, player.get_player_coords(player.player_id()) + v3(math.random(-50, 50), math.random(0, 0), math.random(0, 0)))
-        local driver = ULT_Spawn.Ped(-413447396)
+        local car = ModelSpawn.Vehicle(-2048333973, player.get_player_coords(player.player_id()) + v3(math.random(-50, 50), math.random(0, 0), math.random(0, 0)))
+        local driver = ModelSpawn.Ped(-413447396)
         local drivingMode = 17039360
         local speed = 200 
 

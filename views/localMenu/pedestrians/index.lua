@@ -1,44 +1,59 @@
--- local ULT_Ped <const> = require('GTA_LawEnforcement.models.ULT_Ped');
--- local ULT_Spawn <const> = require('GTA_LawEnforcement.models.ULT_Spawn')
--- local HP_Entity <const> = require('GTA_LawEnforcement.helpers.HP_Entity')
-
 require('GTA_LawEnforcement.views.localMenu.pedestrians.weapon.index')
+require('GTA_LawEnforcement.views.localMenu.pedestrians.action.index')
+
 
 function pedestriansMenu(parent)
     local pedestriansMenu = menu.add_feature("Pedestrians", "parent", parent, nil).id;
      
-
     pedestriansMenu_weapon(pedestriansMenu)
-    -- All Pedestrians
-    -- Spawn Pedestrians
-    -- Player Pedestrian
-
+    pedestriansMenu_action(pedestriansMenu)
 
 end
    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- Everyone are bodyguard?
+
+
+-- All Pedestrians
+    -- Spawn Pedestrians
+    -- Player Pedestrian
+
+    -- local ModelPed <const> = require('GTA_LawEnforcement.models.ModelPed');
+
+
     -- local__pedsMenu_godMode = menu.add_feature("Godmode", "toggle", local_pedsMenu, function(feat) 
     --     while feat.on do  
-    --         ULT_Ped.setAllGodmode(feat); 
+    --         ModelPed.setAllGodmode(feat); 
     --         system.wait(100)
     --     end     
-    --     ULT_Ped.removeAllGodmode(feat); 
-    -- end);
-    -- local__pedsMenu_weapons = menu.add_feature("Attack Player", "toggle", local_pedsMenu, function(feat) 
-    --     while feat.on do
-    --         ULT_Ped.attackPlayer(feat); 
-    --         system.wait(100)
-    --     end  
+    --     ModelPed.removeAllGodmode(feat); 
     -- end);
 
-
-
-    
-    -- local__pedsMenu_arm = menu.add_feature("Arm Peds", "action", local_pedsMenu, function(feat) ULT_Ped.setAllWeapon(feat); end);
-    
-    
+    -- local__pedsMenu_arm = menu.add_feature("Arm Peds", "action", local_pedsMenu, function(feat) ModelPed.setAllWeapon(feat); end);
+        
     -- local__pedsMenu_remove = menu.add_feature("Remove All Peds", "action", local_pedsMenu, function(feat) 
     --     -- while feat.on do
-    --         ULT_Ped.removePeds(feat); 
+    --         ModelPed.removePeds(feat); 
     --     --     system.wait(100)
     --     -- end  
     -- end);
@@ -102,11 +117,7 @@ end
     -- Give soundto peds? 
     
 
-
-
-
-      -- protection_menu = menu.add_feature("Protection", "parent", lawEnforcementMenu, nil);
-
+ 
     -- protection_godMode = menu.add_feature("God Mode", "toggle", protection_menu.id, function(f) 
     
     --     print(player.get_player_ped(player.player_id()))
@@ -153,7 +164,7 @@ end
     -- end)
 
 
-    -- local__pedsMenu_godMode = menu.add_feature("Set Weapon to All", "toggle", local_pedsMenu, function(feat) ULT_Ped.setAllWeapon(feat) end);
+    -- local__pedsMenu_godMode = menu.add_feature("Set Weapon to All", "toggle", local_pedsMenu, function(feat) ModelPed.setAllWeapon(feat) end);
 
     -- local__pedsMenu_weeeeeee = menu.add_feature("All Weapons", "action", local_pedsMenu, function(feat)
         

@@ -1,6 +1,6 @@
 -- require('GTA_LawEnforcement.views.localMenu.trolling.trollingMenu_carAccident')
 require('GTA_LawEnforcement.views.localMenu.trolling.kamikadzePlane')
-
+require('GTA_LawEnforcement.views.localMenu.trolling.rubio')
 
 
 function trollingMenu(parent)
@@ -8,7 +8,8 @@ function trollingMenu(parent)
 
 
     -- trollingMenu_carAccident(trollingMenu)
-    trollingMenu_kamikadzePlane(trollingMenu)
+    -- trollingMenu_kamikadzePlane(trollingMenu)
+    trollingMenu_rubio(trollingMenu)
 
 end
 

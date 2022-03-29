@@ -1,5 +1,5 @@
 local customData <const> = require('GTA_LawEnforcement.data.customData')
-local ULT_Spawn <const> = require('GTA_LawEnforcement.models.ULT_Spawn')
+local ModelSpawn <const> = require('GTA_LawEnforcement.models.ModelSpawn')
 local HP_MenuParser <const> = require('GTA_LawEnforcement.helpers.HP_MenuParser')
 
 

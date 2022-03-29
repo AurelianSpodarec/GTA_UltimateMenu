@@ -1,4 +1,4 @@
-local ULT_Spawn <const> = require('GTA_LawEnforcement.model.ULT_Spawn')
+local ModelSpawn <const> = require('GTA_LawEnforcement.model.ModelSpawn')
 
 
 
@@ -16,7 +16,7 @@ function HP_MenuParser.createActionList(data, parent)
             local area = itemChildren[j]
 
             menu.add_feature(area.name, "action", parent, function(f) 
-                ULT_Spawn.Vehicle(area.hash, player.get_player_coords(player.player_id()))
+                ModelSpawn.Vehicle(area.hash, player.get_player_coords(player.player_id()))
             end)
         end
 

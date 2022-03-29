@@ -1,17 +1,17 @@
 local HP_Entity <const> = require('GTA_LawEnforcement.helpers.HP_Entity')
 
 
-local ULT_Ped = {};
+local ModelPed = {};
 
--- function ULT_Ped.setGodmode(feat, Entity)
+-- function ModelPed.setGodmode(feat, Entity)
 --     return entity.set_entity_god_mode(Entity, true)
 -- end
 
--- function ULT_Ped.removeGodmode(feat, Entity)
+-- function ModelPed.removeGodmode(feat, Entity)
 --     return entity.set_entity_god_mode(Entity, false)
 -- end
 
-function ULT_Ped.setAllGodmode(feat)
+function ModelPed.setAllGodmode(feat)
 
     local peds <const> = ped.get_all_peds()
     for i = 1, #peds do
@@ -22,7 +22,7 @@ function ULT_Ped.setAllGodmode(feat)
 
 end
 
-function ULT_Ped.removeAllGodmode(feat) 
+function ModelPed.removeAllGodmode(feat) 
 
     local peds <const> = ped.get_all_peds()
     for i = 1, #peds do
@@ -37,7 +37,7 @@ end
 
 
 
-function ULT_Ped.removePeds(feat)
+function ModelPed.removePeds(feat)
   
     local peds <const> = ped.get_all_peds()
     menu.create_thread(function(peds)
@@ -52,7 +52,7 @@ function ULT_Ped.removePeds(feat)
 
 end
 
-function ULT_Ped.density(feat)
+function ModelPed.density(feat)
 
 end
 
@@ -72,16 +72,17 @@ end
 -- end)
 
 
-function ULT_Ped.ressurectAll(feat)
+function ModelPed.ressurectAll(feat)
     -- resurrect_ped
 end
 
-function ULT_Ped.attackPlayer(feat)
+function ModelPed.attackPlayer(feat)
     -- if has weapon use it
     local peds <const> = ped.get_all_peds()
 
     for i = 1, #peds do
         if HP_Entity.request_control(peds[i], 25) then
+            -- ped.set_ped_combat_attributes(peds[i], 46, true)
             ai.task_combat_ped(peds[i], player.get_player_ped(player.player_id()), 0, 16)
         end
     end
@@ -90,7 +91,9 @@ end
 
 
 
-function ULT_Ped.setAllWeapon(feat)
+function ModelPed.setAllWeapon()
+
+    -- get all weapon hash
 
     local peds <const> = ped.get_all_peds()
     for i = 1, #peds do
@@ -103,8 +106,35 @@ function ULT_Ped.setAllWeapon(feat)
 
 end
 
+function ModelPed.setWeapon(ModelWeapon)
 
-return ULT_Ped;
+    local peds <const> = ped.get_all_peds()
+    for i = 1, #peds do
+        if not ped.is_ped_a_player(peds[i]) then
+            if HP_Entity.request_control(peds[i], 25) then
+                weapon.give_delayed_weapon_to_ped(peds[i], ModelWeapon, 10000, true)
+            end
+        end
+    end 
+
+end
+
+
+function ModelPed.removeAllWeapon()
+
+    local peds <const> = ped.get_all_peds()
+    for i = 1, #peds do
+        if not ped.is_ped_a_player(peds[i]) then
+            if HP_Entity.request_control(peds[i], 25) then
+                weapon.remove_all_ped_weapons(peds[i])
+            end
+        end
+    end 
+
+end
+
+
+return ModelPed;
 
 
 -- #### void               set_create_random_cops(bool t)
@@ -121,25 +151,25 @@ return ULT_Ped;
 
 
 
--- function ULT_Peds.setHealth(feat)
+-- function ModelPeds.setHealth(feat)
 
 -- end
 
--- function ULT_Peds.setMaxHealth(feat)
-
--- end
-
-
--- function ULT_Peds.setArmor(feat)
+-- function ModelPeds.setMaxHealth(feat)
 
 -- end
 
 
--- function ULT_Peds.setOutfit(feat)
+-- function ModelPeds.setArmor(feat)
 
 -- end
 
--- function ULT_Peds.setAllWeapon(feat)
+
+-- function ModelPeds.setOutfit(feat)
+
+-- end
+
+-- function ModelPeds.setAllWeapon(feat)
 
 --     while feat.on do
 --         local peds <const> = ped.get_all_peds()
@@ -157,7 +187,7 @@ return ULT_Ped;
 
 
 
--- return ULT_Ped;
+-- return ModelPed;
 
 
 
@@ -279,7 +309,7 @@ return ULT_Ped;
 
 --         for i = 1, #peds do
 --             if HP_Entity.request_control(peds[i], 25) then
---             ULT_Ped.setGodmode(ped[i])
+--             ModelPed.setGodmode(ped[i])
 --         end
 
 --     end
