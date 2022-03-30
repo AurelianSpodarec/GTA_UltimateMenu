@@ -1,6 +1,6 @@
--- require('GTA_LawEnforcement.views.localMenu.trolling.trollingMenu_carAccident')
-require('GTA_LawEnforcement.views.localMenu.trolling.kamikadzePlane')
-require('GTA_LawEnforcement.views.localMenu.trolling.rubio')
+-- require('UltimateMenu.src.views.localMenu.trolling.trollingMenu_carAccident')
+require('UltimateMenu.src.views.localMenu.trolling.kamikadzePlane')
+require('UltimateMenu.src.views.localMenu.trolling.rubio')
 
 
 function trollingMenu(parent)

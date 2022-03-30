@@ -1,5 +1,5 @@
-local weaponController = require('GTA_LawEnforcement.controllers.weaponController')
-local ModelPed = require('GTA_LawEnforcement.models.ModelPed')
+local weaponController = require('UltimateMenu.src.controllers.weaponController')
+local ModelPed = require('UltimateMenu.src.models.ModelPed')
 
 
 local state = {

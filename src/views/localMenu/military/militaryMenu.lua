@@ -1,6 +1,6 @@
-local customData <const> = require('GTA_LawEnforcement.data.customData')
-local ModelSpawn <const> = require('GTA_LawEnforcement.models.ModelSpawn')
-local HelpMenuParser <const> = require('GTA_LawEnforcement.helpers.HelpMenuParser')
+local customData <const> = require('UltimateMenu.src.data.customData')
+local ModelSpawn <const> = require('UltimateMenu.src.models.ModelSpawn')
+local HelpMenuParser <const> = require('UltimateMenu.src.helpers.HelpMenuParser')
 
 
 function militaryMenu(parent)

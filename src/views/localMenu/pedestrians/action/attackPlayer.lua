@@ -1,4 +1,4 @@
-local ModelPed <const> = require('GTA_LawEnforcement.models.ModelPed');
+local ModelPed <const> = require('UltimateMenu.src.models.ModelPed');
 
 
 

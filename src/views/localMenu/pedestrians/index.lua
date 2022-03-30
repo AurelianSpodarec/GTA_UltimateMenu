@@ -1,5 +1,5 @@
-require('GTA_LawEnforcement.views.localMenu.pedestrians.weapon.index')
-require('GTA_LawEnforcement.views.localMenu.pedestrians.action.index')
+require('UltimateMenu.src.views.localMenu.pedestrians.weapon.index')
+require('UltimateMenu.src.views.localMenu.pedestrians.action.index')
 
 
 function pedestriansMenu(parent)
@@ -16,21 +16,6 @@ end
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 -- Everyone are bodyguard?
 
 
@@ -38,7 +23,7 @@ end
     -- Spawn Pedestrians
     -- Player Pedestrian
 
-    -- local ModelPed <const> = require('GTA_LawEnforcement.models.ModelPed');
+    -- local ModelPed <const> = require('UltimateMenu.src.models.ModelPed');
 
 
     -- local__pedsMenu_godMode = menu.add_feature("Godmode", "toggle", local_pedsMenu, function(feat) 

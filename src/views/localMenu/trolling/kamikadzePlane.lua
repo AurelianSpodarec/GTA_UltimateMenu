@@ -3,8 +3,8 @@ function trollingMenu_kamikadzePlane(parent)
 
     local_trollingMenu_kamikadzePlane = menu.add_feature("Kamikadze Plane", "parent", parent, function(feat) 
         
-        local Plane = ModelSpawn.Vehicle(-1214505995, player.get_player_coords(player.player_id()) + v3(math.random(-200, 200), math.random(-400, 400), math.random(70, 94)), math.random(0, 0))
-            local Pilot = ModelSpawn.Ped(-413447396)
+        local Plane = ModelSpawn.vehicle(-1214505995, player.get_player_coords(player.player_id()) + v3(math.random(-200, 200), math.random(-400, 400), math.random(70, 94)), math.random(0, 0))
+            local Pilot = ModelSpawn.ped(-413447396)
             local playerPos = player.get_player_coords(player.player_id())
     
             ped.set_ped_into_vehicle(Pilot, Plane, -1)
@@ -28,8 +28,8 @@ end
 
 -- ai.task_parachute(Pilot, true, true)
   -- ai.task_parachute_to_target(Pilot, v3(playerPos.x, playerPos.y, 0), coord)
-            -- if HelpEntity.request_control(pedA, 25) then
-            --     if HelpEntity.request_control(PlaneA, 25) then
+            -- if entityHelper.request_control(pedA, 25) then
+            --     if entityHelper.request_control(PlaneA, 25) then
 
         -- end
             -- end
@@ -49,14 +49,14 @@ end
     --     --     ModelPed.removePeds(feat); 
     --     --     system.wait(100)
     --     -- end  
-    --     local Plane = ModelSpawn.Vehicle(-1214505995, player.get_player_coords(player.player_id()) + v3(math.random(-200, 200), math.random(-400, 400), math.random(70, 94)), math.random(0, 0))
-    --     local Pilot = ModelSpawn.Ped(-413447396)
+    --     local Plane = ModelSpawn.vehicle(-1214505995, player.get_player_coords(player.player_id()) + v3(math.random(-200, 200), math.random(-400, 400), math.random(70, 94)), math.random(0, 0))
+    --     local Pilot = ModelSpawn.ped(-413447396)
     --     local playerPos = player.get_player_coords(player.player_id())
 
     --     ai.task_parachute(Pilot, true, true)
     --     -- ai.task_parachute_to_target(Pilot, v3(playerPos.x, playerPos.y, 0), coord)
-    --     -- if HelpEntity.request_control(pedA, 25) then
-    --     --     if HelpEntity.request_control(PlaneA, 25) then
+    --     -- if entityHelper.request_control(pedA, 25) then
+    --     --     if entityHelper.request_control(PlaneA, 25) then
     --     ped.set_ped_into_vehicle(Pilot, Plane, -1)
 
     --     vehicle.set_vehicle_engine_on(Plane, true, true, false)

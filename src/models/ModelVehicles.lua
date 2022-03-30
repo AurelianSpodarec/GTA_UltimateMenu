@@ -1,4 +1,4 @@
-local HelpEntity <const> = require('GTA_LawEnforcement.helpers.HelpEntity')
+local entityHelper <const> = require('UltimateMenu.src.helpers.entityHelper')
 
 
 
@@ -12,7 +12,7 @@ function ModelVehicle.preventLockOn(feat)
 end
 
 
-function ModelVehicle.preventAllLockOn(feat)
+function ModelVehicle.preventNerbyLockOn(feat)
 
 
 

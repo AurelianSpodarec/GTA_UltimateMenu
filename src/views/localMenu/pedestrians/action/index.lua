@@ -1,4 +1,4 @@
-local attackPlayer = require('GTA_LawEnforcement.views.localMenu.pedestrians.action.attackPlayer')
+local attackPlayer = require('UltimateMenu.src.views.localMenu.pedestrians.action.attackPlayer')
 
 
 function pedestriansMenu_action(parent)

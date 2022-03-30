@@ -1,4 +1,4 @@
-local HelpEntity <const> = require('GTA_LawEnforcement.helpers.HelpEntity')
+local entityHelper <const> = require('UltimateMenu.src.helpers.entityHelper')
 
 -- maybe should go into services, 
 
