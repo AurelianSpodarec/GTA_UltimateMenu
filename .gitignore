@@ -1,13 +1,13 @@
 # NOTE!
-/*
+# /*
 
-# Whitelist some files
-!.gitignore
-!README.md
-!LICENSE.md
-!ideas.txt
+# # Whitelist some files
+# !.gitignore
+# !README.md
+# !LICENSE.md
+# !ideas.txt
 
 
-!/src/
-!/translations/
-!/docs/
+# !/src/
+# !/translations/
+# !/docs/
