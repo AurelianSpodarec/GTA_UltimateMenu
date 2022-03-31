@@ -38,7 +38,7 @@ function protectionMenu(parent)
                     entityHelper.request_control(police)
 
                     ModelWeapon.createArsenal(police, "weapon_raycarbine")
-                    ModelPed.setHealth(police, 5000)
+                    -- ModelPed.setHealth(police, 5000)
                     
                     if ped.get_ped_group(police) ~= gangGroupID then
                         ped.is_ped_group_member(police, gangGroupID)

@@ -65,54 +65,91 @@ function ModelPed.density(feat)
 
 end
 
--- Model Combat?
+
+
+
+-- Start ModelPedCombat? @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 function ModelPed.setCombatAbility(pedestrian, ability)
-    -- if does not exist in table return false
+    if combatOptions[ability] == nil then
+        print("ERROR", "Wrong combat ability selected")
+    end
 
-    -- local combatAbility = {
-    --     poor = 0,
-    --     average = 1,
-    --     professional = 2,
-    --     chicken = 50,
-    --     attack = 100
-    -- }
+    local combatOptions = {
+        poor = 0,
+        average = 1,
+        professional = 2,
+        chicken = 50,
+        attack = 100
+    }
 
-    -- ped.set_ped_combat_ability(pedestrian, combatAbility[ability])
-
+    return ped.set_ped_combat_movement(pedestrian, combatOptions[ability])
 end
 
-function ModelPed.setAccuracy(pedestrian, accuracy)
-    -- check if accuracy is between 0 and 100, if not return
 
-    -- Note: Accuracy 0-100, where's 100 is perfectly accurate
-   
-    -- ped.set_ped_accuracy(pedestrian, accuracy)
+-- function ModelPed.setAccuracy(pedestrian, accuracy)
+--     if not accuracy >= 0 or x <= 100 do
+--         print("ERROR", "Wrong accuracy set. Values range from 0-100")
+--     end
+    
+--     -- Accuracy 0-100, where's 100 is perfectly accurate
+--     ped.set_ped_accuracy(pedestrian, accuracy)
+-- end
 
+
+-- function ModelPed.setCombatMovement(pedestrian, combatMovement)
+--     if combatMovement[combatMovement] == nil then
+--         print("ERROR", "Wrong combat option selected")
+--     end
+
+--     local combatOptions = {
+--         stationary = 0,        -- Stand in place
+--         defensive = 1,         -- Take cover and blind fire
+--         offensive = 2,         --  Attack and take cover
+--         suicidalOffensive = 3  --Flank enemy in suicidal attack
+--     }
+
+--     return ped.set_ped_combat_movement(pedestrian, combatOptions[combatMovement])
+-- end
+
+-- function ModelPed.setCombatAttributes(pedestrian, combatAttributes) 
+--     if combatMovement[combatMovement] == nil then
+--         print("ERROR", "Wrong combat attribute selected")
+--     end
+--     -- https://docs.fivem.net/natives/?_0x9F7794730795E019
+--     local coverOptions = {
+--         canUseCover = 0,
+--         canUseVehicles = 1,
+--         canDoDrivebys = 2,
+--         canLeaveVehicle = 3,
+--         canFightArmedPedsWhenNotArmed = 5,
+--         canTauntInVehicle = 20,
+--         alwaysFight = 46,
+--         ignoreTrafficWhenDriving = 52,
+--         fleesFromInvincibleOpponents = 63,
+--         freezeMovement = 292,  
+--         playerCanUseFiringWeapons = 1424  
+--     }
+
+--     return ped.set_ped_combat_attributes(pedestrian, coverOptions[setCombatAttributes])
+-- end
+
+
+function ModelPed.attackPlayer(feat)
+    -- if has weapon use it
+    local peds <const> = ped.get_all_peds()
+
+    for i = 1, #peds do
+        if entityHelper.request_control(peds[i], 25) then
+            -- ped.set_ped_combat_attributes(peds[i], 46, true)
+            ai.task_combat_ped(peds[i], player.get_player_ped(player.player_id()), 0, 16)
+        end
+    end
+       
 end
 
-function ModelPed.setCombatMovement()
 
-end
-
-function ModelPed.setCombatAttributes() 
-    -- https://docs.fivem.net/natives/?_0x9F7794730795E019
-    -- {
-    --     CanUseCover = 0,
-    --     CanUseVehicles = 1,
-    --     CanDoDrivebys = 2,
-    --     CanLeaveVehicle = 3,
-    --     CanFightArmedPedsWhenNotArmed = 5,
-    --     CanTauntInVehicle = 20,
-    --     AlwaysFight = 46,
-    --     IgnoreTrafficWhenDriving = 52,
-    --     FleesFromInvincibleOpponents = 63,
-    --     FreezeMovement = 292,  
-    --     PlayerCanUseFiringWeapons = 1424  
-    -- };
-
-end
-
+-- /ModelPed Combat? @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 -- _2t1script.feature['Delete All Peds'] = menu.add_feature('Delete All Peds', 'toggle', _2t1script.parent['Ped Manager'], function(f)
 --     while f.on do
@@ -134,18 +171,7 @@ function ModelPed.ressurectAll(feat)
     -- resurrect_ped
 end
 
-function ModelPed.attackPlayer(feat)
-    -- if has weapon use it
-    local peds <const> = ped.get_all_peds()
 
-    for i = 1, #peds do
-        if entityHelper.request_control(peds[i], 25) then
-            -- ped.set_ped_combat_attributes(peds[i], 46, true)
-            ai.task_combat_ped(peds[i], player.get_player_ped(player.player_id()), 0, 16)
-        end
-    end
-       
-end
 
 
 
@@ -193,28 +219,10 @@ end
 
 return ModelPed;
 
-
--- #### void               set_create_random_cops(bool t)
--- #### bool               can_create_random_cops()
+-- ped.set_ped_can_switch_weapons(Ped, true) 
 
 
 
--- ped.set_ped_can_switch_weapons(Ped, true)
--- ped.set_ped_combat_ability(Ped, 100)
-
-
-
-
-
-
-
--- function ModelPeds.setHealth(feat)
-
--- end
-
--- function ModelPeds.setMaxHealth(feat)
-
--- end
 
 
 -- function ModelPeds.setArmor(feat)
