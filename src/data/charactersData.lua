@@ -1,23 +1,23 @@
 local charactersData = {
 
-    lawEnforcement = {
-        police = {},
-        fbi = {},
-        swat = {
-            {
-                id = 1,
-                weapons = {
-                    primary = "weapon_raycarbine",
-                    secondary = "weapon_smg"
-                },
-                health = 10000,
-                armor = 100,
-                combatAbility = "professional",
-                combatMovement = "offensive"
-            }
-        },
-        military = {}
-    },
+    -- lawEnforcement = {
+    --     police = {},
+    --     fbi = {},
+    --     swat = {
+    --         {
+    --             id = 1,
+    --             weapons = {
+    --                 primary = "weapon_raycarbine",
+    --                 secondary = "weapon_smg"
+    --             },
+    --             health = 10000,
+    --             armor = 100,
+    --             combatAbility = "professional",
+    --             combatMovement = "offensive"
+    --         }
+    --     },
+    --     military = {}
+    -- },
     -- gangs = {
         
     --     -- hood,
@@ -85,11 +85,12 @@ local charactersData = {
             combatAbility = "professional",
             combatMovement = "offensive"
         }
-    },
-    animal = {
-         --Big foot"
-        --  pogo weapon_molotov
     }
+    -- peds = {},
+    -- animal = {
+    --      --Big foot"
+    --     --  pogo weapon_molotov
+    -- }
 
 }
 

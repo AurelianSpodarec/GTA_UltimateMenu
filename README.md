@@ -19,12 +19,6 @@ The Contributors Guide contains full details on how to help with Ultimate Menu d
 
 Written something cool with 2take1 Lua API? Please tell us about it in the discord server!
 
-# Credits
-
-Credits to repositories which I had a look how things are built, and took some inspiration.
-
-https://github.com/kektram/Keks-menu  
-https://github.com/DemonKiya/2Take1Script-Revive
 
 ![image](https://i.imgur.com/7OhXRXB.jpg)
 

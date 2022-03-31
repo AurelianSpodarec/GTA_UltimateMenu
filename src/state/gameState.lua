@@ -1,0 +1,1 @@
+-- peds? vehicles? clean once dead? or store them here as entities? 

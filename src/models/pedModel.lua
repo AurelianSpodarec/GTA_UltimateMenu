@@ -3,6 +3,9 @@ local entityHelper = require('UltimateMenu.src.helpers.entityHelper')
 
 local pedModel = {};
 
+function pedModel.resurect(ult_ped)
+    ped.resurrect_ped(ult_ped)
+end
 
 function pedModel.setHealth(ult_pedestrian, ult_health)
     ped.set_ped_max_health(ult_pedestrian, ult_health)
@@ -10,21 +13,21 @@ function pedModel.setHealth(ult_pedestrian, ult_health)
 end
 
 function pedModel.removePed(ult_ped)
-    if entityHelper.request_control(peds[i], 25) then
+    if entityHelper.request_control(ult_ped], 25) then
         entity.delete_entity(ult_ped)
     end
 end
 
 function pedModel.attackPlayer(feat)
-    local peds <const> = ped.get_all_peds()
+    -- local peds <const> = ped.get_all_peds()
     
-    for i = 1, #peds do
-        if entityHelper.request_control(peds[i], 25) then
-            -- ped.set_ped_combat_attributes(peds[i], 46, true)
-            -- if has weapon use it instead
-            ai.task_combat_ped(peds[i], player.get_player_ped(player.player_id()), 0, 16)
-        end
-    end
+    -- for i = 1, #peds do
+    --     if entityHelper.request_control(peds[i], 25) then
+    --         -- ped.set_ped_combat_attributes(peds[i], 46, true)
+    --         -- if has weapon use it instead
+    --         ai.task_combat_ped(peds[i], player.get_player_ped(player.player_id()), 0, 16)
+    --     end
+    -- end
 end
 
 function pedModel.setWeapon(ult_weapon)
@@ -46,7 +49,9 @@ function pedModel.removeWeapon(ult_ped, weapon_hash)
     end
 end
 
+function pedModel.setOutfit(ult_ped)
 
+end
 
 
 -- Start pedModelCombat? @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -132,7 +137,7 @@ end
 
 -- /pedModel Combat? @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
--- _2t1script.feature['Delete All Peds'] = menu.add_feature('Delete All Peds', 'toggle', _2t1script.parent['Ped Manager'], function(f)
+-- ult.feature['Delete All Peds'] = menu.add_feature('Delete All Peds', 'toggle', ult.parent['Ped Manager'], function(f)
 --     while f.on do
 --         local peds = ped.get_all_peds()
 --         menu.create_thread(function(peds)
@@ -148,23 +153,10 @@ end
 -- end)
 
 
--- function pedModel.ressurectAll(feat)
---     -- resurrect_ped
--- end
-
-
-
-
-
-
-
-
-
 
 return pedModel;
 
-
--- ALLLLLLLLLLLLLLLLLLLLLl
+ 
 -- function pedModel.removeAllWeapon()
 
 --     local peds <const> = ped.get_all_peds()
@@ -234,29 +226,7 @@ return pedModel;
 -- end
 
 
--- function pedModels.setOutfit(feat)
-
--- end
-
--- function pedModels.setAllWeapon(feat)
-
---     while feat.on do
---         local peds <const> = ped.get_all_peds()
-
---         for i = 1, #peds do
---             if entityHelper.request_control(peds[i], 25) then
---                 -- ai.task_combat_ped(peds[i], player.get_player_ped(player.player_id()), 0, 16)
---                 weapon.give_delayed_weapon_to_ped(peds[i],  0x476BF155, 10000, true)
---             end
---         end
---         system.wait(100)
---     end
-
--- end
-
-
-
-
+-
 
 
 
@@ -306,6 +276,7 @@ return pedModel;
 -- end
 
 
+
 -- function HP_Peds.setWeaponToAll(feat) 
 --     -- give_delayed_weapon_to_ped
 --     while feat.on do
@@ -319,80 +290,3 @@ return pedModel;
 --         end
 --         system.wait(100)
 --     end  
-
--- -- enhanced peds
--- -- armor, 50000 hp, weapons, walk in group(bodyguard)
-
-
-
-
-
-
-
--- function HP_Peds.attackOtherPeds(feat)
-    
--- end
-
-
-
-
--- end
-
--- function HP_Peds.setWeapon(feat, player)
-
--- end
-
-
--- function HP_Peds.setRandomWeapon(feat)
-
--- end
-
-
--- local items <const> = ped.get_all_peds()
-
--- function loopEntity(data, time, func)
-
---     for i = 1, #data do
---         if entityHelper.request_control(data[i], 25) then
---             func
---             -- entity.set_entity_god_mode(peds[i], true)
---         end
---     end
---     system.wait(time)
-
--- end;
-
-
-
--- while feat.on do
---     local peds <const> = ped.get_all_peds()
-
---         for i = 1, #peds do
---             if entityHelper.request_control(peds[i], 25) then
---             pedModel.setGodmode(ped[i])
---         end
-
---     end
---     system.wait(100)
--- end    
-
-
--- function whileToggleOn(feat, time, codeBlock)
---     while feat.on do
-
---         -- codeBlock
-
---         system.wait(time)
---     end     
--- end
-
-
--- toggleOn(feat, 100, function() 
---     local peds <const> = ped.get_all_peds()
---         for i = 1, #peds do
---             if entityHelper.request_control(peds[i], 25) then
---                 -- entity.set_entity_god_mode(peds[i], true)
---             end
---         end
--- end)
-

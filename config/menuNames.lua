@@ -1,0 +1,7 @@
+local menuName = {
+    ["protection"] = {
+        
+    }
+}
+
+-- translate

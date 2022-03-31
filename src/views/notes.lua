@@ -1,3 +1,114 @@
+-- FBI
+
+
+
+-- /Protection
+    -- Bodyguard
+    -- Tank followiing
+    -- Choper following
+    -- Jet following
+
+     -- Single Personel: Sniper, SWAT member, cop, back ops, gf - lots of  hp, well trained and armed
+    -- Paramedic: Gives health/armour to nerby players or only to that oneplayer if he comes close by
+    
+    -- CIA Security - gentle follow
+    -- SWAT Security - follows you backwards, highway patrol infront of you 
+    -- Mayweather security (in your face), armored vehicle, helicopter
+    -- Military Security - Tanks, jets, helicopters, military personel
+
+
+    -- Add player to friendly group by shooting to them OR players nerby - toggle on and off
+
+
+    -- followInCar
+    -- followInFront
+    -- followBackwards
+    -- followInbetween
+
+    -- stealVehicle
+
+
+-- is_vehicle_stopped withingXrange - get out and shoot the player
+ 
+-- needs to be global
+
+-- pedModel[key](agent, unpack(pedModelValuesHash))
+-- pedModel.createPed(police, 5000hp, "weapon_raycarabine", "offensive", "professional", "groupd1", "loyal")
+
+    
+-- create components later
+-- create agents component, diferent outfit, guns etc...
+-- create cars components, different car, modification etc...
+
+-- set_task_vehicle_chase_behaviour_flag(Ped ped, int flag, bool set)
+
+
+-- set_task_vehicle_chase_ideal_persuit_distance(ped, dist)
+
+ 
+-- if not next(ult_entities) == nil then
+--     -- if entityHelper.request_control(driver, 25) then
+--         ai.task_vehicle_follow(ult_entities[0], car,  player.get_player_ped(player.player_id()), drivingSpeed, drivingMode, drivingFollowBehindGap)
+--     -- end
+--     system.wait(100)
+-- end
+ 
+
+-- protection follow by vehicle, dont allow the bodyguards to come to your vehicle, steal one if needed or spawn
+-- ai.task_vehicle_follow(driver, vehicle, targetToFollow, speed, driving mode, distanceBehind)
+-- ai.task_vehicle_escort()
+-- if can't enter a car, steal one
+
+
+
+
+
+
+
+
+-- cooll stuff
+
+-- function randomFireWork()
+--     if((os.clock() - lastFirework) > 1)then
+--       local pos = player.get_player_coords(player.player_id())
+--       pos.z = pos.z+math.random(50)+50
+--       if(math.random(2) == 1) then
+--         if(math.random(2) == 1) then
+--           pos.x = pos.x+math.random(100)
+--         else
+--           pos.x = pos.x+(math.random(100)*-1)
+--         end
+--       else
+--         if(math.random(2) == 1) then
+--           pos.y = pos.y+math.random(100)
+--         else
+--           pos.y = pos.y+(math.random(100)*-1)
+--         end
+  
+--       end
+--       gameplay.shoot_single_bullet_between_coords(pos,pos,0,0x7F7497E5,player.player_id(),false,false,1)
+--       lastFirework = os.clock()
+--     end
+--     if(firework.on) then
+--       return HANDLER_CONTINUE
+--     else
+--       return HANDLER_POP
+--     end
+--   end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 -- function chaseVehicle(feat, slot)
@@ -66,6 +177,39 @@
 
 
 
+
+
+
+
+
+
+
+-- Ability to enable/disable
+
+-- SMS phases 
+
+-- #Griefing 
+-- (attack sent)
+-- - Surrender now! The National Security forces have been deployed!
+
+
+-- #Help
+-- (on setting protection)
+-- - To protect and serve
+
+-- (units death)
+-- - Mission failed comare, we'll get it next time! 
+-- - The fight might be lost, but the battle is not over yet!
+
+-- (units dying)
+-- - We are losing units! Takve cover!
+-- - Takve cover now!
+
+-- (upon killing a player - 20% chance in happening)
+-- - Were spraying them!
+-- - Good job! 
+
+-- -->
 
 
 
