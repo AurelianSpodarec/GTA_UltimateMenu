@@ -86,13 +86,13 @@ function ModelPed.setCombatAbility(pedestrian, ability)
 end
 
 
--- 
-
 function ModelPed.setGroup(pedestrian, groupID, isLoyal)
     -- Note: 8 peds per group
-    ped.is_ped_group_member(pedestrian, groupID)
-    ped.set_ped_as_group_member(pedestrian, groupID)
-    ped.set_ped_never_leaves_group(pedestrian, isLoyal)
+    if ped.get_ped_group(pedestrian) ~= groupID then
+        ped.is_ped_group_member(pedestrian, groupID)
+        ped.set_ped_as_group_member(pedestrian, groupID)
+        ped.set_ped_never_leaves_group(pedestrian, isLoyal)
+    end
 end
 
 
@@ -100,7 +100,7 @@ function ModelPed.setCombatMovement(pedestrian, combatMovement)
     local options = {
         stationary = 0,        -- Stand in place
         defensive = 1,         -- Take cover and blind fire
-        offensive = 2,         --  Attack and take cover
+        offensive = 2,         -- Attack and take cover
         suicidalOffensive = 3  --Flank enemy in suicidal attack
     }
 
@@ -111,10 +111,13 @@ function ModelPed.setCombatMovement(pedestrian, combatMovement)
     return ped.set_ped_combat_movement(pedestrian, options[combatMovement])
 end
 
+
 function ModelPed.setCombatAttributes(pedestrian, combatAttribute)
     -- Note: Can select many 
 
     -- function ModelPed.setCombatAttributes(pedestrian, {combatAttributes})
+    -- function ModelPed(cop, {canUseCover, canUseVehicle})
+
     local options = {
         canUseCover = 0,
         canUseVehicles = 1,
@@ -143,16 +146,15 @@ end
 
 
 function ModelPed.attackPlayer(feat)
-    -- if has weapon use it
     local peds <const> = ped.get_all_peds()
-
+    
     for i = 1, #peds do
         if entityHelper.request_control(peds[i], 25) then
             -- ped.set_ped_combat_attributes(peds[i], 46, true)
+            -- if has weapon use it instead
             ai.task_combat_ped(peds[i], player.get_player_ped(player.player_id()), 0, 16)
         end
     end
-       
 end
 
 

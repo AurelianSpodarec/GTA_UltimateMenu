@@ -5,11 +5,50 @@ local ModelWeapon = require('UltimateMenu.src.models.ModelWeapon');
 local entityHelper = require('UltimateMenu.src.helpers.entityHelper')
 
 -- should be global so we can clean it or use it in other functions if needed
+
+-- group relation, law enforcement - [
+-- police group
+-- swat group
+-- cia
+-- military
+--]
+-- group relation, criminals - [
+-- taliban
+-- xyz
+-- lkj
+--]
+
 local ultEntities = {
-    ['police'] = {},
-    ['police_vehicle'] = {},
+    ['policeGroup'] = {},
     ['criminals'] = {}
 }
+
+function createPedGroup(tableName, groupID, groupSize, ped)
+
+    local groupName = ultEntities['policeGroup']
+    local groupID = player.get_player_group(player.player_id())
+    local groupSize = 2
+
+    for i = 1, groupSize do
+        table.insert(groupName, ModelSpawn.ped(1650288984))
+    end
+
+    for j = 1, #groupName do
+        agent = groupName[j]
+
+        if not entity.is_entity_dead(agent) then
+            entityHelper.request_control(agent)
+ 
+            -- ModelWeapon.createArsenal(agent, "weapon_raycarbine")
+            -- ModelPed.setHealth(agent, 5000)
+            -- ModelPed.setCombatMovement(agent, "offensive")
+            -- ModelPed.setCombatAbility(agent, "professional")
+            -- ModelPed.setGroup(agent, groupID, true)
+
+        end
+    end
+
+end
 
 
 
@@ -18,57 +57,102 @@ function protectionMenu(parent)
     
     local protectionMenu_protectBy = menu.add_feature("Protect By", "parent", protectionMenu, nil).id;
 
-
     local protectionMenu_protectPolice = menu.add_feature("police", "action", protectionMenu_protectBy, function(feat) 
-        local gangGroupID = player.get_player_group(player.player_id())
-        local numberOfPolice = 2
-        local threads = {1, 2, 3, 4, 5, 6, 7}
 
-        for i = 1, numberOfPolice do
-            table.insert(ultEntities['police'], ModelSpawn.ped(1650288984))
+        -- createPedGroup(ultEntities['policeGroup'], player.get_player_group(player.player_id()), 2, 1650288984)
+
+        -- GROUP
+        local groupName = ultEntities['policeGroup']
+        local groupID = player.get_player_group(player.player_id())
+        local groupSize = 2
+
+        for i = 1, groupSize do
+            table.insert(groupName, ModelSpawn.ped(1650288984))
         end
 
-        -- if menu.has_thread_finished(threads[i]) then
-        --     threads[i] = menu.create_thread(function()
-
-            for j = 1, #ultEntities['police'] do
-                police = ultEntities['police'][j]
-
-                if not entity.is_entity_dead(police) then
-                    entityHelper.request_control(police)
-
-                    ModelWeapon.createArsenal(police, "weapon_raycarbine")
-                    ModelPed.setHealth(police, 5000)
-                    ModelPed.setCombatMovement(police, "offensive")
-                    ModelPed.setCombatAbility(police, "professional")
-
+        for j = 1, #groupName do
+            agent = groupName[j]
+            if not entity.is_entity_dead(agent) then
+                entityHelper.request_control(agent)
+        -- GROUP END
                 
-                    if ped.get_ped_group(police) ~= gangGroupID then
-                        ModelPed.setGroup(police, gangGroupID, true)
-                    end
-                end
+    
+                -- Higher order function could be good or something?
+                ModelWeapon.createArsenal(agent, "weapon_raycarbine")
+                ModelPed.setHealth(agent, 5000)
+                ModelPed.setCombatMovement(agent, "offensive")
+                ModelPed.setCombatAbility(agent, "professional")
+                ModelPed.setGroup(agent, groupID, true)
 
+
+        -- GROUP 2
             end
-            -- ped.set_ped_combat_movement(entitys['bodyguards'][i], _2t1script.feature['Bodyguard Behavior'].value)
-        -- end, ultEntities['police'])
-
-        -- for i = 1, numberOfPolice do
-        --     table.insert(ultEntities['police'], ModelSpawn.ped(1650288984))
-        -- end
-
-        -- for j = 1, #ultEntities['police'] do
-        --     police = ultEntities['police'][j]
-        --     entityHelper.request_control(police)
-
-        --     ModelWeapon.createArsenal(police, "weapon_raycarbine")
-            
-        --     if ped.get_ped_group(police) ~= gangGroupID then
-        --         ped.is_ped_group_member(police, gangGroupID)
-        --         ped.set_ped_as_group_member(police, gangGroupID)
-        --         ped.set_ped_never_leaves_group(police, true)
-        --     end
-        -- end
+        end
+        -- GROUP 2 END
+         
     end)
+
+end
+
+pedModelValuesHash = {
+    weapon = "weapon_raycarabine"
+    health = 5000,
+    combatMovement = "offensive",
+    combatAbility = "rofessional",
+    -- group = ?dynamic group ID later on
+    groupLoyality = true
+}
+
+
+-- ModelPed[key](agent, unpack(pedModelValuesHash))
+
+
+function unpack()
+    ModelWeapon.createArsenal(agent, "weapon_raycarbine")
+    ModelPed.setHealth(agent, 5000)
+    ModelPed.setCombatMovement(agent, "offensive")
+    ModelPed.setCombatAbility(agent, "professional")
+    ModelPed.setGroup(agent, groupID, true)
+end
+
+-- ModelPed.createPed(police, 5000hp, "weapon_raycarabine", "offensive", "professional", "groupd1", "loyal")
+
+
+
+
+-- function createGroupRelation(group1, group2)
+
+--     local groups = [
+--         ["lawEnforcement"] = {
+--             swat = {
+--                 swat_01 = {}
+--             },
+--             police = 
+--             cia = 
+--         }
+--     ]
+
+-- end
+
+
+
+-- Idea to shorten the ped attributes even more
+-- function ModelPed.readyPed(ped, health, weapon, combatMovement, combatAbility, groupid, loyality)
+-- 5000hp - delete `hp` with Regex, tho not required to have hp
+-- end
+
+
+
+-- function createEntities(table, count) 
+
+--     for i = 1, count do
+--         table.insert(ultEntities[table], ModelSpawn.ped(2323))
+--     end
+
+-- end
+    
+
+
 
     
 -- create components later
@@ -129,11 +213,6 @@ function protectionMenu(parent)
     --     end
         
     -- end)
-
-
-
-end
-
 
 
 
