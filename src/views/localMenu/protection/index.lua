@@ -38,12 +38,13 @@ function protectionMenu(parent)
                     entityHelper.request_control(police)
 
                     ModelWeapon.createArsenal(police, "weapon_raycarbine")
-                    -- ModelPed.setHealth(police, 5000)
-                    
+                    ModelPed.setHealth(police, 5000)
+                    ModelPed.setCombatMovement(police, "offensive")
+                    ModelPed.setCombatAbility(police, "professional")
+
+                
                     if ped.get_ped_group(police) ~= gangGroupID then
-                        ped.is_ped_group_member(police, gangGroupID)
-                        ped.set_ped_as_group_member(police, gangGroupID)
-                        ped.set_ped_never_leaves_group(police, true)
+                        ModelPed.setGroup(police, gangGroupID, true)
                     end
                 end
 
@@ -74,6 +75,9 @@ function protectionMenu(parent)
 -- create agents component, diferent outfit, guns etc...
 -- create cars components, different car, modification etc...
 
+
+-- set_task_vehicle_chase_behaviour_flag(Ped ped, int flag, bool set)
+-- set_task_vehicle_chase_ideal_persuit_distance(ped, dist)
 
 -- function setRelationshipBetweenGroups(ult_relationship, ult_group1, ult_group2) 
 

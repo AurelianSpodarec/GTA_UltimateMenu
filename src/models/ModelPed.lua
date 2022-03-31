@@ -25,6 +25,7 @@ function ModelPed.setAllGodmode(feat)
 
 end
 
+-- should be removeGodmode, and the loop elsewhere, this is a model - singular, maybe that can go into services/logic
 function ModelPed.removeAllGodmode(feat) 
 
     local peds <const> = ped.get_all_peds()
@@ -45,7 +46,6 @@ end
 
 
 function ModelPed.removePeds()
-  
     local peds <const> = ped.get_all_peds()
     menu.create_thread(function(peds)
         for i = 1, #peds do
@@ -58,7 +58,6 @@ function ModelPed.removePeds()
             
         end
     end, peds)
-
 end
 
 function ModelPed.density(feat)
@@ -71,11 +70,7 @@ end
 -- Start ModelPedCombat? @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 function ModelPed.setCombatAbility(pedestrian, ability)
-    if combatOptions[ability] == nil then
-        print("ERROR", "Wrong combat ability selected")
-    end
-
-    local combatOptions = {
+    local options = {
         poor = 0,
         average = 1,
         professional = 2,
@@ -83,56 +78,68 @@ function ModelPed.setCombatAbility(pedestrian, ability)
         attack = 100
     }
 
-    return ped.set_ped_combat_movement(pedestrian, combatOptions[ability])
+    if options[ability] == nil then
+        print("ERROR", "Wrong combat ability. Selected: ", ability)
+    end
+
+    return ped.set_ped_combat_movement(pedestrian, options[ability])
 end
 
 
--- function ModelPed.setAccuracy(pedestrian, accuracy)
---     if not accuracy >= 0 or x <= 100 do
---         print("ERROR", "Wrong accuracy set. Values range from 0-100")
---     end
+-- 
+
+function ModelPed.setGroup(pedestrian, groupID, isLoyal)
+    -- Note: 8 peds per group
+    ped.is_ped_group_member(pedestrian, groupID)
+    ped.set_ped_as_group_member(pedestrian, groupID)
+    ped.set_ped_never_leaves_group(pedestrian, isLoyal)
+end
+
+
+function ModelPed.setCombatMovement(pedestrian, combatMovement)
+    local options = {
+        stationary = 0,        -- Stand in place
+        defensive = 1,         -- Take cover and blind fire
+        offensive = 2,         --  Attack and take cover
+        suicidalOffensive = 3  --Flank enemy in suicidal attack
+    }
+
+    if options[combatMovement] == nil then
+        print("ERROR", "Wrong combat option selected")
+    end
+
+    return ped.set_ped_combat_movement(pedestrian, options[combatMovement])
+end
+
+function ModelPed.setCombatAttributes(pedestrian, combatAttribute)
+    -- Note: Can select many 
+
+    -- function ModelPed.setCombatAttributes(pedestrian, {combatAttributes})
+    local options = {
+        canUseCover = 0,
+        canUseVehicles = 1,
+        canDoDrivebys = 2,
+        canLeaveVehicle = 3,
+        canFightArmedPedsWhenNotArmed = 5,
+        canTauntInVehicle = 20,
+        alwaysFight = 46,
+        ignoreTrafficWhenDriving = 52,
+        fleesFromInvincibleOpponents = 63,
+        freezeMovement = 292,  
+        playerCanUseFiringWeapons = 1424  
+    }
+
+    if options[combatAttribute] == nil then
+        print("ERROR", "Wrong combat attribute selected: ", combatAttribute)
+    end
+
+    -- local selectedCombatAttributes = {}
+
+    -- https://docs.fivem.net/natives/?_0x9F7794730795E019
     
---     -- Accuracy 0-100, where's 100 is perfectly accurate
---     ped.set_ped_accuracy(pedestrian, accuracy)
--- end
-
-
--- function ModelPed.setCombatMovement(pedestrian, combatMovement)
---     if combatMovement[combatMovement] == nil then
---         print("ERROR", "Wrong combat option selected")
---     end
-
---     local combatOptions = {
---         stationary = 0,        -- Stand in place
---         defensive = 1,         -- Take cover and blind fire
---         offensive = 2,         --  Attack and take cover
---         suicidalOffensive = 3  --Flank enemy in suicidal attack
---     }
-
---     return ped.set_ped_combat_movement(pedestrian, combatOptions[combatMovement])
--- end
-
--- function ModelPed.setCombatAttributes(pedestrian, combatAttributes) 
---     if combatMovement[combatMovement] == nil then
---         print("ERROR", "Wrong combat attribute selected")
---     end
---     -- https://docs.fivem.net/natives/?_0x9F7794730795E019
---     local coverOptions = {
---         canUseCover = 0,
---         canUseVehicles = 1,
---         canDoDrivebys = 2,
---         canLeaveVehicle = 3,
---         canFightArmedPedsWhenNotArmed = 5,
---         canTauntInVehicle = 20,
---         alwaysFight = 46,
---         ignoreTrafficWhenDriving = 52,
---         fleesFromInvincibleOpponents = 63,
---         freezeMovement = 292,  
---         playerCanUseFiringWeapons = 1424  
---     }
-
---     return ped.set_ped_combat_attributes(pedestrian, coverOptions[setCombatAttributes])
--- end
+    -- for loop if many attributes are selected
+    return ped.set_ped_combat_attributes(pedestrian, options[setCombatAttribute])
+end
 
 
 function ModelPed.attackPlayer(feat)
@@ -218,6 +225,34 @@ end
 
 
 return ModelPed;
+
+
+
+-- WARNING
+-- function ModelPed.setAccuracy(pedestrian, accuracy)
+    --     -- WARNING 0-100 is NOT accurate. Accuracy doens't change
+    --     -- Accuracy 0-100, where's 100 is perfectly accurate
+    --     if type(accuracy) ~= 'number' then
+    --         print("ERROR", "Provide value between 0-100. Provided value: ", accuracy)
+    --     end
+    
+    --     if accuracy >= 0 and accuracy <= 100 then
+    --         print("ERROR", "Wrong accuracy set. Values range from 0-100")
+    --     end
+    
+    --     -- local options {
+    --     --     retarded = 0,
+    --     --     poor = 10,
+    --     --     novice = 20,
+    --     --     beginner = 40,
+    --     --     competent = 60,
+    --     --     proficient = 75,
+    --     --     expert = 90,
+    --     --     ai = 100
+    --     -- }
+    
+    --     ped.set_ped_accuracy(pedestrian, accuracy)
+    -- end
 
 -- ped.set_ped_can_switch_weapons(Ped, true) 
 
