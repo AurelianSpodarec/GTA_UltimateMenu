@@ -23,6 +23,9 @@
 Send SWAT Units 2 (1unit = suv and 8swat agents)
 
 
+-- Close doors for players, FBI only
+-- When spawn, doors closed, when the player who spawned the car wants to enter let him, and close the doors
+
 
 
 

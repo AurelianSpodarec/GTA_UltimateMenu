@@ -1,4 +1,4 @@
-local ModelSpawn <const> = require('UltimateMenu.src.model.ModelSpawn')
+local spawnModel <const> = require('UltimateMenu.src.model.spawnModel')
 
 
 
@@ -16,7 +16,7 @@ function HelpMenuParser.createActionList(data, parent)
             local area = itemChildren[j]
 
             menu.add_feature(area.name, "action", parent, function(f) 
-                ModelSpawn.vehicle(area.hash, player.get_player_coords(player.player_id()))
+                spawnModel.vehicle(area.hash, player.get_player_coords(player.player_id()))
             end)
         end
 

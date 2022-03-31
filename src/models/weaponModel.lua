@@ -1,7 +1,7 @@
-local ModelWeapon = {}
+local weaponModel = {}
 
 
-function ModelWeapon.getWeapon(ult_weapon) 
+function weaponModel.getWeapon(ult_weapon) 
     local __func__ = "function getWeapon:"
 
     if type(ult_weapon) == 'string' then
@@ -22,7 +22,7 @@ function ModelWeapon.getWeapon(ult_weapon)
 end
 
 
-function ModelWeapon.createArsenal(ult_pedestrian, ult_equipNow, ult_equipAfterTime, ult_primaryWeapon, ult_secondaryWeapon, ult_melee, ult_throwables, ult_launchers)
+function weaponModel.createArsenal(ult_pedestrian, ult_equipNow, ult_equipAfterTime, ult_primaryWeapon, ult_secondaryWeapon, ult_melee, ult_throwables, ult_launchers)
     if not ult_pedestrian then
         print("ERROR", "function createArsenal: No pedestrian selected")
     end
@@ -59,11 +59,11 @@ function ModelWeapon.createArsenal(ult_pedestrian, ult_equipNow, ult_equipAfterT
     }
 
     for weaponIndex = 1, #defaultArsenal do
-        return weapon.give_delayed_weapon_to_ped(ult_pedestrian, ModelWeapon.getWeapon(defaultArsenal[weaponIndex].type), equipAfterTime, equipNow)
+        return weapon.give_delayed_weapon_to_ped(ult_pedestrian, weaponModel.getWeapon(defaultArsenal[weaponIndex].type), equipAfterTime, equipNow)
     end
 end
 
-return ModelWeapon
+return weaponModel
 
 -- Shooting games
     -- Primary Weapons

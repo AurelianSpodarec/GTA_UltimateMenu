@@ -1,5 +1,5 @@
 
-local ModelSpawn = require('UltimateMenu.src.models.ModelSpawn')
+local spawnModel = require('UltimateMenu.src.models.spawnModel')
 
 function trollingMenu_rubio(parent)
 
@@ -27,7 +27,7 @@ function trollingMenu_rubio(parent)
             for i = 1, 1 do
                 -- local Heli = vehicle.create_vehicle(0xA09E15FD, pos + v3(math.random(-200, 200), math.random(-200, 200), math.random(50, 60)), math.random(0, 0), true, false)
                 -- local Heli = vehicle.create_vehicle(0xA09E15FD,  player.get_player_coords(player.get_player_ped(player.player_id())), true, false)
-                local Heli = ModelSpawn.vehicle(0xA09E15FD, player.get_player_coords(player.player_id()) + v3(math.random(-200, 200), math.random(-200, 200), math.random(50, 60)), math.random(0, 0))
+                local Heli = spawnModel.vehicle(0xA09E15FD, player.get_player_coords(player.player_id()) + v3(math.random(-200, 200), math.random(-200, 200), math.random(50, 60)), math.random(0, 0))
                 local Rubio = ped.create_ped(1, 0xD74B8139, pos + v3(math.random(-200, 200), math.random(-200, 200), 0), 1.0, true, false)
                 local Shooter1 = ped.create_ped(1, 0x7ED5AD78, pos + v3(math.random(-200, 200), math.random(-200, 200), 0), 1.0, true, false)
                 local Shooter2 = ped.create_ped(1, 0x7ED5AD78, pos + v3(math.random(-200, 200), math.random(-200, 200), 0), 1.0, true, false)
@@ -83,4 +83,4 @@ function trollingMenu_rubio(parent)
 end
 
 
--- ModelPedCombat(attribute, ability)
+-- pedModelCombat(attribute, ability)

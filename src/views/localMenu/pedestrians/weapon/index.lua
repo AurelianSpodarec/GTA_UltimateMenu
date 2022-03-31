@@ -1,5 +1,5 @@
 local weaponController = require('UltimateMenu.src.controllers.weaponController')
-local ModelPed = require('UltimateMenu.src.models.ModelPed')
+local pedModel = require('UltimateMenu.src.models.pedModel')
 
 
 local state = {
@@ -10,16 +10,16 @@ function pedestriansMenu_weapon(parent)
     pedestriansMenu_weapon = menu.add_feature('Weapons', 'parent', parent, nil).id
 
 
-    pedestriansMenu_giveAllweapon = menu.add_feature('Give All Weapons', 'action', pedestriansMenu_weapon, function() ModelPed.setAllWeapon() end).id
+    pedestriansMenu_giveAllweapon = menu.add_feature('Give All Weapons', 'action', pedestriansMenu_weapon, function() pedModel.setAllWeapon() end).id
 
     pedestriansMenu_setWeapon = menu.add_feature('Set a Weapon', 'parent', pedestriansMenu_weapon, function() 
         if not state.viewsLoaded then
-            return weaponController.all(pedestriansMenu_setWeapon, ModelPed.setWeapon)
+            return weaponController.all(pedestriansMenu_setWeapon, pedModel.setWeapon)
         end
         state.viewsLoaded = true
     end).id
 
-    pedestriansMenu_removeAllWeapon = menu.add_feature('Remove Weapons', 'action', pedestriansMenu_weapon, function() ModelPed.removeAllWeapon() end).id
+    pedestriansMenu_removeAllWeapon = menu.add_feature('Remove Weapons', 'action', pedestriansMenu_weapon, function() pedModel.removeAllWeapon() end).id
     
 
     -- pedestriansMenu_setWeapon_component = menu.add_feature('Set Component', 'parent', pedestriansMenu_weapon, function(feat) 

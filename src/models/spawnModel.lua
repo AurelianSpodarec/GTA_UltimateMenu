@@ -2,9 +2,9 @@ local entityHelper <const> = require('UltimateMenu.src.helpers.entityHelper')
 
 
 
-local ModelSpawn = {};
+local spawnModel = {};
 
-function ModelSpawn.ped(ult_hash, ult_position, ult_pedType, ult_heading, ult_networked, ult_unk1)
+function spawnModel.ped(ult_hash, ult_position, ult_pedType, ult_heading, ult_networked, ult_unk1)
     if not ult_hash or not streaming.is_model_a_ped(ult_hash) then
         return
     end
@@ -22,7 +22,7 @@ function ModelSpawn.ped(ult_hash, ult_position, ult_pedType, ult_heading, ult_ne
     return ult_ped
 end
 
-function ModelSpawn.vehicle(ult_hash, ult_position, ult_heading, ult_networked, ult_unk1)
+function spawnModel.vehicle(ult_hash, ult_position, ult_heading, ult_networked, ult_unk1)
     if not ult_hash or not streaming.is_model_a_vehicle(ult_hash) then
         return
     end
@@ -39,7 +39,7 @@ function ModelSpawn.vehicle(ult_hash, ult_position, ult_heading, ult_networked, 
     return ult_ehicle
 end
 
-function ModelSpawn.object(ult_hash, ult_position, ult_networked, ult_dynamic)
+function spawnModel.object(ult_hash, ult_position, ult_networked, ult_dynamic)
     if not ult_hash or not streaming.is_model_an_object(ult_hash) then
         return
     end
@@ -55,7 +55,7 @@ function ModelSpawn.object(ult_hash, ult_position, ult_networked, ult_dynamic)
     return ult_object
 end
 
-function ModelSpawn.worldObject(ult_hash, ult_position, ult_networked, ult_dynamic)
+function spawnModel.worldObject(ult_hash, ult_position, ult_networked, ult_dynamic)
     if not ult_hash or not streaming.is_model_a_world_object(ult_hash) then
         return
     end
@@ -71,4 +71,4 @@ function ModelSpawn.worldObject(ult_hash, ult_position, ult_networked, ult_dynam
     return worldObject
 end
 
-return ModelSpawn;
+return spawnModel;

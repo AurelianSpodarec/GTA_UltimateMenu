@@ -48,7 +48,7 @@ local charactersData = {
     --     -- Pogo | Ranger | RS Ranger
     -- },
     aliens = {
-        -- Widowmaker, raycarabine, railgun
+        vehicle = "Space Docker"
         {
             id = "alient",
             name = "Alient",
@@ -88,7 +88,7 @@ local charactersData = {
     },
     animal = {
          --Big foot"
-        --  pogo
+        --  pogo weapon_molotov
     }
 
 }

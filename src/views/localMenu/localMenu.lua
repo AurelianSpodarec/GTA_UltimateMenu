@@ -9,9 +9,9 @@ function localMenu()
     local ultimateMenu = menu.add_feature("Ultimate Menu", "parent", 0, nil).id
 
     protectionMenu(ultimateMenu)
-    vehiclesMenu(ultimateMenu)
-    pedestriansMenu(ultimateMenu)
-    trollingMenu(ultimateMenu)
+    -- vehiclesMenu(ultimateMenu)
+    -- pedestriansMenu(ultimateMenu)
+    -- trollingMenu(ultimateMenu)
 
 
     -- test = menu.add_feature('Sound Test', "action", 0, function(feat) 

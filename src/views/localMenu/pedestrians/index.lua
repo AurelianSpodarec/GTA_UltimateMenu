@@ -1,6 +1,6 @@
 require('UltimateMenu.src.views.localMenu.pedestrians.weapon.index')
 require('UltimateMenu.src.views.localMenu.pedestrians.action.index')
-require('UltimateMenu.src.models.ModelPed')
+require('UltimateMenu.src.models.pedModel')
 
 function pedestriansMenu(parent)
     local pedestriansMenu = menu.add_feature("Pedestrians", "parent", parent, nil).id;
@@ -14,6 +14,35 @@ end
 
 
 
+-- delete only one model is one 
+-- function pedModel.setAllGodmode(feat)
+
+--     local peds <const> = ped.get_all_peds()
+--     for i = 1, #peds do
+--         if entityHelper.request_control(peds[i], 25) then
+--             entity.set_entity_god_mode(peds[i], true)
+--         end
+--     end
+
+-- end
+
+-- should be removeGodmode, and the loop elsewhere, this is a model - singular, maybe that can go into services/logic
+-- function pedModel.removeAllGodmode(feat) 
+
+--     local peds <const> = ped.get_all_peds()
+--     for i = 1, #peds do
+--         if entityHelper.request_control(peds[i], 25) then
+--             entity.set_entity_god_mode(peds[i], false)
+--             ped.set_ped_health(peds[i], 328)
+--         end
+--     end
+
+-- end
+-- /END Should go into entityModel@@@@@
+
+
+
+
 
 
 
@@ -24,22 +53,22 @@ end
     -- Spawn Pedestrians
     -- Player Pedestrian
 
-    -- local ModelPed <const> = require('UltimateMenu.src.models.ModelPed');
+    -- local pedModel <const> = require('UltimateMenu.src.models.pedModel');
 
 
     -- local__pedsMenu_godMode = menu.add_feature("Godmode", "toggle", local_pedsMenu, function(feat) 
     --     while feat.on do  
-    --         ModelPed.setAllGodmode(feat); 
+    --         pedModel.setAllGodmode(feat); 
     --         system.wait(100)
     --     end     
-    --     ModelPed.removeAllGodmode(feat); 
+    --     pedModel.removeAllGodmode(feat); 
     -- end);
 
-    -- local__pedsMenu_arm = menu.add_feature("Arm Peds", "action", local_pedsMenu, function(feat) ModelPed.setAllWeapon(feat); end);
+    -- local__pedsMenu_arm = menu.add_feature("Arm Peds", "action", local_pedsMenu, function(feat) pedModel.setAllWeapon(feat); end);
         
     -- local__pedsMenu_remove = menu.add_feature("Remove All Peds", "action", local_pedsMenu, function(feat) 
     --     -- while feat.on do
-    --         ModelPed.removePeds(feat); 
+    --         pedModel.removePeds(feat); 
     --     --     system.wait(100)
     --     -- end  
     -- end);
@@ -150,7 +179,7 @@ end
     -- end)
 
 
-    -- local__pedsMenu_godMode = menu.add_feature("Set Weapon to All", "toggle", local_pedsMenu, function(feat) ModelPed.setAllWeapon(feat) end);
+    -- local__pedsMenu_godMode = menu.add_feature("Set Weapon to All", "toggle", local_pedsMenu, function(feat) pedModel.setAllWeapon(feat) end);
 
     -- local__pedsMenu_weeeeeee = menu.add_feature("All Weapons", "action", local_pedsMenu, function(feat)
         

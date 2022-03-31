@@ -34,3 +34,8 @@ end
 
 
 return entityHelper
+
+
+-- function SpawnRandomRange()
+-- horizon, vertical, diagnonal - max random
+-- end

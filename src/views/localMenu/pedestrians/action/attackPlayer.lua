@@ -1,4 +1,4 @@
-local ModelPed <const> = require('UltimateMenu.src.models.ModelPed');
+local pedModel <const> = require('UltimateMenu.src.models.pedModel');
 
 
 
@@ -8,7 +8,7 @@ function pedestriansMenu_attackPlayer(parent)
 
     pedestriansMenu_action_attackPlayer = menu.add_feature("Attack Player", "action", parent, function(feat) 
         while feat.on do
-            ModelPed.attackPlayer(feat); 
+            pedModel.attackPlayer(feat); 
             system.wait(100)
         end  
     end);

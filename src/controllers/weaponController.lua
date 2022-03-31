@@ -1,5 +1,5 @@
 local data = require('UltimateMenu.src.data.weapons')
-local ModelPed = require('UltimateMenu.src.models.ModelPed')
+local pedModel = require('UltimateMenu.src.models.pedModel')
 
 local weaponController = {}
  

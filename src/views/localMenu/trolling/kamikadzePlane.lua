@@ -3,8 +3,8 @@ function trollingMenu_kamikadzePlane(parent)
 
     local_trollingMenu_kamikadzePlane = menu.add_feature("Kamikadze Plane", "parent", parent, function(feat) 
         
-        local Plane = ModelSpawn.vehicle(-1214505995, player.get_player_coords(player.player_id()) + v3(math.random(-200, 200), math.random(-400, 400), math.random(70, 94)), math.random(0, 0))
-            local Pilot = ModelSpawn.ped(-413447396)
+        local Plane = spawnModel.vehicle(-1214505995, player.get_player_coords(player.player_id()) + v3(math.random(-200, 200), math.random(-400, 400), math.random(70, 94)), math.random(0, 0))
+            local Pilot = spawnModel.ped(-413447396)
             local playerPos = player.get_player_coords(player.player_id())
     
             ped.set_ped_into_vehicle(Pilot, Plane, -1)
@@ -19,9 +19,29 @@ function trollingMenu_kamikadzePlane(parent)
     -- local_trollingMenu_kamikadzePlane2 = menu.add_feature("Falling Plane", "action", local_trollingMenu_kamikadzePlane, nil)
     -- local_trollingMenu_kamikadzePlane3 = menu.add_feature("Disable Planes Nerby", "action", local_trollingMenu_kamikadzePlane, nil)
     
+-- Details: a plane of your choice to kamikaze into a player and kill them.
 
 end
 
+
+
+-- maybe should go into services, 
+
+-- vehicle should contain planes too since thecnically they'll have same functionality for the most part
+
+ 
+
+-- -- chase player
+-- -- change color
+
+  
+
+--     -- Suggestion: kamikaze planes
+--     -- Details: a plane of your choice to kamikaze into a player and kill them.
+
+--     -- Edit: choose whether to blame, no blame,  blame another player.
+
+--     -- Sound - this is restricted area
 
 
 
@@ -46,11 +66,11 @@ end
     -- Kamikaze Planes
     -- local__pedsMenu_plane = menu.add_feature("Falling Plane from the sky", "action", local_pedsMenu, function(feat) 
     --     -- while feat.on do
-    --     --     ModelPed.removePeds(feat); 
+    --     --     pedModel.removePeds(feat); 
     --     --     system.wait(100)
     --     -- end  
-    --     local Plane = ModelSpawn.vehicle(-1214505995, player.get_player_coords(player.player_id()) + v3(math.random(-200, 200), math.random(-400, 400), math.random(70, 94)), math.random(0, 0))
-    --     local Pilot = ModelSpawn.ped(-413447396)
+    --     local Plane = spawnModel.vehicle(-1214505995, player.get_player_coords(player.player_id()) + v3(math.random(-200, 200), math.random(-400, 400), math.random(70, 94)), math.random(0, 0))
+    --     local Pilot = spawnModel.ped(-413447396)
     --     local playerPos = player.get_player_coords(player.player_id())
 
     --     ai.task_parachute(Pilot, true, true)

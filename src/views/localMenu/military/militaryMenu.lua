@@ -1,5 +1,5 @@
 local customData <const> = require('UltimateMenu.src.data.customData')
-local ModelSpawn <const> = require('UltimateMenu.src.models.ModelSpawn')
+local spawnModel <const> = require('UltimateMenu.src.models.spawnModel')
 local HelpMenuParser <const> = require('UltimateMenu.src.helpers.HelpMenuParser')
 
 
