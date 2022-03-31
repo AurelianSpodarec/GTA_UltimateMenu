@@ -30,6 +30,17 @@ function protectionMenu(parent)
 
 
 
+end
+
+
+
+
+
+
+
+
+
+
     -- local protectionMenu_protectBy_CIA = menu.add_feature("terroristGang", "action", protectionMenu_protectBy, function(feat) 
 
     --     terrorist_entities = {}
@@ -136,9 +147,6 @@ function protectionMenu(parent)
 
     
    
-end
-
-
 
 -- ai.task_vehicle_follow(driver, vehicle, targetToFollow, speed, driving mode, distanceBehind)
 -- ai.task_vehicle_escort()

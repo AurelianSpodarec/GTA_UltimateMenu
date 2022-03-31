@@ -5,7 +5,7 @@ function ModelWeapon.getWeapon(ult_weapon)
     local __func__ = "function getWeapon:"
 
     if type(ult_weapon) == 'string' then
-        if gameplay.get_hash_key(ult_weapon) ~= nil then
+        if gameplay.get_hash_key(ult_weapon) == nil then
             print("ERROR", __func__, "Wrong weapon 'name ID' provided")
         end
         return gameplay.get_hash_key(ult_weapon)
@@ -22,13 +22,13 @@ function ModelWeapon.getWeapon(ult_weapon)
 end
 
 
-function ModelWeapon.createArsenal(ult_pedestrian, ult_primaryWeapon, ult_secondaryWeapon, ult_melee, ult_throwables, ult_launchers)
+function ModelWeapon.createArsenal(ult_pedestrian, ult_equipNow, ult_equipAfterTime, ult_primaryWeapon, ult_secondaryWeapon, ult_melee, ult_throwables, ult_launchers)
     if not ult_pedestrian then
         print("ERROR", "function createArsenal: No pedestrian selected")
     end
-
-    local equipNow = 1
-    local equipAfterCertainTime = 0
+    
+    local equipNow = ult_equipNow or 1
+    local equipAfterTime = ult_equipAfterTime or 0
 
     local defaultArsenal = {
         {
@@ -59,7 +59,7 @@ function ModelWeapon.createArsenal(ult_pedestrian, ult_primaryWeapon, ult_second
     }
 
     for weaponIndex = 1, #defaultArsenal do
-        return weapon.give_delayed_weapon_to_ped(ult_pedestrian, ModelWeapon.getWeapon(defaultArsenal[weaponIndex].type), equipAfterCertainTime, equipNow)
+        return weapon.give_delayed_weapon_to_ped(ult_pedestrian, ModelWeapon.getWeapon(defaultArsenal[weaponIndex].type), equipAfterTime, equipNow)
     end
 end
 
