@@ -3,7 +3,8 @@ local entityHelper = require('UltimateMenu.src.helpers.entityHelper')
 
 local ModelPed = {};
 
--- /STARTShould go into ModelEntity
+-- /START Should go into ModelEntity@@@@@@
+
 -- function ModelPed.setGodmode(feat, Entity)
 --     return entity.set_entity_god_mode(Entity, true)
 -- end
@@ -35,20 +36,26 @@ function ModelPed.removeAllGodmode(feat)
     end
 
 end
--- /END Should go into ModelEntity
+-- /END Should go into ModelEntity@@@@@
+
+function ModelPed.setHealth(ult_pedestrian, ult_health)
+    ped.set_ped_max_health(ult_pedestrian, ult_health)
+    ped.set_ped_health(ult_pedestrian, ult_health)
+end
 
 
-
-function ModelPed.removePeds(feat)
+function ModelPed.removePeds()
   
     local peds <const> = ped.get_all_peds()
     menu.create_thread(function(peds)
         for i = 1, #peds do
+
             if not ped.is_ped_a_player(peds[i]) then
                 if entityHelper.request_control(peds[i], 25) then
                     entity.delete_entity(peds[i])
                 end
             end
+            
         end
     end, peds)
 
@@ -57,6 +64,55 @@ end
 function ModelPed.density(feat)
 
 end
+
+-- Model Combat?
+
+function ModelPed.setCombatAbility(pedestrian, ability)
+    -- if does not exist in table return false
+
+    -- local combatAbility = {
+    --     poor = 0,
+    --     average = 1,
+    --     professional = 2,
+    --     chicken = 50,
+    --     attack = 100
+    -- }
+
+    -- ped.set_ped_combat_ability(pedestrian, combatAbility[ability])
+
+end
+
+function ModelPed.setAccuracy(pedestrian, accuracy)
+    -- check if accuracy is between 0 and 100, if not return
+
+    -- Note: Accuracy 0-100, where's 100 is perfectly accurate
+   
+    -- ped.set_ped_accuracy(pedestrian, accuracy)
+
+end
+
+function ModelPed.setCombatMovement()
+
+end
+
+function ModelPed.setCombatAttributes() 
+    -- https://docs.fivem.net/natives/?_0x9F7794730795E019
+    -- {
+    --     CanUseCover = 0,
+    --     CanUseVehicles = 1,
+    --     CanDoDrivebys = 2,
+    --     CanLeaveVehicle = 3,
+    --     CanFightArmedPedsWhenNotArmed = 5,
+    --     CanTauntInVehicle = 20,
+    --     AlwaysFight = 46,
+    --     IgnoreTrafficWhenDriving = 52,
+    --     FleesFromInvincibleOpponents = 63,
+    --     FreezeMovement = 292,  
+    --     PlayerCanUseFiringWeapons = 1424  
+    -- };
+
+end
+
 
 -- _2t1script.feature['Delete All Peds'] = menu.add_feature('Delete All Peds', 'toggle', _2t1script.parent['Ped Manager'], function(f)
 --     while f.on do

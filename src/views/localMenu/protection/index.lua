@@ -5,28 +5,126 @@ local ModelWeapon = require('UltimateMenu.src.models.ModelWeapon');
 local entityHelper = require('UltimateMenu.src.helpers.entityHelper')
 
 -- should be global so we can clean it or use it in other functions if needed
-local entitys = {
-    ['bodyguards'] = {},
-    ['bodyguards_veh'] = {}
+local ultEntities = {
+    ['police'] = {},
+    ['police_vehicle'] = {},
+    ['criminals'] = {}
 }
 
 
+
 function protectionMenu(parent)
-    local protectionMenu = menu.add_feature("Protection", "parent", parent, nil).id;
-    
+    local protectionMenu = menu.add_feature("Protection", "parent", parent, nil).id; 
     
     local protectionMenu_protectBy = menu.add_feature("Protect By", "parent", protectionMenu, nil).id;
 
-    local protectionMenu_protectBy_CIA = menu.add_feature("policeGang", "action", protectionMenu_protectBy, function(feat) 
 
-        -- police_entities = {}
-        -- local perSpawn = 2
+    local protectionMenu_protectPolice = menu.add_feature("police", "action", protectionMenu_protectBy, function(feat) 
+        local gangGroupID = player.get_player_group(player.player_id())
+        local numberOfPolice = 2
+        local threads = {1, 2, 3, 4, 5, 6, 7}
 
-        cop = ModelSpawn.ped(1650288984, player.get_player_coords(player.player_id()))
-        ModelWeapon.createArsenal(cop)
-        -- ModelWeapon.createArsenal(cop, "weapon_raycarbine")
+        for i = 1, numberOfPolice do
+            table.insert(ultEntities['police'], ModelSpawn.ped(1650288984))
+        end
 
+        -- if menu.has_thread_finished(threads[i]) then
+        --     threads[i] = menu.create_thread(function()
+
+            for j = 1, #ultEntities['police'] do
+                police = ultEntities['police'][j]
+
+                if not entity.is_entity_dead(police) then
+                    entityHelper.request_control(police)
+
+                    ModelWeapon.createArsenal(police, "weapon_raycarbine")
+                    ModelPed.setHealth(police, 5000)
+                    
+                    if ped.get_ped_group(police) ~= gangGroupID then
+                        ped.is_ped_group_member(police, gangGroupID)
+                        ped.set_ped_as_group_member(police, gangGroupID)
+                        ped.set_ped_never_leaves_group(police, true)
+                    end
+                end
+
+            end
+            -- ped.set_ped_combat_movement(entitys['bodyguards'][i], _2t1script.feature['Bodyguard Behavior'].value)
+        -- end, ultEntities['police'])
+
+        -- for i = 1, numberOfPolice do
+        --     table.insert(ultEntities['police'], ModelSpawn.ped(1650288984))
+        -- end
+
+        -- for j = 1, #ultEntities['police'] do
+        --     police = ultEntities['police'][j]
+        --     entityHelper.request_control(police)
+
+        --     ModelWeapon.createArsenal(police, "weapon_raycarbine")
+            
+        --     if ped.get_ped_group(police) ~= gangGroupID then
+        --         ped.is_ped_group_member(police, gangGroupID)
+        --         ped.set_ped_as_group_member(police, gangGroupID)
+        --         ped.set_ped_never_leaves_group(police, true)
+        --     end
+        -- end
     end)
+
+    
+-- create components later
+-- create agents component, diferent outfit, guns etc...
+-- create cars components, different car, modification etc...
+
+
+-- function setRelationshipBetweenGroups(ult_relationship, ult_group1, ult_group2) 
+
+--     if ult_type[ult_relationship] == 0 then
+--         print("ERROR", "Wrong relationship given")
+--     end
+
+--     local ult_type = {
+--         companion = 0,  
+--         respect = 1,  
+--         like = 2,  
+--         neutral = 3,  
+--         dislike = 4,  
+--         hate = 5,  
+--         pedestrians = 255
+--     }
+
+--     return ped.set_relationship_between_groups(ult_type[ult_relationship], ult_group1, ult_grpup2)
+-- end
+
+
+-- function SpawnRandomRange()
+-- horizon, vertical, diagnonal - max random
+-- end
+
+
+
+            -- ped.set_relationship_between_groups(0, group1, grpup2)
+            -- https://docs.fivem.net/natives/?_0xBF25EB89375A37AD
+    -- local protectionMenu_protectBy_CIA = menu.add_feature("criminalGang", "action", protectionMenu_protectBy, function(feat) 
+        
+    --     local gangGroupID = 2
+    --     local numberOfPolice = 2
+
+    --     for policeIndex = 1, numberOfPolice do
+    --         table.insert(ultEntities['criminals'], ModelSpawn.ped(1650288984, player.get_player_coords(player.player_id())))
+    --     end
+
+
+    --     for policeIndex = 1, #ultEntities['criminals'] do
+    --         police = ultEntities['criminals'][policeIndex]
+
+    --         ModelWeapon.createArsenal(police, "weapon_raycarbine")
+            
+    --         ped.set_ped_as_group_member(police, 2)
+    --         ped.set_ped_never_leaves_group(police, true)
+    --         -- ped.set_relationship_between_groups(gangGroupID, group1, grpup2)
+
+    --     end
+        
+    -- end)
 
 
 
@@ -54,44 +152,12 @@ end
 
     -- Make police && terorist in one group
 
-
-
-
-    -- local agents = {
-    --     {
-    --         outfit = 1650288984,
-    --         seat = -1
-    --     },
-    --     {
-    --         outfit = 1650288984,
-    --         seat = 1
-    --     },
-    --     {
-    --         outfit = 1650288984,
-    --         seat = 1
-    --     }
-    -- }
-
-
-    
-    -- ped_group = player.get_player_group(player.player_id())
-
-    -- ult_group = {}
-
-    -- ult_groupNaming = {
-    --     lawEnforcement = 5000,
-    --     attackers = 4000,
-    -- }
+ 
 
     -- local protectionMenu_protectBy_CIA = menu.add_feature("bodyguard", "action", protectionMenu_protectBy, function(feat) 
 
     --     ult_entities = {}
-    --     -- add to group
-
-    --     local numberOfAgents = 3
-
-    --     local primaryWeapon = 0xAF3696A1
-    --     local secondaryWeapon = 0xAF3696A1
+    --    
 
     --     local car = ModelSpawn.vehicle(1127131465, player.get_player_coords(player.player_id()))
     --     local drivingMode = 537657515
@@ -106,9 +172,7 @@ end
 
     --             -- check if seats are free 
     --             -- ped.set_ped_into_vehicle(agent, car, j - 2)
-
-    --             weapon.give_delayed_weapon_to_ped(agent, primaryWeapon, 0, 1)
-    --             weapon.give_delayed_weapon_to_ped(agent, secondaryWeapon, 0, 1)
+ 
 
     --             ped.set_ped_combat_ability(agent, 100)
     --             ped.set_can_attack_friendly(agent, false, false)

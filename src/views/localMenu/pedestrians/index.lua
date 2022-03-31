@@ -1,6 +1,6 @@
 require('UltimateMenu.src.views.localMenu.pedestrians.weapon.index')
 require('UltimateMenu.src.views.localMenu.pedestrians.action.index')
-
+require('UltimateMenu.src.models.ModelPed')
 
 function pedestriansMenu(parent)
     local pedestriansMenu = menu.add_feature("Pedestrians", "parent", parent, nil).id;
@@ -8,6 +8,7 @@ function pedestriansMenu(parent)
     pedestriansMenu_weapon(pedestriansMenu)
     pedestriansMenu_action(pedestriansMenu)
 
+  
 end
    
 
