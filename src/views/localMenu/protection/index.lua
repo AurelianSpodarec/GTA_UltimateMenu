@@ -1,27 +1,13 @@
 local ModelPed = require('UltimateMenu.src.models.ModelPed');
 local ModelSpawn = require('UltimateMenu.src.models.ModelSpawn');
+local ModelWeapon = require('UltimateMenu.src.models.ModelWeapon');
+
 local entityHelper = require('UltimateMenu.src.helpers.entityHelper')
 
-
+-- should be global so we can clean it or use it in other functions if needed
 local entitys = {
     ['bodyguards'] = {},
     ['bodyguards_veh'] = {}
-}
-
-
-local agents = {
-    {
-        outfit = 1650288984,
-        seat = -1
-    },
-    {
-        outfit = 1650288984,
-        seat = 1
-    },
-    {
-        outfit = 1650288984,
-        seat = 1
-    }
 }
 
 
@@ -31,159 +17,121 @@ function protectionMenu(parent)
     
     local protectionMenu_protectBy = menu.add_feature("Protect By", "parent", protectionMenu, nil).id;
 
+    local protectionMenu_protectBy_CIA = menu.add_feature("policeGang", "action", protectionMenu_protectBy, function(feat) 
 
-    -- Make police in a group
+        -- police_entities = {}
+        -- local perSpawn = 2
+
+        cop = ModelSpawn.ped(1650288984, player.get_player_coords(player.player_id()))
+        ModelWeapon.createArsenal(cop)
+        -- ModelWeapon.createArsenal(cop, "weapon_raycarbine")
+
+    end)
+
+
+
+    -- local protectionMenu_protectBy_CIA = menu.add_feature("terroristGang", "action", protectionMenu_protectBy, function(feat) 
+
+    --     terrorist_entities = {}
+
+    -- end)
+
+
+
+-- - Make police in a group
     -- Make terrorist in a group
 
     -- Make police && terorist in one group
 
 
-    -- weapon sample
-    -- {
-    --     name: "Hand Gun",
-    --     ref: "hand_gun"
-    --     hash: 999999,
+
+
+    -- local agents = {
+    --     {
+    --         outfit = 1650288984,
+    --         seat = -1
+    --     },
+    --     {
+    --         outfit = 1650288984,
+    --         seat = 1
+    --     },
+    --     {
+    --         outfit = 1650288984,
+    --         seat = 1
+    --     }
     -- }
-
-    function getWeapon(ult_weapon) 
-        if(ult_weapon is string) 
-            -- check if name is valid
-            ModelWeapon.getWeaponByName(ult_weapon)
-        elseif
-            -- check if hash is valid
-            ModelWeapon.getWeaponByHash()
-        end
-    end
-
-    function armPed(ult_ped, ult_primaryWeapon, ult_secondaryWeapon, ult_melee, ult_explosives, ult_launchers)
-        if not ult_ped then
-            return print("Arm Ped: No pedestrian selectd")
-        end
-
-        armPed_weapons = {
-            ult_primaryWeapon,
-            ult_secondaryWeapon,
-            ult_melee,
-            ult_explosives,
-            ult_launchers,
-        }
-      
-        for weaponIndex = 1, #armPed_weapons do         
-            weapon.give_delayed_weapon_to_ped(ult_ped, getWeapon(armPed_weapons[weaponIndex]), 0, 1)
-        then
-   
-
-        -- by name/hash
-        -- is string? getWeaponByName()
-        -- is hash? getWeaponByHash()
- 
-        -- give default weapons if none is selected
- 
-        -- weapon.give_delayed_weapon_to_ped(ult_ped, ult_primaryWeapon, 0, 1)
-        -- weapon.give_delayed_weapon_to_ped(ult_ped, ult_secondaryWeapon, 0, 1)
-        -- weapon.give_delayed_weapon_to_ped(ult_ped, ult_melee, 0, 1)
-        -- weapon.give_delayed_weapon_to_ped(ult_ped, ult_explosives, 0, 1)
-        -- weapon.give_delayed_weapon_to_ped(ult_ped, ult_launcherslee, 0, 1)
-
-        -- return true;
-    end
-
-    local protectionMenu_protectBy_CIA = menu.add_feature("policeGang", "action", protectionMenu_protectBy, function(feat) 
-
-        police_entities = {}
-
-        local perSpawn = 2
-
-        local primaryWeapon =
-        local secondaryWeapon =
-
-
-    end)
-
-    local protectionMenu_protectBy_CIA = menu.add_feature("terroristGang", "action", protectionMenu_protectBy, function(feat) 
-
-        terrorist_entities = {}
-
-    end)
-
-
-
-
-
-
-
 
 
     
-    ped_group = player.get_player_group(player.player_id())
+    -- ped_group = player.get_player_group(player.player_id())
 
-    ult_group = {}
+    -- ult_group = {}
 
-    ult_groupNaming = {
-        lawEnforcement = 5000,
-        attackers = 4000,
-    }
+    -- ult_groupNaming = {
+    --     lawEnforcement = 5000,
+    --     attackers = 4000,
+    -- }
 
-    local protectionMenu_protectBy_CIA = menu.add_feature("bodyguard", "action", protectionMenu_protectBy, function(feat) 
+    -- local protectionMenu_protectBy_CIA = menu.add_feature("bodyguard", "action", protectionMenu_protectBy, function(feat) 
 
-        ult_entities = {}
-        -- add to group
+    --     ult_entities = {}
+    --     -- add to group
 
-        local numberOfAgents = 3
+    --     local numberOfAgents = 3
 
-        local primaryWeapon = 0xAF3696A1
-        local secondaryWeapon = 0xAF3696A1
+    --     local primaryWeapon = 0xAF3696A1
+    --     local secondaryWeapon = 0xAF3696A1
 
-        local car = ModelSpawn.vehicle(1127131465, player.get_player_coords(player.player_id()))
-        local drivingMode = 537657515
-        local drivingSpeed = 100
-        local drivingFollowBehindGap = 10
+    --     local car = ModelSpawn.vehicle(1127131465, player.get_player_coords(player.player_id()))
+    --     local drivingMode = 537657515
+    --     local drivingSpeed = 100
+    --     local drivingFollowBehindGap = 10
 
-        for agentIndex = 1, numberOfAgents do        
-            table.insert(ult_entities, ModelSpawn.ped(agents[agentIndex].outfit))
+    --     for agentIndex = 1, numberOfAgents do        
+    --         table.insert(ult_entities, ModelSpawn.ped(agents[agentIndex].outfit))
 
-            for j = 1, #ult_entities do
-                agent = ult_entities[j]
+    --         for j = 1, #ult_entities do
+    --             agent = ult_entities[j]
 
-                -- check if seats are free 
-                -- ped.set_ped_into_vehicle(agent, car, j - 2)
+    --             -- check if seats are free 
+    --             -- ped.set_ped_into_vehicle(agent, car, j - 2)
 
-                weapon.give_delayed_weapon_to_ped(agent, primaryWeapon, 0, 1)
-                weapon.give_delayed_weapon_to_ped(agent, secondaryWeapon, 0, 1)
+    --             weapon.give_delayed_weapon_to_ped(agent, primaryWeapon, 0, 1)
+    --             weapon.give_delayed_weapon_to_ped(agent, secondaryWeapon, 0, 1)
 
-                ped.set_ped_combat_ability(agent, 100)
-                ped.set_can_attack_friendly(agent, false, false)
-                ped.set_ped_combat_attributes(agent, 3, false)
+    --             ped.set_ped_combat_ability(agent, 100)
+    --             ped.set_can_attack_friendly(agent, false, false)
+    --             ped.set_ped_combat_attributes(agent, 3, false)
 
-                ped.set_ped_max_health(agent, 3000)
-                ped.set_ped_health(agent, 3000)
+    --             ped.set_ped_max_health(agent, 3000)
+    --             ped.set_ped_health(agent, 3000)
 
-                entity.set_entity_as_mission_entity(agent, 1, 1)
+    --             entity.set_entity_as_mission_entity(agent, 1, 1)
 
-                table.insert(ult_group, ped.set_ped_as_group_member(agent, ped_group))
-                ped.set_ped_never_leaves_group(agent, true)
+    --             table.insert(ult_group, ped.set_ped_as_group_member(agent, ped_group))
+    --             ped.set_ped_never_leaves_group(agent, true)
 
                 
                 
-            end
-            -- ped.set_relationship_between_groups(ped_group, group1, grpup2)
-        end
+    --         end
+    --         -- ped.set_relationship_between_groups(ped_group, group1, grpup2)
+    --     end
 
-        -- if not next(ult_entities) == nil then
-        --     -- if entityHelper.request_control(driver, 25) then
-        --         ai.task_vehicle_follow(ult_entities[0], car,  player.get_player_ped(player.player_id()), drivingSpeed, drivingMode, drivingFollowBehindGap)
-        --     -- end
-        --     system.wait(100)
-        -- end
+    --     -- if not next(ult_entities) == nil then
+    --     --     -- if entityHelper.request_control(driver, 25) then
+    --     --         ai.task_vehicle_follow(ult_entities[0], car,  player.get_player_ped(player.player_id()), drivingSpeed, drivingMode, drivingFollowBehindGap)
+    --     --     -- end
+    --     --     system.wait(100)
+    --     -- end
 
 
-    end)
+    -- end)
 
 -- protection follow by vehicle, dont allow the bodyguards to come to your vehicle, steal one if needed or spawn
 
-    local protectionMenu_protectBy_CIA = menu.add_feature("CIA", "action", protectionMenu_protectBy, function(feat) 
+    -- local protectionMenu_protectBy_CIA = menu.add_feature("CIA", "action", protectionMenu_protectBy, function(feat) 
   
-    end).id;
+    -- end).id;
 
 
     
