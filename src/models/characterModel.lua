@@ -10,13 +10,47 @@ local characterState  = require('UltimateMenu.src.state.characterState')
 
 
 
-local characterModel ={}
+local characterModel = {}
 
-function characterModel.create(character)
+-- character = {
+--     id = "alient",
+--     name = "Alient",
+--     outfit = 1650288984,
+--     health = 10000,
+--     armor = 100,
+--     weapons = {
+--         primary = "weapon_windowmaker"
+--     },
+--     combatAbility = "professional",
+--     combatMovement = "offensive"
+-- }
+
+function characterModel.create(character, group, amountToSpawn)
     -- print(character)
-    print(characterState.test[1].name)
-    -- characterHash = spawnModel.ped(character.outfit)
-    -- table.insert(characterState.test, characterHash)
+    -- print(characterState.test[1].name)
+    -- if amountToSpawn == nil or amountToSpawn =< 1 then
+    --     characterHash = spawnModel.ped(character.outfit)
+    --     table.insert(group, character)
+    -- end
+    amountToSpawn = amountToSpawn or 1
+
+    for i = 1, amountToSpawn do
+        -- mob = amountToSpawn[i] 
+        spawnModel.ped(character.outfit)
+        table.insert(group, character)
+    end
+
+    -- local object = characterHash = {
+    --     ..character
+    -- }
+    -- object = character
+    -- insert an object 
+    -- hash = {
+        -- ..character 
+    -- }
+    
+    
+    -- print(characterState.test[1].name)
 end
     -- amountToSpawn
     -- if ultEntities[group] == nil then

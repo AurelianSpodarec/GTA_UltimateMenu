@@ -7,8 +7,8 @@ local characterModel <const> = require('UltimateMenu.src.models.characterModel')
 
 local entityHelper <const> = require('UltimateMenu.src.helpers.entityHelper');
 
-local entityState <const> = require('UltimateMenu.src.state.entityState')
-local characterState <const> = require('UltimateMenu.src.state.characterState')
+local entityState = require('UltimateMenu.src.state.entityState')
+local characterState  = require('UltimateMenu.src.state.characterState')
 
 -- characterModel.spawn(data.alien.bob, hasGroup)
 -- characterModel.spawn(data.alien.joe, hasGroup, amount)
@@ -80,11 +80,13 @@ function FBIMenu(parent)
         local groupName = entityState.test
         local groupID = player.get_player_group(player.player_id())
 
-        characterModel.create(pedData)
-
-        -- for i = 1, #characterState.test do
-        --     print(characterState.test[i])
-        -- end
+        characterModel.create(pedData, characterState.test,2)
+        -- createGroup(characterState, groupID, true)
+        
+        -- print(characterState.test[1].name)
+        for i = 1, #characterState.test do
+            print(characterState.test[i].name)
+        end
         -- createGroup(groupID, true)
 
         -- createPedGroup(ultEntities['FBIGroup'], player.get_player_group(player.player_id()), 2, 1650288984

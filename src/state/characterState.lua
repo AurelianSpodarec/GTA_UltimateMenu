@@ -1,8 +1,6 @@
 local characterState = {
     test = {
-        {
-            name = "helllo"
-        }
+       
     }
 }
 
