@@ -61,14 +61,15 @@ function createGroup(groupID, isLoyal)
     --     print("ERROR", "No group provided or ", group, " isinvalid")
     -- end 
     -- ID prob gonna need to be auto generatd dynamic and stored somewhere
-       
-    for character = 1, #group do
-        if ped.get_ped_group(entityState.test[character]) ~= groupID then
-            ped.is_ped_group_member(entityState.test[character], groupID)
-            ped.set_ped_as_group_member(entityState.test[character], groupID)
-            ped.set_ped_never_leaves_group(entityState.test[character], isLoyal)
+    --    need ped hash
+    -- for character = 1, #characterState.test do
+        characterHash = table.select('#', characterState.test)
+
+        if ped.get_ped_group(characterHash) ~= groupID then
+            ped.is_ped_group_member(characterHash, groupID)
+            ped.set_ped_as_group_member(characterHash, groupID)
+            ped.set_ped_never_leaves_group(characterHash, isLoyal)
         end
-    end
    
 end
 
@@ -80,20 +81,48 @@ function FBIMenu(parent)
         local groupName = entityState.test
         local groupID = player.get_player_group(player.player_id())
 
-        characterModel.create(pedData, characterState.test,2)
+        characterModel.create(pedData, characterState.test, 2)
         -- createGroup(characterState, groupID, true)
-        
-        -- print(characterState.test[1].name)
-        for i = 1, #characterState.test do
-            print(characterState.test[i].name)
-        end
+        -- test = {
+        --     22323 = {
+        --         name = "hi"
+        --     }
+        -- }
         -- createGroup(groupID, true)
+        -- for i = 1, #characterState.test do
+        --      print(characterState['test'][i])
+                print(select('#', characterState.test))
+        -- end
+        -- createGroup(groupID, true) -- need ped hash
 
-        -- createPedGroup(ultEntities['FBIGroup'], player.get_player_group(player.player_id()), 2, 1650288984
-
+         
     end)
 
 end
  
 -- pedModel.setGroup(agent, groupID, true)
 -- getCharacterGroup func
+-- local people = {
+--     test = {
+--      ['99'] = {
+--          name = "Fred",
+--          address = "16 Long Street",
+--          phone = "123456"
+--      },
+--      ['8989'] = {
+--          name = "Wilma",
+--          address = "16 Long Street",
+--          phone = "123456"
+--      }
+--     }
+--   }
+  
+--   for index, data in pairs(people.test) do
+--       print(index)
+  
+--       -- for key, value in pairs(data) do
+--       --     print('\t', key, value)
+--       -- end
+--   end
+  
+  -- hash breaks this 

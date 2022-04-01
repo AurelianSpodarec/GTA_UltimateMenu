@@ -30,6 +30,7 @@ Send SWAT Units 2 (1unit = suv and 8swat agents)
 -- On Honk, do stupid shit - honk pedestrians up, hold longer pedestrians up more - make it beat to music honk honk hoooonk
 
 
+SPAWN A PET: A COUGAR< A FLYING SPAWN A PERSONAL PET WOOF
 
 
 -- Special Services

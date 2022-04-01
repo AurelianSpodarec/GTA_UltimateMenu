@@ -26,32 +26,34 @@ local characterModel = {}
 -- }
 
 function characterModel.create(character, group, amountToSpawn)
-    -- print(character)
-    -- print(characterState.test[1].name)
     -- if amountToSpawn == nil or amountToSpawn =< 1 then
     --     characterHash = spawnModel.ped(character.outfit)
     --     table.insert(group, character)
     -- end
-    amountToSpawn = amountToSpawn or 1
-
+    
+    local amountToSpawn = amountToSpawn or 1
+    
     for i = 1, amountToSpawn do
+
+        -- get the table and then apped stuff to it eh
         -- mob = amountToSpawn[i] 
-        spawnModel.ped(character.outfit)
+        characterHash = spawnModel.ped(character.outfit)
+       
+        group['characterHash'] = {
+            table.unpack(character) 
+        }
+        
+        -- 8239823 = {
+        --     name = "Bob"
+        -- }
+
+        print(characterObject)
+
         table.insert(group, character)
     end
-
-    -- local object = characterHash = {
-    --     ..character
-    -- }
-    -- object = character
-    -- insert an object 
-    -- hash = {
-        -- ..character 
-    -- }
     
-    
-    -- print(characterState.test[1].name)
 end
+
     -- amountToSpawn
     -- if ultEntities[group] == nil then
     --     print("ERROR", "Group '", group, "' doesn't exist")
