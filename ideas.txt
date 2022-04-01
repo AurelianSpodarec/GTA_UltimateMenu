@@ -27,7 +27,7 @@ Send SWAT Units 2 (1unit = suv and 8swat agents)
 -- When spawn, doors closed, when the player who spawned the car wants to enter let him, and close the doors
 
 
-
+-- On Honk, do stupid shit - honk pedestrians up, hold longer pedestrians up more - make it beat to music honk honk hoooonk
 
 
 

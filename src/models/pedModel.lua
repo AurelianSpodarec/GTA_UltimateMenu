@@ -73,14 +73,21 @@ function pedModel.setCombatAbility(pedestrian, ability)
 end
 
 
-function pedModel.setGroup(pedestrian, groupID, isLoyal)
+
+
+
+function pedModel.setGroup(group, groupID, isLoyal)
     -- Note: 8 peds per group
-    if ped.get_ped_group(pedestrian) ~= groupID then
-        ped.is_ped_group_member(pedestrian, groupID)
-        ped.set_ped_as_group_member(pedestrian, groupID)
-        ped.set_ped_never_leaves_group(pedestrian, isLoyal)
+    if character = 1; #group do
+        if ped.get_ped_group(group[character]) ~= groupID then
+            ped.is_ped_group_member(group[character], groupID)
+            ped.set_ped_as_group_member(group[character], groupID)
+            ped.set_ped_never_leaves_group(group[character], isLoyal)
+        end
     end
 end
+
+
 
 
 function pedModel.setCombatMovement(pedestrian, combatMovement)

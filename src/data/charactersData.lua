@@ -1,5 +1,8 @@
 local charactersData = {
 
+-- What if I get JSON wrong? Maybe some testing to make sure an example of the character object has the correct naming or somethinig?
+-- Why is this not in JSON but lua actually? Does Lua support working with json?
+
     -- lawEnforcement = {
     --     police = {},
     --     fbi = {},
@@ -80,7 +83,11 @@ local charactersData = {
             health = 500,
             armor = 100,
             weapons = {
-                primary = "weapon_railgun"
+                primary = "weapon_railgun",
+                secondary = "",
+                melee = "",
+                throwables = "",
+                launchers = ""
             },
             combatAbility = "professional",
             combatMovement = "offensive"

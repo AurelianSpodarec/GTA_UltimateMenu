@@ -1,6 +1,6 @@
 local groupModel = {}
 
-
+-- groupModel.setInGoup()
 function groupModel.create()
     -- local groupName = ultEntities['policeGroup']
     --     local groupID = player.get_player_group(player.player_id())
@@ -25,7 +25,7 @@ function groupModel.create()
     --         end
 end
 
-function groupModel.setRelationshipBetweenGroups(ult_relationshipType, group1, group2)
+function groupModel.setRelationshipType(ult_relationshipType, group1, group2)
   --     if ult_type[ult_relationship] == 0 then
     --         print("ERROR", "Wrong relationship given")
     --     end
@@ -43,7 +43,36 @@ function groupModel.setRelationshipBetweenGroups(ult_relationshipType, group1, g
     --     return ped.set_relationship_between_groups(ult_type[ult_relationship], ult_group1, ult_grpup2)
 end
 
+function groupModel.setRelationshipBetweenGroups() 
+
+end
+
 return groupModel
+
+
+
+-- pedModelValuesHash = {
+--     weapon = "weapon_raycarabine"
+--     health = 5000,
+--     combatMovement = "offensive",
+--     combatAbility = "professional",
+--     -- group = ?dynamic group ID later on
+--     groupLoyality = true
+-- }
+-- function pedValueApply(pedValues)
+--     ModelWeapon.createArsenal(agent, pedValues.weapon)
+--     ModelPed.setHealth(agent, pedValues.health)
+--     ModelPed.setCombatMovement(agent, pedValues.combatMovement)
+--     ModelPed.setCombatAbility(agent, pedValues.combatAbility)
+--     ModelPed.setGroup(agent, pedValues.group, pedValues.groupLoyality)
+-- end
+
+-- I don't know too much about FiveM, but I think that should work
+-- You might want to supply ModelPed and ModelWeapon as function arguments though, like this:
+-- function pedValueApply(ModelWeapon ,ModelPed ,pedValues )
+
+
+
  
 -- ped.set_relationship_between_groups(0, group1, grpup2)
 -- https://docs.fivem.net/natives/?_0xBF25EB89375A37AD
