@@ -3,7 +3,7 @@
 
 local charactersData = {
     
-    cop_undecover = {
+    cop_undercover = {
         name = "",
         outfitHash = "-277325206", -- spawn random cop, all same properites (if needed can always ovveride weapons when creating the model - maybe have an array and pick one randomly if characters are the same
         gender = "male",

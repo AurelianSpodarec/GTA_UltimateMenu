@@ -1,43 +1,44 @@
-require('UltimateMenu.src.models.pedModel');
-require('UltimateMenu.src.models.weaponModel');
-require('UltimateMenu.src.models.spawnModel');
-require('UltimateMenu.src.models.characterModel');
+local pedModel <const> = require('UltimateMenu.src.models.pedModel');
+local weaponModel <const> = require('UltimateMenu.src.models.weaponModel');
+local spawnModel <const> = require('UltimateMenu.src.models.spawnModel');
+local characterModel <const> = require('UltimateMenu.src.models.characterModel');
 
-require('UltimateMenu.src.helpers.entityHelper');
+local entityHelper <const> = require('UltimateMenu.src.helpers.entityHelper');
 
-require('UltimateMenu.src.state.entityState');
-require('UltimateMenu.src.state.characterState');
+local entityState <const> = require('UltimateMenu.src.state.entityState');
+local characterState <const> = require('UltimateMenu.src.state.characterState');
 
-require('UltimateMenu.src.data.charactersData');
+local charactersData <const>  = require('UltimateMenu.src.data.charactersData');
 
 
 local characterModel = {}
 
 function characterModel.getByID(id)
-    -- print(id)
-
-    -- get object where id matches with the object hash/key
-    for key, value in pairs(charactersData) do
-        -- if key = id return object
-        if id == key then return value end
+    for index, value in pairs(charactersData) do
+        if id ~= index then 
+            print("ERROR", id, "provided does not exist in characters data")
+        else 
+            print("VA", value)
+            return value 
+        end
     end
 end
 
--- function characterModel.create(characterData, group, amountToSpawn)
---     local amountToSpawn = amountToSpawn or 1
+function characterModel.create(characterData, amountToSpawn)
+    local amountToSpawn = amountToSpawn or 1
     
---     for i = 1, amountToSpawn do
---         characterHash = spawnModel.ped(characterData.outfitHash)   
---         characterModel.setProperties(characterHash, characterData)
---         -- not sure if this should be here actually, we can spawn characters, but put them in group later
---         -- spawn a cop, then put him in cops group perhaps
---         -- group[characterHash] = {
---         --     table.unpack(character) 
---         -- }
---         -- table.insert(group, character)
---     end
+    for i = 1, amountToSpawn do
+        characterHash = spawnModel.ped(characterData.outfitHash)   
+        -- characterModel.setProperties(characterHash, characterData)
+        -- not sure if this should be here actually, we can spawn characters, but put them in group later
+        -- spawn a cop, then put him in cops group perhaps
+        -- group[characterHash] = {
+        --     table.unpack(character) 
+        -- }
+        -- table.insert(group, character)
+    end
     
--- end
+end
 
 -- function characterModel.setProperties(characterHash, data)
 --     if not entity.is_entity_dead(characterHash) then
@@ -99,4 +100,4 @@ end
 --     end
 -- end
 
-return characterModel;
+return characterModel
