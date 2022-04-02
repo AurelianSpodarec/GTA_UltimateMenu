@@ -25,7 +25,8 @@ local characterModel = {}
 --     combatMovement = "offensive"
 -- }
 
-function characterModel.create(character, group, amountToSpawn)
+-- spawn in random peds, no group
+function characterModel.create(characterData, group, amountToSpawn)
     -- if amountToSpawn == nil or amountToSpawn =< 1 then
     --     characterHash = spawnModel.ped(character.outfit)
     --     table.insert(group, character)
@@ -34,25 +35,44 @@ function characterModel.create(character, group, amountToSpawn)
     local amountToSpawn = amountToSpawn or 1
     
     for i = 1, amountToSpawn do
+        characterHash = spawnModel.ped(characterData.outfit)   
 
-        -- get the table and then apped stuff to it eh
-        -- mob = amountToSpawn[i] 
-        characterHash = spawnModel.ped(character.outfit)
-       
-        group[characterHash] = {
-            table.unpack(character) 
-        }
-        
-        -- 8239823 = {
-        --     name = "Bob"
+        if not entity.is_entity_dead(characterHash) then
+            entityHelper.request_control(characterHash)
+    
+            characterModel.setProperties(characterHash, characterData)
+          
+        end
+ 
+        -- group[characterHash] = {
+        --     table.unpack(character) 
         -- }
-
-        print(characterObject)
-
-        table.insert(group, character)
+    
+        -- table.insert(group, character)
     end
     
 end
+
+function characterModel.setProperties(characterHash, data)
+    weaponModel.createArsenal(characterHash, true, 0, data)
+    characterModel.setHealth(characterHash, data)
+end
+
+function characterModel.setHealth(characterHash, data) 
+    ped.set_ped_max_health(characterHash, data.health)
+    ped.set_ped_health(characterHash, data.health)
+        -- pedModel.setCombatMovement(characterHash, character.combatMovement)
+            -- pedModel.setCombatAbility(characterHash, character.combatAbility)
+end
+
+
+
+
+
+-- function characterModel.setProperties(data, character)
+   
+-- end
+
 
     -- amountToSpawn
     -- if ultEntities[group] == nil then
@@ -76,17 +96,6 @@ end
 
 
 
-function characterModel.properties(model, data)
-    if not entity.is_entity_dead(model) then
-        entityHelper.request_control(model)
-
-        weaponModel.createArsenal(model, data.weapons.primary)
-        pedModel.setHealth(model, data.health)
-        pedModel.setCombatMovement(model, data.combatMovement)
-        pedModel.setCombatAbility(model, data.combatAbility)
-        -- -- maybe needs to be outside from here
-    end
-end
 
 -- function characterModel.create(model, data)
 --     if not entity.is_entity_dead(model) then

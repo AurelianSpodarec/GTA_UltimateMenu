@@ -1,4 +1,49 @@
+
+-- Variation of characters
+local XXXcharactersData = {
+    cops = {
+        {
+            id = "id_cop",
+            name = "cop_1",
+            category = "city", -- city/county
+            outfit = "", -- maybe have an array and pick one randomly if characters are the same
+            health = 500,
+            armor = 100,
+            weapons = {
+                primary = "weapon_railgun",
+                secondary = "",
+                melee = "",
+                throwables = "",
+                launchers = ""
+            },
+            combatAbility = "professional",
+            combatMovement = "offensive"
+        }
+    }, 
+    swat = {
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- Below is more of a grouping functionality
 local charactersData = {
+
+
+
 
 -- What if I get JSON wrong? Maybe some testing to make sure an example of the character object has the correct naming or somethinig?
 -- Why is this not in JSON but lua actually? Does Lua support working with json?

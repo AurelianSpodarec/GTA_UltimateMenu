@@ -22,44 +22,29 @@ function weaponModel.getWeapon(ult_weapon)
 end
 
 
-function weaponModel.createArsenal(ult_pedestrian, ult_equipNow, ult_equipAfterTime, ult_primaryWeapon, ult_secondaryWeapon, ult_melee, ult_throwables, ult_launchers)
+-- function weaponModel.createArsenal(ult_pedestrian, ult_equipNow, ult_equipAfterTime, ult_primaryWeapon, ult_secondaryWeapon, ult_melee, ult_throwables, ult_launchers)
+function weaponModel.createArsenal(ult_pedestrian, ult_equipNow, ult_equipAfterTime, data)
     if not ult_pedestrian then
         print("ERROR", "function createArsenal: No pedestrian selected")
     end
-    
+
+    -- check if data exists, if not, use default seetings
+
     local equipNow = ult_equipNow or 1
     local equipAfterTime = ult_equipAfterTime or 0
-
+    
     local defaultArsenal = {
-        {
-            name = "Primary Weapon",
-            type = ult_primaryWeapon or "weapon_heavyrifle",
-            _whenTo = "on foot"
-        },
-        {
-            name = "Secondary Weapon",
-            type = ult_secondaryWeapon or "weapon_smg",
-            _whenTo = "in a vehicle "
-        },
-        {
-            name = "Melee",
-            type = ult_melee or "weapon_knife",
-            _whenTo = "close proximity"
-        },
-        {
-            name = "Throwables",
-            type = ult_throwables or "weapon_grenade",
-            _whenTo = "attacker is taking cover behind an entity"
-        },
-        {
-            name = "Launchers",
-            type = ult_launchers or "weapon_hominglauncher",
-            _whenTo = "attacker is fleeing in a vehicle or in air vehicle"
-        }
+        data['primary'] or "weapon_heavyrifle",
+        data['secondary'] or "weapon_smg",
+        data['melee'] or "weapon_knife",
+        data['throwables'] or "weapon_grenade",
+        data['launchers'] or "weapon_hominglauncher"
     }
-
+   
+    -- needs to be a different loop to set all I think pairs
     for weaponIndex = 1, #defaultArsenal do
-        return weapon.give_delayed_weapon_to_ped(ult_pedestrian, weaponModel.getWeapon(defaultArsenal[weaponIndex].type), equipAfterTime, equipNow)
+        -- for key, value in pairs(defaultArsenal) do
+        weapon.give_delayed_weapon_to_ped(ult_pedestrian, weaponModel.getWeapon(defaultArsenal[weaponIndex]), equipAfterTime, equipNow)
     end
 end
 

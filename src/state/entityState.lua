@@ -1,5 +1,7 @@
 local entityState = {
-    test = {}
+    pedestrians = {
+
+    },
 --     randomPeds = { -- uniqute not dynamically generated
 --         ["1"] = { -- dynamically generated, no limit (although for performance reason there should be a limit, what is the limit? :p)
 --             pedHash = {},

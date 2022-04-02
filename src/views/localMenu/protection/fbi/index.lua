@@ -1,47 +1,17 @@
 local customData <const> = require('UltimateMenu.src.data.customData');
 
+-- have one file to include all models
 local pedModel <const> = require('UltimateMenu.src.models.pedModel');
 local weaponModel <const> = require('UltimateMenu.src.models.weaponModel');
 local spawnModel <const> = require('UltimateMenu.src.models.spawnModel');
 local characterModel <const> = require('UltimateMenu.src.models.characterModel');
+local groupModel <const> = require('UltimateMenu.src.models.groupModel');
 
 local entityHelper <const> = require('UltimateMenu.src.helpers.entityHelper');
 
 local entityState = require('UltimateMenu.src.state.entityState')
 local characterState  = require('UltimateMenu.src.state.characterState')
 
--- characterModel.spawn(data.alien.bob, hasGroup)
--- characterModel.spawn(data.alien.joe, hasGroup, amount)
--- createGRoup(hasGroup)
-
--- hashPed 29382938  = {
---     id = "alient",
---     name = "Alient",
---     outfit = "",
---     health = 10000,
---     armor = 100,
---     weapons = {
---         primary = "weapon_windowmaker"
---     },
---     combatAbility = "professional",
---     combatMovement = "offensive"
--- }
-
--- characterModel.spawn(data.alien.bob, ultEntities.randomPeds)
--- createGroup(ultEntities.randomPeds)
-
--- function createGroup(groupName, groupID)
---     local groupName = ultEntities['FBIGroup']
---     local groupID = player.get_player_group(player.player_id())
-
---     for j = 1, #groupName do
---         agent = groupName[j]
-
---         characterModel.create(agent.alien, data)
-
---         pedModel.setGroup(agent, groupID, true) 
---     end
--- end
 
 pedData = {
     id = "alient",
@@ -56,22 +26,16 @@ pedData = {
     combatMovement = "offensive"
 }
 
-function createGroup(characterHash, groupID, isLoyal)
-    -- if group == nil then
-    --     print("ERROR", "No group provided or ", group, " isinvalid")
-    -- end 
-    -- ID prob gonna need to be auto generatd dynamic and stored somewhere
-    --    need ped hash
-    -- for character = 1, #characterState.test do
-        -- characterHash = table.select('#', characterState.test)
+-- /Characters have data
+-- Get character COP that is a VARIATION 2
 
-        if ped.get_ped_group(characterHash) ~= groupID then
-            ped.is_ped_group_member(characterHash, groupID)
-            ped.set_ped_as_group_member(characterHash, groupID)
-            ped.set_ped_never_leaves_group(characterHash, isLoyal)
-        end
-   
-end
+-- We have Cop DATA - outfit, weapons, coombat ability etc...
+
+-- /Spawn the COP with that DATA
+-- create character data
+
+
+
 
 function FBIMenu(parent)
     FBIMenu = menu.add_feature("FBI", "parent", parent, nil).id
@@ -81,55 +45,18 @@ function FBIMenu(parent)
         local groupName = entityState.test
         local groupID = player.get_player_group(player.player_id())
 
-        characterModel.create(pedData, characterState.test, 2)
-        -- createGroup(characterState, groupID, true)
-        -- test = {
-        --     22323 = {
-        --         name = "hi"
-        --     }
-        -- }
-        -- createGroup(groupID, true)
-        for key, value in pairs( characterState.test) do
-            -- print('\t', key, value)
-            createGroup(key, groupID, true)
-        end
-        -- for i = 1, #characterState.test do
-        --      print(characterState['test'][i])
-                -- print(select('#', characterState.test))
-        -- end
-        --  -- need ped hash
+        characterModel.create(pedData)
 
-         
+
+
+        -- state.temporary - clean it up
+        -- state randomPeds
+        -- characterModel - characterState.test model put in a temporary place
+        -- characterModel.create(pedData, entityState.pedestrian, 2)
+        -- set into agroup, no group pedestrian, or bodyguard for x player hmmmm
+        -- groupModel.createGroup(characterState.test, groupID, true)
+    
+
     end)
 
 end
- 
--- pedModel.setGroup(agent, groupID, true)
--- getCharacterGroup func
--- local people = {
---     test = {
---      ['99'] = {
---          name = "Fred",
---          address = "16 Long Street",
---          phone = "123456"
---      },
---      ['8989'] = {
---          name = "Wilma",
---          address = "16 Long Street",
---          phone = "123456"
---      }
---     }
---   }
-  
---   for index, data in pairs(people.test) do
---       print(index)
-  
---       -- for key, value in pairs(data) do
---       --     print('\t', key, value)
---       -- end
---   end
-  
-  -- hash breaks this 
-
-
-  -- Spawn animals

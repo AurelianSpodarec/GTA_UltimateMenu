@@ -1,7 +1,27 @@
 local groupModel = {}
 
+
+function groupModel.createGroup(group, groupID, isLoyal)
+    -- if group == nil then
+    --     print("ERROR", "No group provided or ", group, " isinvalid")
+    -- end 
+ 
+    for key, value in pairs(group) do
+        if ped.get_ped_group(key) ~= groupID then
+            ped.is_ped_group_member(key, groupID)
+            ped.set_ped_as_group_member(key, groupID)
+            ped.set_ped_never_leaves_group(key, isLoyal)
+        end
+    end
+   
+end
+
+
+return groupModel
+
+
 -- groupModel.setInGoup()
-function groupModel.create()
+-- function groupModel.create()
     -- local groupName = ultEntities['policeGroup']
     --     local groupID = player.get_player_group(player.player_id())
     --     local groupSize = 2
@@ -23,9 +43,9 @@ function groupModel.create()
     --             -- pedModel.setGroup(agent, groupID, true)
     
     --         end
-end
+-- end
 
-function groupModel.setRelationshipType(ult_relationshipType, group1, group2)
+-- function groupModel.setRelationshipType(ult_relationshipType, group1, group2)
   --     if ult_type[ult_relationship] == 0 then
     --         print("ERROR", "Wrong relationship given")
     --     end
@@ -41,13 +61,12 @@ function groupModel.setRelationshipType(ult_relationshipType, group1, group2)
     --     }
     
     --     return ped.set_relationship_between_groups(ult_type[ult_relationship], ult_group1, ult_grpup2)
-end
+-- end
 
-function groupModel.setRelationshipBetweenGroups() 
+-- function groupModel.setRelationshipBetweenGroups() 
 
-end
+-- end
 
-return groupModel
 
 
 
