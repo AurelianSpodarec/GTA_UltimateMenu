@@ -1,69 +1,59 @@
-local pedModel <const> = require('UltimateMenu.src.models.pedModel');
-local weaponModel <const> = require('UltimateMenu.src.models.weaponModel');
-local spawnModel <const> = require('UltimateMenu.src.models.spawnModel');
-local characterModel <const> = require('UltimateMenu.src.models.characterModel');
+require('UltimateMenu.src.models.pedModel');
+require('UltimateMenu.src.models.weaponModel');
+require('UltimateMenu.src.models.spawnModel');
+require('UltimateMenu.src.models.characterModel');
 
-local entityHelper <const> = require('UltimateMenu.src.helpers.entityHelper');
+require('UltimateMenu.src.helpers.entityHelper');
 
-local entityState = require('UltimateMenu.src.state.entityState')
-local characterState  = require('UltimateMenu.src.state.characterState')
+require('UltimateMenu.src.state.entityState');
+require('UltimateMenu.src.state.characterState');
 
+require('UltimateMenu.src.data.charactersData');
 
 
 local characterModel = {}
 
--- character = {
---     id = "alient",
---     name = "Alient",
---     outfit = 1650288984,
---     health = 10000,
---     armor = 100,
---     weapons = {
---         primary = "weapon_windowmaker"
---     },
---     combatAbility = "professional",
---     combatMovement = "offensive"
--- }
+function characterModel.getByID(id)
+    -- print(id)
 
--- spawn in random peds, no group
-function characterModel.create(characterData, group, amountToSpawn)
-    -- if amountToSpawn == nil or amountToSpawn =< 1 then
-    --     characterHash = spawnModel.ped(character.outfit)
-    --     table.insert(group, character)
-    -- end
-    
-    local amountToSpawn = amountToSpawn or 1
-    
-    for i = 1, amountToSpawn do
-        characterHash = spawnModel.ped(characterData.outfit)   
-
-        if not entity.is_entity_dead(characterHash) then
-            entityHelper.request_control(characterHash)
-    
-            characterModel.setProperties(characterHash, characterData)
-          
-        end
- 
-        -- group[characterHash] = {
-        --     table.unpack(character) 
-        -- }
-    
-        -- table.insert(group, character)
+    -- get object where id matches with the object hash/key
+    for key, value in pairs(charactersData) do
+        -- if key = id return object
+        if id == key then return value end
     end
+end
+
+-- function characterModel.create(characterData, group, amountToSpawn)
+--     local amountToSpawn = amountToSpawn or 1
     
-end
+--     for i = 1, amountToSpawn do
+--         characterHash = spawnModel.ped(characterData.outfitHash)   
+--         characterModel.setProperties(characterHash, characterData)
+--         -- not sure if this should be here actually, we can spawn characters, but put them in group later
+--         -- spawn a cop, then put him in cops group perhaps
+--         -- group[characterHash] = {
+--         --     table.unpack(character) 
+--         -- }
+--         -- table.insert(group, character)
+--     end
+    
+-- end
 
-function characterModel.setProperties(characterHash, data)
-    weaponModel.createArsenal(characterHash, true, 0, data)
-    characterModel.setHealth(characterHash, data)
-end
+-- function characterModel.setProperties(characterHash, data)
+--     if not entity.is_entity_dead(characterHash) then
+--         entityHelper.request_control(characterHash)
 
-function characterModel.setHealth(characterHash, data) 
-    ped.set_ped_max_health(characterHash, data.health)
-    ped.set_ped_health(characterHash, data.health)
-        -- pedModel.setCombatMovement(characterHash, character.combatMovement)
-            -- pedModel.setCombatAbility(characterHash, character.combatAbility)
-end
+--         weaponModel.createArsenal(characterHash, true, 0, data)
+--         characterModel.setHealth(characterHash, data)
+--     end
+-- end
+
+-- function characterModel.setHealth(characterHash, data) 
+--     ped.set_ped_max_health(characterHash, data.health)
+--     ped.set_ped_health(characterHash, data.health)
+--     -- pedModel.setCombatMovement(characterHash, character.combatMovement)
+--     -- pedModel.setCombatAbility(characterHash, character.combatAbility)
+-- end
 
 
 
@@ -109,4 +99,4 @@ end
 --     end
 -- end
 
-return characterModel
+return characterModel;

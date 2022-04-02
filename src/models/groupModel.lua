@@ -1,7 +1,7 @@
 local groupModel = {}
 
 
-function groupModel.createGroup(group, groupID, isLoyal)
+function groupModel.setPedGroup(group, groupID, isLoyal)
     -- if group == nil then
     --     print("ERROR", "No group provided or ", group, " isinvalid")
     -- end 
@@ -13,7 +13,7 @@ function groupModel.createGroup(group, groupID, isLoyal)
             ped.set_ped_never_leaves_group(key, isLoyal)
         end
     end
-   
+
 end
 
 

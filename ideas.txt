@@ -23,7 +23,7 @@
 Send SWAT Units 2 (1unit = suv and 8swat agents)
 
 
-
+-- On Refresh the 2take1 menu, enable Ultimate Menu, and read X (wrap by a dev function)
 
 
  -- Spawn animals, spawn a pet

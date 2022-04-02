@@ -1,62 +1,57 @@
-local customData <const> = require('UltimateMenu.src.data.customData');
+local charactersData = require('UltimateMenu.src.data.charactersData');
 
--- have one file to include all models
-local pedModel <const> = require('UltimateMenu.src.models.pedModel');
-local weaponModel <const> = require('UltimateMenu.src.models.weaponModel');
-local spawnModel <const> = require('UltimateMenu.src.models.spawnModel');
-local characterModel <const> = require('UltimateMenu.src.models.characterModel');
 local groupModel <const> = require('UltimateMenu.src.models.groupModel');
+local characterModel <const> = require('UltimateMenu.src.models.characterModel');
 
-local entityHelper <const> = require('UltimateMenu.src.helpers.entityHelper');
-
-local entityState = require('UltimateMenu.src.state.entityState')
-local characterState  = require('UltimateMenu.src.state.characterState')
+-- local entityState <const> = require('UltimateMenu.src.state.entityState');
 
 
-pedData = {
-    id = "alient",
-    name = "Alient",
-    outfit = 1650288984,
-    health = 10000,
-    armor = 100,
-    weapons = {
-        primary = "weapon_windowmaker"
-    },
-    combatAbility = "professional",
-    combatMovement = "offensive"
-}
+-- local charactersData = {
+    
+--     cop_undecover = {
+--         name = "",
+--         outfitHash = "-277325206", -- spawn random cop, all same properites (if needed can always ovveride weapons when creating the model - maybe have an array and pick one randomly if characters are the same
+--         gender = "male",
 
--- /Characters have data
--- Get character COP that is a VARIATION 2
+--         -- health = 328,
+--         -- armor = 50,
+--         -- weapons = {
+--         --     primary = "weapon_railgun",
+--         --     secondary = "",
+--         --     melee = "",
+--         --     throwables = "",
+--         --     launchers = ""
+--         -- },
+--         -- combatAbility = "professional",
+--         -- combatMovement = "offensive",
+--         -- combatAccuracy = 1000
+--     }
 
--- We have Cop DATA - outfit, weapons, coombat ability etc...
-
--- /Spawn the COP with that DATA
--- create character data
-
-
+-- }
 
 
 function FBIMenu(parent)
     FBIMenu = menu.add_feature("FBI", "parent", parent, nil).id
 
-    local protectionMenu_protectFBI = menu.add_feature("police", "action", FBIMenu, function(feat) 
+    local protectionMenu_protectFBI = menu.add_feature("Personel", "action", FBIMenu, function(feat) 
 
-        local groupName = entityState.test
+        -- local groupName = entityState.test
+        local character = characterModel.getByID("cop_undercover")
         local groupID = player.get_player_group(player.player_id())
 
-        characterModel.create(pedData)
+        print(character)
 
+        -- print(character)
+        -- characterModel.create(character)
+        -- create_group()
+        -- Creates a new ped group.  
+        -- Groups can contain up to 8 peds.  
+        -- The parameter is unused.  
+        -- Returns a handle to the created group, or 0 if a group couldn't be created.  
 
-
-        -- state.temporary - clean it up
-        -- state randomPeds
-        -- characterModel - characterState.test model put in a temporary place
-        -- characterModel.create(pedData, entityState.pedestrian, 2)
-        -- set into agroup, no group pedestrian, or bodyguard for x player hmmmm
-        -- groupModel.createGroup(characterState.test, groupID, true)
+        -- function create group for the character, or put him in group now
+        -- functoin group the character with somene | groupModel.setPedGroup(characterState.test, groupID, true)
     
-
     end)
 
 end
