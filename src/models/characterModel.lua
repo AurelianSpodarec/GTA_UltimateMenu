@@ -39,7 +39,7 @@ function characterModel.create(character, group, amountToSpawn)
         -- mob = amountToSpawn[i] 
         characterHash = spawnModel.ped(character.outfit)
        
-        group['characterHash'] = {
+        group[characterHash] = {
             table.unpack(character) 
         }
         

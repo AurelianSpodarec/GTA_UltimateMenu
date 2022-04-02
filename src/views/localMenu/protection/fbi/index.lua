@@ -56,14 +56,14 @@ pedData = {
     combatMovement = "offensive"
 }
 
-function createGroup(groupID, isLoyal)
+function createGroup(characterHash, groupID, isLoyal)
     -- if group == nil then
     --     print("ERROR", "No group provided or ", group, " isinvalid")
     -- end 
     -- ID prob gonna need to be auto generatd dynamic and stored somewhere
     --    need ped hash
     -- for character = 1, #characterState.test do
-        characterHash = table.select('#', characterState.test)
+        -- characterHash = table.select('#', characterState.test)
 
         if ped.get_ped_group(characterHash) ~= groupID then
             ped.is_ped_group_member(characterHash, groupID)
@@ -89,11 +89,15 @@ function FBIMenu(parent)
         --     }
         -- }
         -- createGroup(groupID, true)
+        for key, value in pairs( characterState.test) do
+            -- print('\t', key, value)
+            createGroup(key, groupID, true)
+        end
         -- for i = 1, #characterState.test do
         --      print(characterState['test'][i])
-                print(select('#', characterState.test))
+                -- print(select('#', characterState.test))
         -- end
-        -- createGroup(groupID, true) -- need ped hash
+        --  -- need ped hash
 
          
     end)
@@ -126,3 +130,6 @@ end
 --   end
   
   -- hash breaks this 
+
+
+  -- Spawn animals
