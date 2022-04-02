@@ -18,7 +18,6 @@ function characterModel.getByID(id)
         if id ~= index then 
             print("ERROR", id, "provided does not exist in characters data")
         else 
-            print("VA", value)
             return value 
         end
     end
@@ -27,34 +26,35 @@ end
 function characterModel.create(characterData, amountToSpawn)
     local amountToSpawn = amountToSpawn or 1
     
-    for i = 1, amountToSpawn do
+    -- for i = 1, amountToSpawn do
         characterHash = spawnModel.ped(characterData.outfitHash)   
-        -- characterModel.setProperties(characterHash, characterData)
+        characterModel.setProperties(characterHash, characterData)
         -- not sure if this should be here actually, we can spawn characters, but put them in group later
         -- spawn a cop, then put him in cops group perhaps
         -- group[characterHash] = {
         --     table.unpack(character) 
         -- }
-        -- table.insert(group, character)
-    end
+        -- table.insert(characterState.pedestrians, characterHash)
+    -- end
     
+    return characterHash
 end
 
--- function characterModel.setProperties(characterHash, data)
---     if not entity.is_entity_dead(characterHash) then
---         entityHelper.request_control(characterHash)
+function characterModel.setProperties(characterHash, characterData)
+    if not entity.is_entity_dead(characterHash) then
+        entityHelper.request_control(characterHash)
 
---         weaponModel.createArsenal(characterHash, true, 0, data)
---         characterModel.setHealth(characterHash, data)
---     end
--- end
+        weaponModel.createArsenal(characterHash, true, 0, characterData)
+        characterModel.setHealth(characterHash, characterData)
+    end
+end
 
--- function characterModel.setHealth(characterHash, data) 
---     ped.set_ped_max_health(characterHash, data.health)
---     ped.set_ped_health(characterHash, data.health)
---     -- pedModel.setCombatMovement(characterHash, character.combatMovement)
---     -- pedModel.setCombatAbility(characterHash, character.combatAbility)
--- end
+function characterModel.setHealth(characterHash, characterData) 
+    ped.set_ped_max_health(characterHash, characterData.health)
+    ped.set_ped_health(characterHash, characterData.health)
+    -- pedModel.setCombatMovement(characterHash, character.combatMovement)
+    -- pedModel.setCombatAbility(characterHash, character.combatAbility)
+end
 
 
 

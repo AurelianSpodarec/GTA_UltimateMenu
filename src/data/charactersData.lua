@@ -8,15 +8,15 @@ local charactersData = {
         outfitHash = "-277325206", -- spawn random cop, all same properites (if needed can always ovveride weapons when creating the model - maybe have an array and pick one randomly if characters are the same
         gender = "male",
 
-        -- health = 328,
+        health = 328,
         -- armor = 50,
-        -- weapons = {
-        --     primary = "weapon_railgun",
+        weapons = {
+            primary = "weapon_railgun",
         --     secondary = "",
         --     melee = "",
         --     throwables = "",
         --     launchers = ""
-        -- },
+        },
         -- combatAbility = "professional",
         -- combatMovement = "offensive",
         -- combatAccuracy = 1000

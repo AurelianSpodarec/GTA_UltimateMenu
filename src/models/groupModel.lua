@@ -1,18 +1,18 @@
 local groupModel = {}
 
 
-function groupModel.setPedGroup(group, groupID, isLoyal)
+function groupModel.setPedGroup(character, groupID, isLoyal)
     -- if group == nil then
     --     print("ERROR", "No group provided or ", group, " isinvalid")
     -- end 
  
-    for key, value in pairs(group) do
-        if ped.get_ped_group(key) ~= groupID then
-            ped.is_ped_group_member(key, groupID)
-            ped.set_ped_as_group_member(key, groupID)
-            ped.set_ped_never_leaves_group(key, isLoyal)
-        end
-    end
+    -- for key, value in pairs(group) do
+        -- if ped.get_ped_group(character) ~= groupID then
+            ped.is_ped_group_member(character, groupID)
+            ped.set_ped_as_group_member(character, groupID)
+            ped.set_ped_never_leaves_group(character, isLoyal)
+        -- end
+    -- end
 
 end
 

@@ -1,5 +1,5 @@
 local characterState = {
-    test = {
+    pedestrians = {
        
     }
 }
