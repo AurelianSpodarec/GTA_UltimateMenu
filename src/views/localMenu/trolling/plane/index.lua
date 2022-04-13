@@ -1,0 +1,4 @@
+-- spawn plane falling from the sky
+-- plane falling on the player
+-- lots of planes falling from the sky
+-- small plane following player

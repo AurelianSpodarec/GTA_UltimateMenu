@@ -1,17 +1,32 @@
 local groupModel = {}
 
+   -- /create_group()
+        -- Creates a new ped group.  
+        --
+        -- The parameter is unused.  
+        -- Returns a handle to the created group, or 0 if a group couldn't be created.  
+-- Groups can contain up to 8 peds.  
 
+     
+
+        -- /function create group for the character, or put him in group now
+        -- /functoin group the character with somene | 
+
+        -- put in random id or player group
+        -- ped.set_ped_as_group_member(character, groupID)
+
+        
 function groupModel.setPedGroup(character, groupID, isLoyal)
-    -- if group == nil then
-    --     print("ERROR", "No group provided or ", group, " isinvalid")
-    -- end 
+    if group == nil then
+        print("ERROR", "No group provided or ", group, " isinvalid")
+    end 
  
     -- for key, value in pairs(group) do
-        -- if ped.get_ped_group(character) ~= groupID then
+        if ped.get_ped_group(character) ~= groupID then
             ped.is_ped_group_member(character, groupID)
             ped.set_ped_as_group_member(character, groupID)
             ped.set_ped_never_leaves_group(character, isLoyal)
-        -- end
+        end
     -- end
 
 end

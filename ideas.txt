@@ -1,3 +1,9 @@
+suggetions:fireball
+details:catch yourself on fire while flying through the sky
+
+
+
+
 -- Law Enforcement
 -------------------------------------------
 

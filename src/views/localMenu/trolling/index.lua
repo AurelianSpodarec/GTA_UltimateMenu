@@ -6,9 +6,9 @@ require('UltimateMenu.src.views.localMenu.trolling.rubio')
 function trollingMenu(parent)
     trollingMenu = menu.add_feature("Trolling", "parent", parent, nil).id
 
+    trollingMenu_kamikadzePlane(trollingMenu)
 
     -- trollingMenu_carAccident(trollingMenu)
-    -- trollingMenu_kamikadzePlane(trollingMenu)
     trollingMenu_rubio(trollingMenu)
 
 end
