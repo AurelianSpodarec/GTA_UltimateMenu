@@ -28,18 +28,32 @@ local entityHelper = require('UltimateMenu.src.helpers.entityHelper')
 -- pos = entity.get_entity_coords(aim_ent)
 
 -- math.atan(playerCordsX - entityCords.x,  playerCordsY - entityCords.y)
+-- function pointEntityOnPlayer(ult_entity, ult_player)
+
+--     local entityCords = entity.get_entity_coords(ult_entity)
+--     local playerCords = entity.get_entity_coords(player.get_player_ped(ult_player))
+
+--    return entity.set_entity_rotation(ult_entity, v3(playerCords.x, playerCords.y, playerCords.z))
+
+-- end
+
+
 function pointEntityOnPlayer(ult_entity, ult_player)
 
     local entityCords = entity.get_entity_coords(ult_entity)
-    local playerCords = entity.get_entity_coords(player.get_player_ped(ult_player))
+    local playerCords = entity.get_entity_coords((player.get_player_ped(ult_player)))
 
-    local playerCordsX = playerCords.x
-    local playerCordsY = playerCords.y
-    local playerCordsZ = playerCords.z
+    local diffX = entityCords.x - playerCords.x 
+    local diffY = entityCords.y - playerCords.y
 
-   return entity.set_entity_rotation(ult_entity, v3(playerCordsX, playerCordsY, playerCordsZ))
+    local pointAtAngle = math.atan(diffX, diffY) * 180 / math.pi
+ 
+    entity.set_entity_heading(ult_entity, pointAtAngle)
+    -- entity.set_entity_rotation(ult_entity, v3(playerCords.x, playerCords.y, playerCords.z))
 
 end
+
+
 
 function trollingMenu_kamikadzePlane(parent)
 
@@ -54,13 +68,17 @@ function trollingMenu_kamikadzePlane(parent)
         local playerCords = player.get_player_coords(playerID)
         local playerPed = player.get_player_ped(playerID)
 
+        -- get vehicle forward entity and point it at player
+
         local plane = spawnModel.vehicle(-2048333973, playerCords + v3(math.random(-50, 50), math.random(0, 0), math.random(0, 0)))
-        -- local pilot = spawnModel.ped(-413447396)
+        local pilot = spawnModel.ped(-413447396)
+
+        ped.set_ped_into_vehicle(pilot, plane, -1)
         
         pointEntityOnPlayer(plane, playerID)
         
         -- vehicle.task_vehicle_aim_at_ped(plane, playerPed)
-        vehicle.set_vehicle_forward_speed(plane, 90.0)
+        vehicle.set_vehicle_forward_speed(plane, 90)
         
         -- 1 Pointing Up/down axies
         -- 2 Flipped the car on the door 90
