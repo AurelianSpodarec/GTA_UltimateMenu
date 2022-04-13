@@ -35,7 +35,7 @@ function spawnModel.vehicle(ult_hash, ult_position, ult_heading, ult_networked, 
 
     local ult_vehicle = vehicle.create_vehicle(ult_hash, ult_position, ult_heading, ult_networked, ult_unk1)
     streaming.set_model_as_no_longer_needed(ult_hash)
-
+    -- entityHelper.request_control(ult_vehicle)
     return ult_vehicle
 end
 
