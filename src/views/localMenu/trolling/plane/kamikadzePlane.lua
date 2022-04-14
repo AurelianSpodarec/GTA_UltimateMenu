@@ -68,9 +68,15 @@ end
 --         ((entity.get_entity_coords(_ent).z - _target_pos.z) * -1) / math.abs(_target_pos:magnitude(entity.get_entity_coords(_ent)))) / (2 * math.pi) * 360, 0, math.atan(_target_pos.x - entity.get_entity_coords(_ent).x, _target_pos.y - entity.get_entity_coords(_ent).y) * -180 / math.pi
 -- )
 
-function trollingMenu_kamikadzePlane(parent)
+-- ultMenu.addBoth()
+-- ultMenu.online()
+-- ultMenu.local()
+-- ultMenu.hybrid()
 
-    local_trollingMenu_kamikadzePlane = menu.add_feature("Kamikadze Plane", "action", parent, function(feat) 
+function kamikadzePlane(parent)
+
+    -- a = menu.add_player_feature("Kamikadze Plane", "action", parent)
+    local_trollingMenu_kamikadzePlane = menu.add_feature("Kamikadze Plane", "action", parent, function() 
         local drivingMode = 17039360
         local speed = 200 
 
@@ -80,54 +86,49 @@ function trollingMenu_kamikadzePlane(parent)
 
         -- circle, distance, height
         local plane = spawnModel.vehicle( -1214505995, playerCords + v3(math.random(-300, 300), math.random(-200, 200), math.random(100, 100)))
-        -- local pilot = spawnModel.ped(-413447396)
+        local pilot = spawnModel.ped(-413447396)
         entityHelper.request_control(plane, 0)
 
-        -- ped.set_ped_into_vehicle(pilot, plane, -1)
+        ped.set_ped_into_vehicle(pilot, plane, -1)
         vehicle.set_vehicle_engine_on(plane, true, true, false)
 
-    
-        -- while distance of plane to player > X do
         while not entity.is_entity_dead(plane) do
-            -- system.yield(25)
             if entityHelper.request_control(plane, 0) then
                 pointEntityOnPlayer(plane, playerID)
-
+                
                 vehicle.set_vehicle_on_ground_properly(plane)
                 vehicle.control_landing_gear(plane, 3)
                 system.yield(15)
-
+                
                 vehicle.set_vehicle_forward_speed(plane, 200)
 
             end
             system.wait(0)
         end
-        
-        
-        
+    end)
+
+    -- local_trollingMenu_kamikadzePlane = menu.add_feature("Following Kamikadze Plane", "action", parent, function() 
+       
+    -- end)
+
+    -- local_trollingMenu_kamikadzePlane3 = menu.add_feature("Disable Planes Nerby", "action", local_trollingMenu_kamikadzePlane, nil)
+    
+-- Details: a plane of your choice to kamikaze into a player and kill them.
+-- plane speed
+-- plane type
+-- blimp above player
+
+end
+
+-- monkey attack
+
+              
         -- if entityHelper.request_control(pilot, 25) then
         --     ai.task_vehicle_follow(pilot, plane, player.get_player_ped(player.player_id()), speed, drivingMode, 0)
         --     -- ai.task_vehicle_shoot_at_coord()
         -- end
 
-        -- test = entity.set_entity_rotation(plane, getPlayerForwardCords)
-     
-        -- system.wait(500)
-        -- end
-    end)
-
-
-
-
-    -- local_trollingMenu_kamikadzePlane1 = menu.add_feature("Kamikadze on player", "action", local_trollingMenu_kamikadzePlane, nil)
-    -- local_trollingMenu_kamikadzePlane2 = menu.add_feature("Falling Plane", "action", local_trollingMenu_kamikadzePlane, nil)
-    -- local_trollingMenu_kamikadzePlane3 = menu.add_feature("Disable Planes Nerby", "action", local_trollingMenu_kamikadzePlane, nil)
-    
--- Details: a plane of your choice to kamikaze into a player and kill them.
-
-end
-
-
+ 
 
 -- maybe should go into services, 
 

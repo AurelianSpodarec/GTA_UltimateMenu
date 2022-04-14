@@ -1,15 +1,17 @@
 -- require('UltimateMenu.src.views.localMenu.trolling.trollingMenu_carAccident')
-require('UltimateMenu.src.views.localMenu.trolling.kamikadzePlane')
-require('UltimateMenu.src.views.localMenu.trolling.rubio')
 
+-- require('UltimateMenu.src.views.localMenu.trolling.rubio')
+require('UltimateMenu.src.views.localMenu.trolling.enviroment.index')
+require('UltimateMenu.src.views.localMenu.trolling.plane.index')
 
 function trollingMenu(parent)
     trollingMenu = menu.add_feature("Trolling", "parent", parent, nil).id
 
-    trollingMenu_kamikadzePlane(trollingMenu)
+    enviromentMenu(trollingMenu)
+    planeMenu(trollingMenu)
 
     -- trollingMenu_carAccident(trollingMenu)
-    trollingMenu_rubio(trollingMenu)
+    -- trollingMenu_rubio(trollingMenu)
 
 end
 
