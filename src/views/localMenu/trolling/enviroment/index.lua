@@ -20,9 +20,9 @@ function enviromentMenu(parent)
         local playersCount = player.player_count()
         -- apply_force_to_entity - push stuff around
 
-        if feat.on then
+        while feat.on do
             local vehicles = vehicle.get_all_vehicles()
-            system.yield(25)
+           
 
             for i = 1, #vehicles do
             if entityHelper.request_control(vehicles[i], 25) then
@@ -39,7 +39,7 @@ function enviromentMenu(parent)
 
             end
             end
-            
+            system.wait(500)
 
         end
 
