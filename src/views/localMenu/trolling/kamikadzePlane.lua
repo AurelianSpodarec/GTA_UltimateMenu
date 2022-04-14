@@ -50,7 +50,7 @@ end
 function pointEntityOnPlayer(ult_entity, ult_player)
     local entityCords = entity.get_entity_coords(ult_entity)
     local playerCords = entity.get_entity_coords(player.get_player_ped(ult_player))
-    local playerHeight = 3;
+    local playerHeight = 2;
 
     local diffX = playerCords.x - entityCords.x
     local diffY = playerCords.y - entityCords.y
@@ -59,7 +59,7 @@ function pointEntityOnPlayer(ult_entity, ult_player)
     local pointAtHeadingAngle = math.atan(diffX, diffY) * -180 / math.pi
     local pointAtAngle = math.asin(diffZ / playerCords:magnitude(entityCords)) / (2 * math.pi) * 360
     
-    --entity.set_entity_heading(ult_entity, pointAtHeadingAngle)
+    system.yield(15)
     entity.set_entity_rotation(ult_entity, v3(pointAtAngle, 0, pointAtHeadingAngle))
 end
 
@@ -79,22 +79,29 @@ function trollingMenu_kamikadzePlane(parent)
         local playerPed = player.get_player_ped(playerID)
 
         -- circle, distance, height
-        -- 0x91CA96EE
-        -- local plane = spawnModel.vehicle(-1214505995, playerCords + v3(math.random(-50, -50), math.random(10, 10), math.random(0, 0)))
-        local plane = spawnModel.vehicle( -1214505995, playerCords + v3(math.random(200, 200), math.random(-200, 200), math.random(100, 100)))
-        local pilot = spawnModel.ped(-413447396)
+        local plane = spawnModel.vehicle( -1214505995, playerCords + v3(math.random(-300, 300), math.random(-200, 200), math.random(100, 100)))
+        -- local pilot = spawnModel.ped(-413447396)
         entityHelper.request_control(plane, 0)
 
-        pointEntityOnPlayer(plane, playerID)
-        vehicle.set_vehicle_on_ground_properly(plane)
-        
-        ped.set_ped_into_vehicle(pilot, plane, -1)
+        -- ped.set_ped_into_vehicle(pilot, plane, -1)
         vehicle.set_vehicle_engine_on(plane, true, true, false)
-        vehicle.control_landing_gear(plane, 3)
 
-        system.yield(20)
-        vehicle.set_vehicle_forward_speed(plane, 200)
-            -- system.wait(20)
+    
+        -- while distance of plane to player > X do
+        while not entity.is_entity_dead(plane) do
+            -- system.yield(25)
+            if entityHelper.request_control(plane, 0) then
+                pointEntityOnPlayer(plane, playerID)
+
+                vehicle.set_vehicle_on_ground_properly(plane)
+                vehicle.control_landing_gear(plane, 3)
+                system.yield(15)
+
+                vehicle.set_vehicle_forward_speed(plane, 200)
+
+            end
+            system.wait(0)
+        end
         
         
         
