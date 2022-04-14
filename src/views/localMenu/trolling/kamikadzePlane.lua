@@ -50,10 +50,11 @@ end
 function pointEntityOnPlayer(ult_entity, ult_player)
     local entityCords = entity.get_entity_coords(ult_entity)
     local playerCords = entity.get_entity_coords(player.get_player_ped(ult_player))
+    local playerHeight = 3;
 
     local diffX = playerCords.x - entityCords.x
     local diffY = playerCords.y - entityCords.y
-    local diffZ = (entityCords.z - playerCords.z) * -1
+    local diffZ = (entityCords.z - playerCords.z + playerHeight) * -1
 
     local pointAtHeadingAngle = math.atan(diffX, diffY) * -180 / math.pi
     local pointAtAngle = math.asin(diffZ / playerCords:magnitude(entityCords)) / (2 * math.pi) * 360
