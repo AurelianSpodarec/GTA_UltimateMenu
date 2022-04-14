@@ -1,17 +1,7 @@
 local spawnModel = require('UltimateMenu.src.models.spawnModel')
 local entityHelper = require('UltimateMenu.src.helpers.entityHelper')
 
--- create storm - make everything around player fly up/down different direction, different speed
--- don't include player car
--- perhaps create a car behind once every 2min to push
--- spawn ufo ship above the player and drop cows
 
--- put a big object above the player to make it dark
-
-
--- hurricane
-
--- ufo comes takes it up
 
 
 function pointEntityHorizontalyOnPlayer(ult_entity, ult_player)
