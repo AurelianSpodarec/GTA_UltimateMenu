@@ -16,18 +16,13 @@ function carAccident(parent)
         local drivingMode = 17039360
         local speed = 200 
 
-
         ped.set_ped_into_vehicle(driver, car, -1)
         vehicle.set_vehicle_engine_on(car, true, true, false) 
         vehicle.set_vehicle_mod_kit_type(car, 0)
-        -- vehicle.set_vehicle_mod(car, ?, ?, false)
  
         if entityHelper.request_control(driver, 25) then
-
-        -- -- ai.task_vehicle_drive_to_coord(driver, car, v3(playerPos.x, playerPos.y, 0), speed, 0, -2048333973, drivingMode, 263595, 1, 1)
             ai.task_vehicle_follow(driver, car, player.get_player_ped(player.player_id()), speed, drivingMode, 0)
         end
-        -- -- ai.task_vehicle_follow(bitch, bike, player.get_player_ped(pid), 150, 21759548, 50)
         system.wait(100)
 
         -- while feat.on do

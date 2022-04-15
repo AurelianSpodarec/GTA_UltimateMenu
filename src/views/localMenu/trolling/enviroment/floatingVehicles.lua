@@ -1,7 +1,6 @@
 local entityHelper = require('UltimateMenu.src.helpers.entityHelper')
 
 
-
 function floatingVehicles(parent)
     local_trollingMenu_enviromentMenu = menu.add_feature("Floating Vehicles", "toggle", parent, function(feat) 
         while feat.on do
