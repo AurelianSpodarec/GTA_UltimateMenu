@@ -17,27 +17,54 @@ function enviromentMenu(parent)
 
     local_trollingMenu_enviromentMenu = menu.add_feature("Floating Objects", "toggle", enviromentMenu, function(feat) 
 
-        local playersCount = player.player_count()
-        -- apply_force_to_entity - push stuff around
-
         while feat.on do
             local vehicles = vehicle.get_all_vehicles()
            
-
             for i = 1, #vehicles do
-            if entityHelper.request_control(vehicles[i], 25) then
+                local isPlayerVehicle
+                if entityHelper.request_control(vehicles[i], 25) then
+                    local singleVehicle = vehicles[i]
 
-                for j = 1, 31 do
+                    for j = 0, 31 do
 
-                    if player.is_player_valid(j) then
-                        if player.get_player_vehicle(j) ~= vehicles[i] then
-                            vehicle.set_vehicle_gravity_amount(vehicles[i], math.random(-5, -5))
+                        if player.is_player_valid(j) then
+                            print("valid player")
+                            if player.get_player_vehicle(j) == vehicles[i] then
+                                isPlayerVehicle = true
+                                break
+                            end
+                        else
+                            print("not ")
                         end
+            
                     end
+                    if not isPlayerVehicle then
+                        vehicle.set_vehicle_gravity_amount(vehicles[i], -5)
+                    end
+                
+                    -- print("single", singleVehicle)
+                    -- for j = 0, 31 do
+                    --     singlePlayer = j
+                         
+                        -- if singleVehicle ~= player.get_player_vehicle(singlePlayer) then
+                        --     vehicle.set_vehicle_gravity_amount(singleVehicle, -5)
+                            -- print("yes", ped.is_ped_a_player(player.get_player_ped(j)))
+                            -- -- print(player.get_player_vehicle(player.get_player_ped(j)))
+                       
+                        -- else
+                        -- else
+                        --     print("no")
+                            -- vehicle.set_vehicle_gravity_amount(vehicles[i], -5)
+                        -- end
+                        -- is_ped_a_player
+                        -- if player.is_player_valid(j) then
+                        --     if player.get_player_vehicle(j) == vehicles[i] then
+                        --     end
+                        -- end
+
+                    -- end
 
                 end
-
-            end
             end
             system.wait(500)
 
