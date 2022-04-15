@@ -7,7 +7,7 @@ function floatingVehicles(parent)
         while feat.on do
             
             local playerVehicles = {}
-            for i = 0, 31 do
+            for i = 0, 32 do
                 if player.is_player_valid(i) and player.get_player_vehicle(i) ~= 0 then
                     playerVehicles[player.get_player_vehicle(i)] = true
                 end
