@@ -22,6 +22,18 @@ function pedModel.setProperties(character, data)
     -- end
 end
 
+function pedModel.attackPlayer(feat)
+    local peds = ped.get_all_peds()
+    
+    for i = 1, #peds do
+        if entityHelper.request_control(peds[i], 25) then
+            ped.set_ped_combat_attributes(peds[i], 46, true)
+            -- if has weapon use it instead
+            ai.task_combat_ped(peds[i], player.get_player_ped(player.player_id()), 0, 16)
+        end
+    end
+end
+
 return pedModel
 
 
@@ -37,17 +49,7 @@ return pedModel
 --     end
 -- end
 
--- function pedModel.attackPlayer(feat)
---     -- local peds <const> = ped.get_all_peds()
-    
---     -- for i = 1, #peds do
---     --     if entityHelper.request_control(peds[i], 25) then
---     --         -- ped.set_ped_combat_attributes(peds[i], 46, true)
---     --         -- if has weapon use it instead
---     --         ai.task_combat_ped(peds[i], player.get_player_ped(player.player_id()), 0, 16)
---     --     end
---     -- end
--- end
+
 
 -- function pedModel.setWeapon(ult_weapon)
 --     local peds <const> = ped.get_all_peds()

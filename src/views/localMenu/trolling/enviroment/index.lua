@@ -1,5 +1,7 @@
-local entityHelper = require('UltimateMenu.src.helpers.entityHelper')
+require('UltimateMenu.src.views.localMenu.trolling.enviroment.floatingVehicles')
 
+
+-- table
 function hasValue(ult_table, ult_value)
     if not ult_table then return false end
 
@@ -10,6 +12,7 @@ function hasValue(ult_table, ult_value)
     end
 end
 
+-- table
 function printTable(tbl)
     for index, value in ipairs(tbl) do
         print(index , value, "---------")
@@ -20,42 +23,11 @@ end
 function enviromentMenu(parent)
     local enviromentMenu = menu.add_feature("Enviroment", "parent", parent, nil).id;
     
-    -- planeMenu_gravity(planeMenu)
-    -- planeMenu_storm(planeMenu)
-    -- planeMenu_magnet(planeMenu)
-
-    local_trollingMenu_enviromentMenu = menu.add_feature("Floating Vehicles", "toggle", enviromentMenu, function(feat) 
-        while feat.on do
-            
-            local playerVehicles = {}
-            for i = 0, 31 do
-                if player.is_player_valid(i) and player.get_player_vehicle(i) ~= 0 then
-                    playerVehicles[player.get_player_vehicle(i)] = true
-                end
-            end
-
-            local vehicles = vehicle.get_all_vehicles()
-            for i = 1, #vehicles do
-                if not playerVehicles[vehicles[i]] then
-                    network.request_control_of_entity(vehicles[i])
-                    vehicle.set_vehicle_gravity_amount(vehicles[i], -5)
-                end
-            end
-
-            system.wait(500)
-        end
-    end)
-
+    floatingVehicles(enviromentMenu)
 end
 
 
--- vehicle storm
-
-
-
--- enviromentMenu_gravity(enviromentMenu)
--- enviromentMenu_storm(enviromentMenu)
--- enviromentMenu_magnet(enviromentMenu)
+-- storm, magnet, gravity
 
    
 
