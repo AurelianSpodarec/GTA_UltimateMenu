@@ -1,85 +1,176 @@
 local entityHelper = require('UltimateMenu.src.helpers.entityHelper')
 -- gravity manipulation
 
+function hasValue(ult_table, ult_value)
+    if not ult_table then return false end
+
+    for index, value in ipairs(ult_table) do
+        if value ~= ult_value then return false else
+            return ult_value
+        end
+    end
+end
+
+function printTable(tbl)
+    for index, value in ipairs(tbl) do
+        print(index , value, "---------")
+    end
+end
+
+
 function enviromentMenu(parent)
     local enviromentMenu = menu.add_feature("Enviroment", "parent", parent, nil).id;
-     
-    local_trollingMenu_enviromentMenu = menu.add_feature("Gravity Magnet", "toggle", enviromentMenu, function() 
-
-        -- local allObjects = get_all_objects()
-        -- local player = 
-        -- get all objects
-        -- get player
-
-        -- pull objects to player
-
-    end)
-
-    local_trollingMenu_enviromentMenu = menu.add_feature("Floating Objects", "toggle", enviromentMenu, function(feat) 
-
+    
+    
+    local_trollingMenu_enviromentMenu = menu.add_feature("Floating Vehicles", "action", enviromentMenu, function(feat) 
         while feat.on do
+            local playerVehicles = {}
+            for i = 0, 31 do
+                if player.is_player_valid(i) and player.get_player_vehicle(i) ~= 0 then
+                    playerVehicles[player.get_player_vehicle(i)] = true
+                end
+            end
+
             local vehicles = vehicle.get_all_vehicles()
-           
             for i = 1, #vehicles do
-                local isPlayerVehicle
-                if entityHelper.request_control(vehicles[i], 25) then
-                    local singleVehicle = vehicles[i]
-
-                    for j = 0, 31 do
-
-                        if player.is_player_valid(j) then
-                            print("valid player")
-                            if player.get_player_vehicle(j) == vehicles[i] then
-                                isPlayerVehicle = true
-                                break
-                            end
-                        else
-                            print("not ")
-                        end
-            
-                    end
-                    if not isPlayerVehicle then
-                        vehicle.set_vehicle_gravity_amount(vehicles[i], -5)
-                    end
-                
-                    -- print("single", singleVehicle)
-                    -- for j = 0, 31 do
-                    --     singlePlayer = j
-                         
-                        -- if singleVehicle ~= player.get_player_vehicle(singlePlayer) then
-                        --     vehicle.set_vehicle_gravity_amount(singleVehicle, -5)
-                            -- print("yes", ped.is_ped_a_player(player.get_player_ped(j)))
-                            -- -- print(player.get_player_vehicle(player.get_player_ped(j)))
-                       
-                        -- else
-                        -- else
-                        --     print("no")
-                            -- vehicle.set_vehicle_gravity_amount(vehicles[i], -5)
-                        -- end
-                        -- is_ped_a_player
-                        -- if player.is_player_valid(j) then
-                        --     if player.get_player_vehicle(j) == vehicles[i] then
-                        --     end
-                        -- end
-
-                    -- end
-
+                if not playerVehicles[vehicles[i]] then
+                    network.request_control_of_entity(vehicles[i])
+                    vehicle.set_vehicle_gravity_amount(vehicles[i], -5)
                 end
             end
             system.wait(500)
-
         end
+        -- local vehicles = vehicle.get_all_vehicles()
+        -- local playerVehicles = {}
 
+        -- local playerPed = player.get_player_ped(player.player_id())
+        -- local playerVehicle = ped.get_vehicle_ped_is_using(playerPed)
 
+        -- -- get all player vehicle and put it in a table
+        -- for playerIndex = 1, 31 do
+        --     if player.is_player_valid(playerIndex) then
+        --         table.insert(playerVehicles, ped.get_vehicle_ped_is_using(player.get_player_ped(playerIndex)))
+        --     end
+        -- end 
+        
+        -- -- finish above loop
+        -- -- check if vehicle[i] exists in table, if yes skip it
+        -- for i = 1, #vehicles do
+        --     if hasValue(playersVehicles, vehicles[i]) ~= vehicles[i] then
+        --         vehicle.set_vehicle_gravity_amount(vehicles[i], -5)
+        --     end
+        -- end
+         
     end)
-    -- if `player.get_player_vehicle(j)` == `vehicles[i]` then
+
+end
+
+    -- function getPlayersVehicle()
+    --     local playersVehicles = {}
+    --     for i = 0, 31 do
+    --         table.insert(playersVehicles, ped.get_vehicle_ped_is_using(player.get_player_ped(i)))
+    --     end
+    --     -- for _, i in pairs(playersVehicles) do
+    --     --     print(_, i)
+    --     -- end
+    --     print(playersVehicles[1])
+    --     return playersVehicles
+    -- end
+
+
+    -- function getPlayerVehicle(ult_player)
+        
+    --     if ped.is_ped_a_player(ult_player) then
+    --         if ped.is_ped_in_any_vehicle(ult_player) then
+           
+    --             return true
+    --             -- ped.get_vehicle_ped_is_using(ult_player)
+    --         -- return true
+      
+    --         end
+    --     end
+
+    -- end
+
+  
+    -- test = menu.add_feature('test', 'action', enviromentMenu, function() 
+    --     local vehicles = vehicle.get_all_vehicles()
+
+    --     playerPed = player.get_player_ped(player.player_id())
+    --     isPlayerVehicle = ped.get_vehicle_ped_is_using(playerPed)
+ 
+    --     for i = 1, #vehicles do
+    --         if isPlayerVehicle ~= vehicles[i] then
+    --             -- print("NOT Player vehicle:", vehicles[i])
+    --             vehicle.set_vehicle_gravity_amount(vehicles[i], -5)
+    --         end
+    --     end
+    -- end)
+
+
+-- vehicle storm
+
+
+
+
+ -- if `player.get_player_vehicle(j)` == `vehicles[i]` then
     --     break
     --  end
     -- enviromentMenu_gravity(enviromentMenu)
     -- enviromentMenu_storm(enviromentMenu)
     -- enviromentMenu_magnet(enviromentMenu)
 
-end
+
+   -- check vehicle by model/value, not index
+            -- loop vehicles and if its playerVehicle don't do it
+
+            -- for _, i in pairs(playerVehicles) do
+            --     print(_, i)
+            -- end
+
+
+
+            -- for i = 1, #vehicles do
+            --     print("Vehicles", vehicles[i])
+            --     for j = 1, 31 do
+
+            --         if ped.get_vehicle_ped_is_using(player.get_player_ped(j)) ~= vehicles[i] then
+            --             print("is not player gravity set")
+            --             vehicle.set_vehicle_gravity_amount(vehicles[i], -5)
+            --             break
+            --         else
+            --             print("IS PLAYERRRRRRRRRRRRR t")
+            --         end
+                    -- print("All pd vehicles:", ped.get_vehicle_ped_is_using(player.get_player_ped(j)))
+                    -- if player inside vehicle found, break and start again untill all vehicles have been checekd
+                    -- break;
+                    -- continue
+                    -- print("All vehicles:", vehicles[i])
+                    -- table.insert(playersVehicles, )
+                    -- if ped.get_vehicle_ped_is_using(player.get_player_ped(j)) ~= vehicles[i] then
+                    --     vehicle.set_vehicle_gravity_amount(vehicles[i], -5)
+                    -- end
+                -- end
+                -- if playersVehicles[i] ~= vehicles[i] then
+                --     vehicle.set_vehicle_gravity_amount(vehicles[i], -5)
+                -- end
+            -- end
+
+            -- system.wait(500)
+        -- end
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
