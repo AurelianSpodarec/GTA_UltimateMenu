@@ -18,14 +18,9 @@ cityPolice = {
     vehicle = 0x79FBB0C5
 }
 
-highwaypatrol = {
-    outfit = 1939545845,
-    vehicle = 0xFDEFAEC3
-}
 
-riotAdvanced = {
-    vehicle = 0x9B16A3B4
-}
+
+
 
 
 militaryAPC = {
@@ -50,11 +45,32 @@ lawUnits = {
         name = "City Car Cops",
         outfit = 1581098148, --{ 1581098148, 368603149, 1669696074 },
         vehicle = 0x79FBB0C5,
-        seats = 4
+        seats = 1
     }
 
+highwaypatrol = {
+    outfit = 1939545845,
+    vehicle = 0xFDEFAEC3,
+    seats = 1
+}
 
-function spawnUnit(data, ult_player, amount) 
+militaryRhino = {
+    outfit = -220552467,
+    vehicle = 0x2EA68690,
+    seats = 1
+}
+
+riotAdvanced = {
+    outfit =  -1920001264,
+    vehicle = 0x9B16A3B4,
+    seats = 1
+    -- options = {
+    --     weapon = 
+    --     ragdool = 
+    -- }
+}
+
+function spawnUnit(data, ult_player) 
     local unitVehicle = spawnModel.vehicle(data.vehicle, player.get_player_coords(ult_player) + v3(math.random(-50, 50), math.random(0, 0), math.random(0, 0)))
     vehicle.set_vehicle_engine_on(unitVehicle, true, true, false) 
     vehicle.set_vehicle_mod_kit_type(unitVehicle, 0)
@@ -79,13 +95,22 @@ end
 
 function policeChase(parent)
 
+    -- idea: on shot shots firework - griefing
     --TODO: Divide logic from view
+    -- never let them go out, no ragdool, always chase, don't stop
 
     local__pedsMenu_carram = menu.add_feature("Police Chase", "action", parent, function(feat) 
 
         local playerPos = player.get_player_coords(player.player_id())
 
         spawnUnit(lawUnits, player.player_id())
+        spawnUnit(lawUnits, player.player_id())
+        spawnUnit(highwaypatrol, player.player_id())
+        
+        spawnUnit(highwaypatrol, player.player_id())
+        
+        -- spawnUnit(militaryRhino, player.player_id())
+        -- spawnUnit(riotAdvanced, player.player_id())
         -- local car = spawnModel.vehicle(0x79FBB0C5, player.get_player_coords(player.player_id()) + v3(math.random(-50, 50), math.random(0, 0), math.random(0, 0)))
         -- local bike = spawnModel.vehicle(0xFDEFAEC3, player.get_player_coords(player.player_id()) + v3(math.random(-50, 50), math.random(0, 0), math.random(0, 0)))
         

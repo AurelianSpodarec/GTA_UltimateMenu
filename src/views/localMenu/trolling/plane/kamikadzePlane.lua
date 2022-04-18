@@ -75,6 +75,8 @@ function kamikadzePlane(parent)
         local playerPed = player.get_player_ped(playerID)
 
         -- circle, distance, height
+        -- small private jet -1214505995
+        -- 
         local plane = spawnModel.vehicle( -1214505995, playerCords + v3(math.random(-300, 300), math.random(-200, 200), math.random(100, 100)))
         local pilot = spawnModel.ped(-413447396)
         entityHelper.request_control(plane, 0)

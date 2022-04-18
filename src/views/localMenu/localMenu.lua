@@ -8,10 +8,10 @@ require('UltimateMenu.src.views.localMenu.vehicles.index')
 function localMenu()
     local ultimateMenu = menu.add_feature("Ultimate Menu", "parent", 0, nil).id
 
+    pedestriansMenu(ultimateMenu)
     protectionMenu(ultimateMenu)
     trollingMenu(ultimateMenu)
     -- vehiclesMenu(ultimateMenu)
-    -- pedestriansMenu(ultimateMenu)
 
 
     -- test = menu.add_feature('Sound Test', "action", 0, function(feat) 

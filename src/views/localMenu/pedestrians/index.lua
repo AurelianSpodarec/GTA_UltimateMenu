@@ -1,12 +1,31 @@
 require('UltimateMenu.src.views.localMenu.pedestrians.weapon.index')
 require('UltimateMenu.src.views.localMenu.pedestrians.action.index')
-require('UltimateMenu.src.models.pedModel')
+require('UltimateMenu.src.views.localMenu.pedestrians.godMode.index')
+
+local entityHelper = require('UltimateMenu.src.helpers.entityHelper')
+
 
 function pedestriansMenu(parent)
     local pedestriansMenu = menu.add_feature("Pedestrians", "parent", parent, nil).id;
-     
-    pedestriansMenu_weapon(pedestriansMenu)
-    pedestriansMenu_action(pedestriansMenu)
+    
+    -- Exclude players
+
+    pedestrians_godMode(pedestriansMenu)
+
+    peds = menu.add_feature("Type", "parent", pedestriansMenu, function() 
+        
+    end)
+
+    peds = menu.add_feature("Set Weapon", "parent", pedestriansMenu, function() 
+        
+    end)
+
+    peds = menu.add_feature("Properties", "parent", pedestriansMenu, function() 
+        
+    end)
+
+    -- pedestriansMenu_weapon(pedestriansMenu)
+    -- pedestriansMenu_action(pedestriansMenu)
 
   
 end
@@ -80,6 +99,7 @@ end
      --/set_entity_gravity
      -- set entity velocity
      -- Ragdool on/off (can_ped_ragdoll)
+
     ------------------------------
     -- Combat
     -- / Combat Attribute
