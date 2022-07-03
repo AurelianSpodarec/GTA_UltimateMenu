@@ -4,7 +4,7 @@
 
 The *Ultimate Menu* is open source enhancement for GTA5 game, based on the 2take1 Lua script.
 
-The menu offers a robust amount of **highly customisable** features, changing how the pedestrian walks, vehicle MAX speed to a kAmiKadzE plane sent by you on a player of your choice 😜
+It offers a robust amount of **highly customisable** features, changing how the pedestrian walks, vehicle MAX speed to a *kAmiKadzE* plane sent by you on a player of your choice 😜
 
 # Trello
 
