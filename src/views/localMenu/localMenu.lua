@@ -3,18 +3,29 @@ require('UltimateMenu.src.views.localMenu.protection.index')
 require('UltimateMenu.src.views.localMenu.trolling.index')
 require('UltimateMenu.src.views.localMenu.vehicles.index')
 
+require('UltimateMenu.src.views.localMenu.trolling.plane.kamikadzePlane')
+
 local routes = {
     {
         name = "UltimateMenu",
         children = {
             {
+                name = "Trolling",
+                children = {
+                    {
+                        name = "Plane",
+                        component = kamikadzePlane
+                    },
+                    {
+                        name = "Woo",
+                    }
+                }
+            },
+            {
                 name = "Pedestrian"
             },
             {
                 name = "Protection"
-            },
-            {
-                name = "Trolling"
             },
             {
                 name = "Vehicles"
@@ -23,47 +34,39 @@ local routes = {
     }
 }
 
+function menuChildren(parent, menuItem)
+    if(menuItem) then
 
--- function trollingMenu(parent)
-    -- local pedestriansMenu = menu.add_player_feature("Pedestrians", "parent", parent, nil).id;
---     trollingMenu = menu.add_player_feature("Trolling", "parent", parent, nil).id
+        for index, item in pairs(menuItem) do
 
---     enviromentMenu(trollingMenu)
---     planeMenu(trollingMenu)
---     roadMenu(trollingMenu)
+            local name = item.name
+            local subMenu = item.children
 
-
-function createMenu() 
-    -- local test = menu.add_player_feature(routes[1].name, "parent", 0, nil).id
-    for index, item in ipairs(routes) do
-        local name = item.name
-        local name = menu.add_player_feature(name, "parent", 0, nil).id
-        
-        local subMenu = item.children
-        if(subMenu) then
-            for key, value in pairs(subMenu) do
-                subMenuItem = subMenu[key]
-                local subMenuItem = menu.add_player_feature(subMenuItem.name, "parent",  name, nil).id
+            local name = menu.add_player_feature(name, "parent",  parent, nil).id
+            if(subMenu) then
+                menuChildren(name, subMenu)
             end
+
         end
 
     end
 end
 
 
-    -- trollingMenu = menu.add_player_feature("Trolling", "parent", parent, nil).id
-    -- local ultimateMenu = menu.add_player_feature("Ultimate Menu", "parent", 0, nil).id
+function createMenu() 
+    for index, item in ipairs(routes) do
 
+        local name = item.name
+        local subMenu = item.children
+
+        local name = menu.add_player_feature(name, "parent", 0, nil).id
+        if(subMenu) then
+            menuChildren(name, subMenu)
+        end
+
+    end
+end
 
 function localMenu()
-
-
     createMenu()
-    -- local ultimateMenu = menu.add_player_feature("Ultimate Menu", "parent", 0, nil).id
-
-    -- pedestriansMenu(ultimateMenu)
-    -- protectionMenu(ultimateMenu)
-    -- trollingMenu(ultimateMenu)
-    -- vehiclesMenu(ultimateMenu)
-    
 end
