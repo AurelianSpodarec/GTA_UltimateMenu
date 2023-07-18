@@ -1,28 +1,80 @@
-require("UltimateMenu.src.views.localMenu.trolling.plane.kamikadzePlane")
+-- Aircraft
+---------------------------------------------------------------------
+require("UltimateMenu.src.views.trolling.aircraft.kamikadzePlane")
+require("UltimateMenu.src.views.trolling.aircraft.rubioHelicopter")
+
+-- Enviroment
+---------------------------------------------------------------------
+require("UltimateMenu.src.views.trolling.enviroment.floatingVehicles")
+
+-- Road
+---------------------------------------------------------------------
+require("UltimateMenu.src.views.trolling.road.policeChase")
+require("UltimateMenu.src.views.trolling.road.militaryChase")
+require("UltimateMenu.src.views.trolling.road.carAccident")
 
 local routes = {
     {
         name = "Trolling",
         children = {
             {
-                name = "Plane",
+                name = "Aircrafts",
                 children = {
                     {
-                        name = "Kamikadze",
+                        name = "Kamikadze Plane",
                         component = kamikadzePlane
+                    },
+                    {
+                        name = "Spawn Rubios Attack Chopper",
+                        component = rubioHelicopter
                     }
                 }
             },
             {
                 name = "Enviroment",
+                children = {
+                    {
+                        name = "Floating Vehicles",
+                        type = "toggle",
+                        component = floatingVehicles
+                    }
+                }
             },
             {
-                name = "Road",
+                name = "Police Chase",
+                component = policeChase
+            },
+            {
+                name = "Military Chase",
+                component = militaryChase
+            },
+            {
+                name = "Car Addicent",
+                component = carAccident
             }
         }
     },
     {
-        name = "Pedestrian"
+        name = "Pedestrian",
+        children = {
+            {
+                name = "Action",
+                children = {
+                    {
+                        name = "Attack Player",
+                    }
+                }
+            },
+            {
+                name = "General",
+            },
+            {
+                name = "GodMode",
+            },
+            {
+                name = "Weapon",
+            }
+        }
     },
     {
         name = "Protection"

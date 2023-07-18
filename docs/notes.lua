@@ -1,14 +1,34 @@
 
 
 
+-- Police chase etc... Level 1-5 will spawn different stuff, all from level below and up
+-- 1 - biker
+-- 2 - car
+-- 3 - helicopter
+-- 4 - tank
+-- 5 - jet
+
+
 -- Create car that cases you that the police chases
 
 
-
+-- Spawn Tank following a player, 
+-- firetruck etc
 
 
 -- FBI
 
+
+
+    --/ Troll
+    -- Type: From air, from ground, magic
+    -- Kamikaze
+    -- Airstrike in an area with big range
+    -- Rain poop
+    -- Drop a tank on player
+    -- Send Tanks from front to crush 
+    -- Chase player and ram it
+    --Jesus chase: White car, white plane, atomizer - if jesus killed, revive and set it on fire, give 5000max health and attack the player
 
 
 

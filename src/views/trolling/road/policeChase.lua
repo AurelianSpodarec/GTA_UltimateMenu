@@ -18,11 +18,6 @@ cityPolice = {
     vehicle = 0x79FBB0C5
 }
 
-
-
-
-
-
 militaryAPC = {
     vehicle = 0x2189D250
 }
@@ -103,7 +98,7 @@ function policeChase(parent)
     --TODO: Divide logic from view
     -- never let them go out, no ragdool, always chase, don't stop
 
-    local__pedsMenu_carram = menu.add_player_feature("Police Chase", "action", parent, function(feat) 
+    -- local__pedsMenu_carram = menu.add_player_feature("Police Chase", "action", parent, function(feat) 
 
         local playerPos = player.get_player_coords(player.player_id())
 
@@ -115,25 +110,6 @@ function policeChase(parent)
        
         system.wait(100)
  
-    end)
-
-end
-
-function militaryChase(parent)
-
-    -- idea: on shot shots firework - griefing
-    --TODO: Divide logic from view
-    -- never let them go out, no ragdool, always chase, don't stop
-
-    local__pedsMenu_carram = menu.add_player_feature("Military Chase", "action", parent, function(feat) 
-
-        local playerPos = player.get_player_coords(player.player_id())
-
-        spawnUnit(militaryRhino, player.player_id())
-        spawnUnit(militaryRhino, player.player_id()) 
-       
-        system.wait(100)
- 
-    end)
+    -- end)
 
 end

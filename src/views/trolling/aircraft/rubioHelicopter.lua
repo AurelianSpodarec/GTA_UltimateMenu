@@ -1,9 +1,8 @@
-
 local spawnModel = require('UltimateMenu.src.models.spawnModel')
 
-function trollingMenu_rubio(parent)
+function rubioHelicopter(parent)
 
-    menu.add_player_feature("Spawn Rubios Attack Chopper", "action", parent, function(feat, pid)
+    -- menu.add_player_feature("Spawn Rubios Attack Chopper", "action", parent, function(feat, pid)
         -- notify_above_map("Mr Rubio is not happy!", string title, )
         -- Send SMS to player as it spawns (Mr Rubio is not happy!)
 
@@ -78,9 +77,6 @@ function trollingMenu_rubio(parent)
                 ai.task_combat_ped(Shooter2, player.get_player_ped(player.player_id()), 0, 16)
                 ai.task_combat_ped(Rubio, player.get_player_ped(player.player_id()), 0, 16)
             end
-        end)
+        -- end)
  
 end
-
-
--- pedModelCombat(attribute, ability)

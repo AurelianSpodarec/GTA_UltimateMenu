@@ -1,5 +1,5 @@
--- require('UltimateMenu.src.views.localMenu.pedestrians.weapon.index')
--- require('UltimateMenu.src.views.localMenu.pedestrians.action.index')
+-- require('UltimateMenu.src.views.pedestrians.weapon.index')
+-- require('UltimateMenu.src.views.pedestrians.action.index')
 
 
 function vehiclesMenu(parent)

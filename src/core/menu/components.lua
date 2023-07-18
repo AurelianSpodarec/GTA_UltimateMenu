@@ -5,14 +5,25 @@ function menuChildren(subMenuItem, parent)
             local name = item.name
             local subMenu = item.children
             local component = item.component
+            local type = item.type
+
+
 
             if(subMenu) then
                 local name = menu.add_player_feature(name, "parent",  parent, nil).id
                 menuChildren(subMenu, name)
             elseif(component) then
-                local name = menu.add_player_feature(name, "action", parent, function() 
-                    component()
-                end)
+
+                if(type) then
+                    local name = menu.add_player_feature(name, type, parent, function(feat) 
+                        component(feat)
+                    end, name)
+                else
+                    local name = menu.add_player_feature(name, "action", parent, function(feat) 
+                        component(feat)
+                    end, name)
+                end
+
             end
 
 
