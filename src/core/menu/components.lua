@@ -7,13 +7,10 @@ function menuChildren(subMenuItem, parent)
             local component = item.component
             local type = item.type
 
-
-
             if(subMenu) then
                 local name = menu.add_player_feature(name, "parent",  parent, nil).id
                 menuChildren(subMenu, name)
             elseif(component) then
-
                 if(type) then
                     local name = menu.add_player_feature(name, type, parent, function(feat) 
                         component(feat)
@@ -23,9 +20,7 @@ function menuChildren(subMenuItem, parent)
                         component(feat)
                     end, name)
                 end
-
             end
-
 
         end
 

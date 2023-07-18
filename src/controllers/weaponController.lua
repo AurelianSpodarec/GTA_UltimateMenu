@@ -11,6 +11,7 @@ function weaponController.all(parent, callback)
         local ult_categoryName = ult_category.name
         local ult_weapons = ult_category.children
 
+        -- TODO: Extract this menu functionality to be reusable
         local ult_categoryParent = menu.add_player_feature(ult_categoryName, "parent", parent, nil).id
         for j = 1, #ult_weapons do
             ult_weapon = ult_weapons[j]
@@ -18,6 +19,7 @@ function weaponController.all(parent, callback)
                 callback(ult_weapon.hash)
             end)
         end
+
 
     end
     

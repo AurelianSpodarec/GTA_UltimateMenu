@@ -1,17 +1,29 @@
--- Aircraft
----------------------------------------------------------------------
-require("UltimateMenu.src.views.trolling.aircraft.kamikadzePlane")
-require("UltimateMenu.src.views.trolling.aircraft.rubioHelicopter")
-
--- Enviroment
----------------------------------------------------------------------
-require("UltimateMenu.src.views.trolling.enviroment.floatingVehicles")
-
+--------------------------------------------------------------------
 -- Road
 ---------------------------------------------------------------------
-require("UltimateMenu.src.views.trolling.road.policeChase")
-require("UltimateMenu.src.views.trolling.road.militaryChase")
-require("UltimateMenu.src.views.trolling.road.carAccident")
+
+    -- Aircraft
+    ---------------------------------------------------------------------
+    require("UltimateMenu.src.views.trolling.aircraft.kamikadzePlane")
+    require("UltimateMenu.src.views.trolling.aircraft.rubioHelicopter")
+
+    -- Enviroment
+    ---------------------------------------------------------------------
+    require("UltimateMenu.src.views.trolling.enviroment.floatingVehicles")
+
+    -- Road
+    ---------------------------------------------------------------------
+    require("UltimateMenu.src.views.trolling.road.policeChase")
+    require("UltimateMenu.src.views.trolling.road.militaryChase")
+    require("UltimateMenu.src.views.trolling.road.carAccident")
+
+---------------------------------------------------------------------
+-- Pedestrians
+---------------------------------------------------------------------
+
+    -- Weapons
+    ---------------------------------------------------------------------
+    require("UltimateMenu.src.views.pedestrians.weapons.pedSetWeapon")
 
 local routes = {
     {
@@ -66,7 +78,14 @@ local routes = {
                 }
             },
             {
-                name = "General",
+                name = "Weapons",
+                children = {
+                    {
+                        name = "Set Weapon",
+                        type = "parent",
+                        component = pedSetWeapon,
+                    }
+                }
             },
             {
                 name = "GodMode",
