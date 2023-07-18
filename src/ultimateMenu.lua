@@ -1,5 +1,5 @@
-require("UltimateMenu.src.views.localMenu.localMenu")
+require("UltimateMenu.src.core.menu.createMenu")
 
 function load()
-    localMenu()
+    createMenu()
 end
