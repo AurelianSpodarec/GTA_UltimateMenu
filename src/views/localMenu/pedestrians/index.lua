@@ -19,20 +19,20 @@ function pedestriansMenu(parent)
 
     peds = menu.add_player_feature("Type", "parent", pedestriansMenu, function() 
         
+        pedestriansMenu_action(pedestriansMenu)
     end)
 
     peds = menu.add_player_feature("Set Weapon", "parent", pedestriansMenu, function() 
         -- Give All weapons
         -- Remove All weapons
         -- Give Specific weaapon
+        -- pedestriansMenu_weapon(pedestriansMenu)
     end)
 
     peds = menu.add_player_feature("Properties", "parent", pedestriansMenu, function() 
         
     end)
 
-    -- pedestriansMenu_weapon(pedestriansMenu)
-    -- pedestriansMenu_action(pedestriansMenu)
 
   
 end
