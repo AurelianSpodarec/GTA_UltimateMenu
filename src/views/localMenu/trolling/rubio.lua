@@ -3,7 +3,7 @@ local spawnModel = require('UltimateMenu.src.models.spawnModel')
 
 function trollingMenu_rubio(parent)
 
-    menu.add_feature("Spawn Rubios Attack Chopper", "action", parent, function(feat, pid)
+    menu.add_player_feature("Spawn Rubios Attack Chopper", "action", parent, function(feat, pid)
         -- notify_above_map("Mr Rubio is not happy!", string title, )
         -- Send SMS to player as it spawns (Mr Rubio is not happy!)
 

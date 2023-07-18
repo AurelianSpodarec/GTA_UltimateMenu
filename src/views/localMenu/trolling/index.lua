@@ -6,7 +6,7 @@ require('UltimateMenu.src.views.localMenu.trolling.plane.index')
 require('UltimateMenu.src.views.localMenu.trolling.road.index')
 
 function trollingMenu(parent)
-    trollingMenu = menu.add_feature("Trolling", "parent", parent, nil).id
+    trollingMenu = menu.add_player_feature("Trolling", "parent", parent, nil).id
 
     enviromentMenu(trollingMenu)
     planeMenu(trollingMenu)

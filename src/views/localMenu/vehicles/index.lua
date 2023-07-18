@@ -3,9 +3,9 @@
 
 
 function vehiclesMenu(parent)
-    local vehiclesMenu = menu.add_feature("Vehicles", "parent", parent, nil).id;
+    local vehiclesMenu = menu.add_player_feature("Vehicles", "parent", parent, nil).id;
     
-    local vehiclesMenu = menu.add_feature("Spawn", "parent", vehiclesMenu, function(feat) 
+    local vehiclesMenu = menu.add_player_feature("Spawn", "parent", vehiclesMenu, function(feat) 
         
     end).id;
 

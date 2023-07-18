@@ -165,7 +165,7 @@ return pedModel
 
 -- /pedModel Combat? @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
--- ult.feature['Delete All Peds'] = menu.add_feature('Delete All Peds', 'toggle', ult.parent['Ped Manager'], function(f)
+-- ult.feature['Delete All Peds'] = menu.add_player_feature('Delete All Peds', 'toggle', ult.parent['Ped Manager'], function(f)
 --     while f.on do
 --         local peds = ped.get_all_peds()
 --         menu.create_thread(function(peds)
@@ -252,11 +252,6 @@ return pedModel
 -- function pedModels.setArmor(feat)
 
 -- end
-
-
--
-
-
 
 
 

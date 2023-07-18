@@ -6,21 +6,28 @@ local entityHelper = require('UltimateMenu.src.helpers.entityHelper')
 
 
 function pedestriansMenu(parent)
-    local pedestriansMenu = menu.add_feature("Pedestrians", "parent", parent, nil).id;
+    local pedestriansMenu = menu.add_player_feature("Pedestrians", "parent", parent, nil).id;
     
     -- Exclude players
+    -- General
+    -- godmode, no ragdool, walk speed, outfit
+
+    -- Funy: spawn transvetite with a batoon
+    
 
     pedestrians_godMode(pedestriansMenu)
 
-    peds = menu.add_feature("Type", "parent", pedestriansMenu, function() 
+    peds = menu.add_player_feature("Type", "parent", pedestriansMenu, function() 
         
     end)
 
-    peds = menu.add_feature("Set Weapon", "parent", pedestriansMenu, function() 
-        
+    peds = menu.add_player_feature("Set Weapon", "parent", pedestriansMenu, function() 
+        -- Give All weapons
+        -- Remove All weapons
+        -- Give Specific weaapon
     end)
 
-    peds = menu.add_feature("Properties", "parent", pedestriansMenu, function() 
+    peds = menu.add_player_feature("Properties", "parent", pedestriansMenu, function() 
         
     end)
 
@@ -68,6 +75,7 @@ end
  
 
 
+-- launch peds in air and open parachadute
 
 -- if entity.get_entity_coords(Entity):magnitude(entity.get_entity_coords(Entity2) < range then
 -- you can draw a red sphere displaying the range too, with draw_marker’s debug sphere
@@ -126,7 +134,7 @@ end
     
  
 
-    -- _2t1script.feature['Turn All Peds Invincible'] = menu.add_feature('Turn All Peds Invincible', 'toggle', _2t1script.parent['Ped Manager'], function(f)
+    -- _2t1script.feature['Turn All Peds Invincible'] = menu.add_player_feature('Turn All Peds Invincible', 'toggle', _2t1script.parent['Ped Manager'], function(f)
     --     while f.on do
     --         local peds = ped.get_all_peds()
     --         for i = 1, #peds do

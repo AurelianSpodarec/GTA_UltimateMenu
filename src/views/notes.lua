@@ -1,4 +1,14 @@
+
+
+
+-- Create car that cases you that the police chases
+
+
+
+
+
 -- FBI
+
 
 
 
@@ -300,7 +310,7 @@
 
 
 
-    -- test = menu.add_feature("Test sound", "toggle", local_pedsMenu, function(feat) 
+    -- test = menu.add_player_feature("Test sound", "toggle", local_pedsMenu, function(feat) 
 
     --     if feat.on then
     --         audio.play_sound_from_coord(-1, "Traffic_Control_Light_Switch_Back", entity.get_entity_coords(player.get_player_ped(player.player_id())), "BIG_SCORE_3A_SOUNDS", true, 5, false)
@@ -315,9 +325,9 @@
     -- end)
 
 
-    -- local__pedsMenu_godMode = menu.add_feature("Set Weapon to All", "toggle", local_pedsMenu, function(feat) pedModel.setAllWeapon(feat) end);
+    -- local__pedsMenu_godMode = menu.add_player_feature("Set Weapon to All", "toggle", local_pedsMenu, function(feat) pedModel.setAllWeapon(feat) end);
 
-    -- local__pedsMenu_weeeeeee = menu.add_feature("All Weapons", "action", local_pedsMenu, function(feat)
+    -- local__pedsMenu_weeeeeee = menu.add_player_feature("All Weapons", "action", local_pedsMenu, function(feat)
         
     --     local all_weapons = weapon.get_all_weapon_hashes()
 

@@ -1,7 +1,7 @@
 local pedModel <const> = require('UltimateMenu.src.models.pedModel');
 local weaponModel <const> = require('UltimateMenu.src.models.weaponModel');
 local spawnModel <const> = require('UltimateMenu.src.models.spawnModel');
-local characterModel <const> = require('UltimateMenu.src.models.characterModel');
+-- local characterModel <const> = require('UltimateMenu.src.models.characterModel');
 
 local entityHelper <const> = require('UltimateMenu.src.helpers.entityHelper');
 

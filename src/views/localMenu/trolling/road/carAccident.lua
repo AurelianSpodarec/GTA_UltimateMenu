@@ -6,7 +6,7 @@ function carAccident(parent)
 
     --TODO: Divide logic from view
 
-    local__pedsMenu_carram = menu.add_feature("Car Accident", "action", parent, function(feat) 
+    local__pedsMenu_carram = menu.add_player_feature("Car Accident", "action", parent, function(feat) 
 
         local playerPos = player.get_player_coords(player.player_id())
         

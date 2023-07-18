@@ -66,7 +66,7 @@ end
 function kamikadzePlane(parent)
 
     -- a = menu.add_player_feature("Kamikadze Plane", "action", parent)
-    local_trollingMenu_kamikadzePlane = menu.add_feature("Kamikadze Plane", "action", parent, function() 
+    local_trollingMenu_kamikadzePlane = menu.add_player_feature("Kamikadze Plane", "action", parent, function() 
         local drivingMode = 17039360
         local speed = 200 
 
@@ -99,11 +99,11 @@ function kamikadzePlane(parent)
         end
     end)
 
-    -- local_trollingMenu_kamikadzePlane = menu.add_feature("Following Kamikadze Plane", "action", parent, function() 
+    -- local_trollingMenu_kamikadzePlane = menu.add_player_feature("Following Kamikadze Plane", "action", parent, function() 
        
     -- end)
 
-    -- local_trollingMenu_kamikadzePlane3 = menu.add_feature("Disable Planes Nerby", "action", local_trollingMenu_kamikadzePlane, nil)
+    -- local_trollingMenu_kamikadzePlane3 = menu.add_player_feature("Disable Planes Nerby", "action", local_trollingMenu_kamikadzePlane, nil)
     
 -- Details: a plane of your choice to kamikaze into a player and kill them.
 -- plane speed
@@ -161,7 +161,7 @@ end
                 
             -- get_ped_in_vehicle_seat(planeA, 0)
     -- Kamikaze Planes
-    -- local__pedsMenu_plane = menu.add_feature("Falling Plane from the sky", "action", local_pedsMenu, function(feat) 
+    -- local__pedsMenu_plane = menu.add_player_feature("Falling Plane from the sky", "action", local_pedsMenu, function(feat) 
     --     -- while feat.on do
     --     --     pedModel.removePeds(feat); 
     --     --     system.wait(100)

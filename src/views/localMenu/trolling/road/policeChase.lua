@@ -93,13 +93,17 @@ function spawnUnit(data, ult_player)
     end
 end
 
+        -- ped.set_ped_into_vehicle(bikeDriver, bike, -1)
+        -- ped.set_ped_can_ragdoll(bikeDriver, false)
+        -- vehicle.set_vehicle_engine_on(bike, true, true, false) 
+        -- vehicle.set_vehicle_mod_kit_type(bike, 0)
 function policeChase(parent)
 
     -- idea: on shot shots firework - griefing
     --TODO: Divide logic from view
     -- never let them go out, no ragdool, always chase, don't stop
 
-    local__pedsMenu_carram = menu.add_feature("Police Chase", "action", parent, function(feat) 
+    local__pedsMenu_carram = menu.add_player_feature("Police Chase", "action", parent, function(feat) 
 
         local playerPos = player.get_player_coords(player.player_id())
 
@@ -108,42 +112,28 @@ function policeChase(parent)
         spawnUnit(highwaypatrol, player.player_id())
         
         spawnUnit(highwaypatrol, player.player_id())
-        
-        -- spawnUnit(militaryRhino, player.player_id())
-        -- spawnUnit(riotAdvanced, player.player_id())
-        -- local car = spawnModel.vehicle(0x79FBB0C5, player.get_player_coords(player.player_id()) + v3(math.random(-50, 50), math.random(0, 0), math.random(0, 0)))
-        -- local bike = spawnModel.vehicle(0xFDEFAEC3, player.get_player_coords(player.player_id()) + v3(math.random(-50, 50), math.random(0, 0), math.random(0, 0)))
-        
-        -- local carDriver = spawnModel.ped(1581098148)
-        -- local bikeDriver = spawnModel.ped(1939545845)
-
-        -- local drivingMode = 17039360
-        -- local speed = 200 
-
-        -- ped.set_ped_into_vehicle(carDriver, car, -1)
-        -- ped.set_ped_can_ragdoll(carDriver, false)
-        -- vehicle.set_vehicle_engine_on(car, true, true, false) 
-        -- vehicle.set_vehicle_mod_kit_type(car, 0)
-
-        -- ped.set_ped_into_vehicle(bikeDriver, bike, -1)
-        -- ped.set_ped_can_ragdoll(bikeDriver, false)
-        -- vehicle.set_vehicle_engine_on(bike, true, true, false) 
-        -- vehicle.set_vehicle_mod_kit_type(bike, 0)
- 
        
-
-        -- if entityHelper.request_control(bikeDriver, 25) then
-        --     ai.task_vehicle_follow(bikeDriver, bike, player.get_player_ped(player.player_id()), speed, drivingMode, 0)
-        -- end
         system.wait(100)
-
-        -- while feat.on do
-        --     pedModel.attackPlayer(feat); 
-        --     system.wait(100)
-        -- end  
-        
-        -- ai.task_vehicle_drive_to_coord_longrange(driver, car, v3(playerPos.x, playerPos.y, 0), speed, drivingMode, 263595, 1, 1)
+ 
     end)
 
 end
 
+function militaryChase(parent)
+
+    -- idea: on shot shots firework - griefing
+    --TODO: Divide logic from view
+    -- never let them go out, no ragdool, always chase, don't stop
+
+    local__pedsMenu_carram = menu.add_player_feature("Military Chase", "action", parent, function(feat) 
+
+        local playerPos = player.get_player_coords(player.player_id())
+
+        spawnUnit(militaryRhino, player.player_id())
+        spawnUnit(militaryRhino, player.player_id()) 
+       
+        system.wait(100)
+ 
+    end)
+
+end

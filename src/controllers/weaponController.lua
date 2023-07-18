@@ -1,4 +1,4 @@
-local data = require('UltimateMenu.src.data.weapons')
+local data = require('UltimateMenu.src.data.weaponsData')
 local pedModel = require('UltimateMenu.src.models.pedModel')
 
 local weaponController = {}
@@ -11,10 +11,10 @@ function weaponController.all(parent, callback)
         local ult_categoryName = ult_category.name
         local ult_weapons = ult_category.children
 
-        local ult_categoryParent = menu.add_feature(ult_categoryName, "parent", parent, nil).id
+        local ult_categoryParent = menu.add_player_feature(ult_categoryName, "parent", parent, nil).id
         for j = 1, #ult_weapons do
             ult_weapon = ult_weapons[j]
-            menu.add_feature(ult_weapon.name, "action", ult_categoryParent, function()                   
+            menu.add_player_feature(ult_weapon.name, "action", ult_categoryParent, function()                   
                 callback(ult_weapon.hash)
             end)
         end

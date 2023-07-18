@@ -2,7 +2,7 @@ require('UltimateMenu.src.views.localMenu.trolling.plane.kamikadzePlane')
 
 
 function planeMenu(parent)
-    local planeMenu = menu.add_feature("Plane", "parent", parent, nil).id;
+    local planeMenu = menu.add_player_feature("Plane", "parent", parent, nil).id;
      
     kamikadzePlane(planeMenu)
 

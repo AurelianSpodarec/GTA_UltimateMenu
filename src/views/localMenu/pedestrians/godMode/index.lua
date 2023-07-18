@@ -2,7 +2,7 @@ local entityHelper = require('UltimateMenu.src.helpers.entityHelper')
 
 
 function pedestrians_godMode(parent)
-    peds = menu.add_feature("God Mode", "toggle", parent, function(feat) 
+    peds = menu.add_player_feature("God Mode", "toggle", parent, function(feat) 
 
         while feat.on do
             local peds = ped.get_all_peds()

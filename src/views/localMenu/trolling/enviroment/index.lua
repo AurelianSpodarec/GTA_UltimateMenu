@@ -21,7 +21,7 @@ end
 
 
 function enviromentMenu(parent)
-    local enviromentMenu = menu.add_feature("Enviroment", "parent", parent, nil).id;
+    local enviromentMenu = menu.add_player_feature("Enviroment", "parent", parent, nil).id;
     
     floatingVehicles(enviromentMenu)
 end

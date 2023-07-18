@@ -50,11 +50,11 @@ SPAWN A PET: A COUGAR< A FLYING SPAWN A PERSONAL PET WOOF
 -- [Police, SWAT, Army]
 
 function createPoliceMenu(parent, config)
-    policeSubMenu = menu.add_feature("Police", "parent", parent.id, nil)
+    policeSubMenu = menu.add_player_feature("Police", "parent", parent.id, nil)
 
 
-    swatTeam = policeSubMenu.add_feature('SWAT Team', "parent", parent.id, nil)
-    -- swatTeam.add_feature()
+    swatTeam = policeSubMenu.add_player_feature('SWAT Team', "parent", parent.id, nil)
+    -- swatTeam.add_player_feature()
     ---- Spawn
     -- SWAT Team
     -- | [] God Mode
