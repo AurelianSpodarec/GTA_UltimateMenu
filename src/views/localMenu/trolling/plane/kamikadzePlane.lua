@@ -66,7 +66,7 @@ end
 function kamikadzePlane(parent)
 
     -- a = menu.add_player_feature("Kamikadze Plane", "action", parent)
-    local_trollingMenu_kamikadzePlane = menu.add_player_feature("Kamikadze Plane", "action", parent, function() 
+    -- local_trollingMenu_kamikadzePlane = menu.add_player_feature("Kamikadze Plane", "action", parent, function() 
         local drivingMode = 17039360
         local speed = 200 
 
@@ -97,7 +97,7 @@ function kamikadzePlane(parent)
             end
             system.wait(0)
         end
-    end)
+    -- end)
 
     -- local_trollingMenu_kamikadzePlane = menu.add_player_feature("Following Kamikadze Plane", "action", parent, function() 
        

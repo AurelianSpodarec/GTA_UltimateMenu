@@ -7,66 +7,92 @@ require('UltimateMenu.src.views.localMenu.trolling.plane.kamikadzePlane')
 
 local routes = {
     {
-        name = "UltimateMenu",
+        name = "Trolling",
         children = {
             {
-                name = "Trolling",
+                name = "Plane",
                 children = {
                     {
-                        name = "Plane",
+                        name = "Kamikadze",
                         component = kamikadzePlane
-                    },
-                    {
-                        name = "Woo",
                     }
                 }
             },
             {
-                name = "Pedestrian"
+                name = "Enviroment",
             },
             {
-                name = "Protection"
-            },
-            {
-                name = "Vehicles"
+                name = "Road",
             }
         }
+    },
+    {
+        name = "Pedestrian"
+    },
+    {
+        name = "Protection"
+    },
+    {
+        name = "Vehicles"
     }
 }
 
-function menuChildren(parent, menuItem)
-    if(menuItem) then
 
-        for index, item in pairs(menuItem) do
+function menuChildren(subMenuItem, parent)
+    if(subMenuItem) then
 
+        for index, item in pairs(subMenuItem) do
             local name = item.name
             local subMenu = item.children
+            local component = item.component
 
-            local name = menu.add_player_feature(name, "parent",  parent, nil).id
             if(subMenu) then
-                menuChildren(name, subMenu)
+                local name = menu.add_player_feature(name, "parent",  parent, nil).id
+                menuChildren(subMenu, name)
+            elseif(component) then
+                local name = menu.add_player_feature("hi", "action", parent, function() 
+                    component()
+                end)
             end
+
 
         end
 
     end
 end
 
-
-function createMenu() 
-    for index, item in ipairs(routes) do
+function createItem(item, parent)
+    if(item) then
 
         local name = item.name
         local subMenu = item.children
+        local component = item.component
 
-        local name = menu.add_player_feature(name, "parent", 0, nil).id
+        local name = menu.add_player_feature(name, "parent", parent, nil).id
         if(subMenu) then
-            menuChildren(name, subMenu)
+            menuChildren(subMenu, name)
         end
 
+    end
+end
+
+
+
+function createMenu() 
+    local menuItem = menu.add_player_feature("Ultimate Menu", "parent", 0, nil).id
+
+    for index, item in pairs(routes) do
+        createItem(item, menuItem)       
     end
 end
 
 function localMenu()
     createMenu()
 end
+
+
+            -- if(component) then
+            --     wop = name.add_player_feature(name, "action", parent, function() 
+            --         component()
+            --     end)
+            -- end
