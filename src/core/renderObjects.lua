@@ -1,8 +1,9 @@
 local spawnModel = require('UltimateMenu.src.models.spawnModel')
+local entityHelper = require('UltimateMenu.src.helpers.entityHelper')
 
 local render = {}
 
-function render.npc(data, machine) 
+function render.npc(data, machine, pid) 
     if not data then
         print("Error: Missing data argument for render.npc.")
         return
@@ -43,37 +44,46 @@ function render.npc(data, machine)
             if(item.groupMember) then
                 ped.set_ped_as_group_member(npc, item.groupMember)
             end
+
+            ped.set_ped_never_leaves_group(npc, true)
             
             -- Protect, Attack, Follow, 
             if(item.taskCombatPed) then
-                ai.task_combat_ped(npc, player.get_player_ped(player.player_id()), 0, 16)
+                ai.task_combat_ped(npc, pid, 0, 16)
             end
-
 
             if(machine) then
                 ped.set_ped_combat_attributes(machine, 1, true)
                 ped.set_ped_into_vehicle(npc, machine, item.seat)
             end
+
         end
     end
 end
 
-function render.vehicle(modelHash) 
-    if not modelHash then
+function render.vehicle(data, npc, pid)
+    if not data then
         print("Error: Missing modelHash argument for render.vehicle.")
         return
     end
 
-    local machine = spawnModel.vehicle(modelHash, player.get_player_coords(player.player_id()) + v3(math.random(-20, 20), math.random(-20, 20), math.random(50, 60)), math.random(0, 0))
+    local machine = spawnModel.vehicle(data.modelHash, player.get_player_coords(pid) + v3(math.random(-20, 20), math.random(-20, 20), math.random(50, 60)), math.random(0, 0))
     if(machine) then
         vehicle.set_vehicle_engine_on(machine, true, true, false)
         vehicle.control_landing_gear(machine, 3)
         vehicle.set_vehicle_forward_speed(machine, 10.0)
+
+        if(data.mode == "follow") then
+            if entityHelper.request_control(npc, 25) then
+                ai.task_vehicle_follow(npc, machine, player.get_player_ped(pid), data.speed, data.drivingMode, 0)
+            end
+            system.wait(100)
+        end
+
     end
 
     return machine
 
 end
-
 
 return render

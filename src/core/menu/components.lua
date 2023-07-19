@@ -40,14 +40,14 @@ function menuChildren(subMenuItem, parent)
                             state.viewsLoaded = true
                         end).id
                     else
-                        local name = menu.add_player_feature(name, type, parent, function(feat) 
-                            component(feat, name)
+                        local name = menu.add_player_feature(name, type, parent, function(feat, pid) 
+                            component(feat, name, pid)
                         end, name)
                     end
 
                 else
-                    local name = menu.add_player_feature(name, "action", parent, function(feat) 
-                        component(feat, name)
+                    local name = menu.add_player_feature(name, "action", parent, function(feat, pid) 
+                        component(feat, name, pid)
                     end, name)
                 end
             end

@@ -1,33 +1,45 @@
 --------------------------------------------------------------------
--- Road
----------------------------------------------------------------------
+-- Trolling
+--------------------------------------------------------------------
 
     -- Aircraft
-    ---------------------------------------------------------------------
+    ----------------------------------------------------------------
     require("UltimateMenu.src.views.trolling.aircraft.kamikadzePlane")
     require("UltimateMenu.src.views.trolling.aircraft.rubioHelicopter")
 
     -- Enviroment
-    ---------------------------------------------------------------------
+    ----------------------------------------------------------------
     require("UltimateMenu.src.views.trolling.enviroment.floatingVehicles")
 
     -- Road
-    ---------------------------------------------------------------------
+    ----------------------------------------------------------------
     require("UltimateMenu.src.views.trolling.road.policeChase")
     require("UltimateMenu.src.views.trolling.road.militaryChase")
     require("UltimateMenu.src.views.trolling.road.carAccident")
     require("UltimateMenu.src.views.trolling.road.policeBlockade")
 
+    -- Other
+    -----------------------------------------------------------------
+    require("UltimateMenu.src.views.trolling.suicideBomber")
+    
 ---------------------------------------------------------------------
 -- Pedestrians
 ---------------------------------------------------------------------
 
     -- Weapons
-    ---------------------------------------------------------------------
+    -----------------------------------------------------------------
     require("UltimateMenu.src.views.pedestrians.weapons.pedSetWeapon")
     local weaponsData = require('UltimateMenu.src.data.weaponsData')
 
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+
+
+
 local routes = {
+    -- ---------------------------------------------------------------
+    -- Trolling
+    -- ---------------------------------------------------------------
     {
         name = "Trolling",
         children = {
@@ -69,9 +81,16 @@ local routes = {
             {
                 name = "Police Blockade",
                 component = policeBlockade
-            }
-        }
+            },
+            -- {
+            --     name = "Suicide Bomber",
+            --     component = suicideBomber
+            -- }
+        },
     },
+    -- ---------------------------------------------------------------
+    -- Pedestrians
+    -- ---------------------------------------------------------------
     {
         name = "Pedestrian",
         children = {
@@ -102,11 +121,17 @@ local routes = {
             }
         }
     },
+    -- ---------------------------------------------------------------
+    -- Drama
+    -- ---------------------------------------------------------------
+    {
+        name = "Drama"
+    },
+    -- ---------------------------------------------------------------
+    -- Protection
+    -- ---------------------------------------------------------------
     {
         name = "Protection"
-    },
-    {
-        name = "Vehicles"
     }
 }
 

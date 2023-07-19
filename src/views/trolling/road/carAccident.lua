@@ -1,27 +1,40 @@
 local spawnModel = require('UltimateMenu.src.models.spawnModel')
 local entityHelper = require('UltimateMenu.src.helpers.entityHelper')
+local render = require('UltimateMenu.src.core.renderObjects')
 
-function carAccident(parent)
+local data = {
+    sms = { 
+        initial = "You hit my ride, you bastard!"
+    },
+    squads = {
+        relationship = 1, -- protect, attack, follow, 
+        vehicles = {
+            modelHash = -2048333973,
+            drivingMode = 17039360,
+            speed = 200,
+            engine = {
+                on = true,
+            },
+            mode = "follow"
+        },
+        members = {
+            {
+                name = "Driver",
+                modelHash = -413447396,
+                seat = -1,
+                mode = "follow"
+            }
+        }
+    }
+}
 
-    local playerPos = player.get_player_coords(player.player_id())
+function carAccident(parent, name, pid)
+    local machine = data.squads.vehicles
+    local members = data.squads.members
 
-    local randomOffsetX = math.random(-50, 50)
-    local yOffset = 0
-    local zOffset = 0
-    
-    local car = spawnModel.vehicle(-2048333973, playerPos + v3(randomOffsetX, yOffset, zOffset))
-    local driver = spawnModel.ped(-413447396)
-    
-    local drivingMode = 17039360
-    local speed = 200 
+    player.send_player_sms(pid, data.sms.initial)
 
-    ped.set_ped_into_vehicle(driver, car, -1)
-    vehicle.set_vehicle_engine_on(car, true, true, false) 
-    vehicle.set_vehicle_mod_kit_type(car, 0)
-
-    if entityHelper.request_control(driver, 25) then
-        ai.task_vehicle_follow(driver, car, player.get_player_ped(player.player_id()), speed, drivingMode, 0)
-    end
-    system.wait(100)
+    local car = render.vehicle(machine, npcs, pid)
+    local npcs = render.npc(members, car, pid)
 
 end

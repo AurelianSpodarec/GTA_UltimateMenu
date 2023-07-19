@@ -1,38 +1,44 @@
 local spawnModel = require('UltimateMenu.src.models.spawnModel')
 local entityHelper = require('UltimateMenu.src.helpers.entityHelper')
+local render = require('UltimateMenu.src.core.renderObjects')
 
-function kamikadzePlane(parent)
+local squadKamikadzePlane = {
+    sms = { 
+        initial = "Mayday Mayday! We got shot! Engine down, ENGINE DO..."
+    },
+    squads = {
+        relationship = 1, -- protect, attack, follow, 
+        vehicles = {
+            modelHash = -1214505995,
+            drivingMode = 17039360,
+            speed = 200,
+            engine = {
+                on = true,
+            }
+        },
+        members = {
+            {
+                name = "Pilot",
+                modelHash = -413447396,
+                seat = -1,
+            }
+        }
+    }
+}
 
-    local vehicleModel = -1214505995
-    local drivingMode = 17039360
-    local speed = 200 
+function kamikadzePlane(parent, name, pid)
+    local machine = squadKamikadzePlane.squads.vehicles
+    local members = squadKamikadzePlane.squads.members
 
-    local playerID = player.player_id()
-    local playerCords = player.get_player_coords(playerID)
-    local playerPed = player.get_player_ped(playerID)
+    player.send_player_sms(pid, squadKamikadzePlane.sms.initial)
 
-    local xRange = 300
-    local yRange = 200
-    local zOffset = 100    
-    -- circle, distance, height
-
-    local xRandomOffset = math.random(-xRange, xRange)
-    local yRandomOffset = math.random(-yRange, yRange)
-    local zRandomOffset = math.random(0, zOffset)
-
-    local spawnPosition = playerCords + v3(xRandomOffset, yRandomOffset, zRandomOffset)
-    local plane = spawnModel.vehicle(vehicleModel, spawnPosition)
-
-    local pilot = spawnModel.ped(-413447396)
-    entityHelper.request_control(plane, 0)
-
-    ped.set_ped_into_vehicle(pilot, plane, -1)
-    vehicle.set_vehicle_engine_on(plane, true, true, false)
+    local plane = render.vehicle(squadKamikadzePlane.squads.vehicles.modelHash, pid)
+    render.npc(members, plane)
 
     while not entity.is_entity_dead(plane) do
         if entityHelper.request_control(plane, 0) then
-            entityHelper.pointEntityTowards(plane, playerPed)
-            
+
+            entityHelper.pointEntityTowards(plane, player.get_player_ped(pid))
             vehicle.set_vehicle_on_ground_properly(plane)
             vehicle.control_landing_gear(plane, 3)
             system.yield(15)

@@ -54,7 +54,7 @@ local squadRubio = {
     }
 }
 
-function rubioHelicopter(parent)
-    local heli = render.vehicle(squadRubio.squads.vehicles.modelHash)
-    render.npc(squadRubio.squads.members, heli)
+function rubioHelicopter(feat, name, pid)
+    local heli = render.vehicle(squadRubio.squads.vehicles.modelHash, pid)
+    render.npc(squadRubio.squads.members, heli, pid)
 end
