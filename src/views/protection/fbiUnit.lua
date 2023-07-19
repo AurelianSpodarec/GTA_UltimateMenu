@@ -5,6 +5,10 @@ local characterModel <const> = require('UltimateMenu.src.models.characterModel')
 
 -- local entityState <const> = require('UltimateMenu.src.state.entityState');
 
+-- Have FBI following a player friendly
+-- have helicopter follow player, friendly
+-- have jet follow a player, friendly
+
 function FBIMenu(parent)
     FBIMenu = menu.add_player_feature("FBI", "parent", parent, nil).id
 
@@ -16,7 +20,6 @@ function FBIMenu(parent)
         character = characterModel.create(characterData)
         groupModel.setPedGroup(character, groupID, true)
         
-    
     end)
 
 end

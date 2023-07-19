@@ -1,7 +1,5 @@
 local entityHelper <const> = require('UltimateMenu.src.helpers.entityHelper')
 
-
-
 local spawnModel = {};
 
 function spawnModel.ped(ult_hash, ult_position, ult_pedType, ult_heading, ult_networked, ult_unk1)
@@ -18,7 +16,6 @@ function spawnModel.ped(ult_hash, ult_position, ult_pedType, ult_heading, ult_ne
 
     local ult_ped = ped.create_ped(ult_pedType, ult_hash, ult_position, ult_heading, ult_networked, ult_unk1)
     streaming.set_model_as_no_longer_needed(ult_hash)
-
     return ult_ped
 end
 
