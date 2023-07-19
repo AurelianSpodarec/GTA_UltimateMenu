@@ -1,1 +1,0 @@
-police, tank blockade etc... spikes

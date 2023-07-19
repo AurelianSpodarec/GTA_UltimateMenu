@@ -73,7 +73,6 @@ function spawnUnit(data, ult_player)
     local drivingMode = 17039360
     local speed = 200
     
-
     local pedestrians = {}
     for i = 1, data.seats do
         table.insert(pedestrians, spawnModel.ped(data.outfit))
@@ -105,7 +104,6 @@ function policeChase(parent)
         spawnUnit(lawUnits, player.player_id())
         spawnUnit(lawUnits, player.player_id())
         spawnUnit(highwaypatrol, player.player_id())
-        
         spawnUnit(highwaypatrol, player.player_id())
        
         system.wait(100)

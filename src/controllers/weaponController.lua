@@ -4,42 +4,42 @@ local pedModel = require('UltimateMenu.src.models.pedModel')
 local weaponController = {}
  
 function weaponController.all(parent, callback)
-     
+    
+    -- TODO: Extract this menu functionality to be reusable
     for index = 1, #data do
-        local ult_category = data[index]
+        local category = data[index]
 
-        local ult_categoryName = ult_category.name
-        local ult_weapons = ult_category.children
+        local name = category.name
+        local children = category.children
 
-        -- TODO: Extract this menu functionality to be reusable
-        local ult_categoryParent = menu.add_player_feature(ult_categoryName, "parent", parent, nil).id
-        for j = 1, #ult_weapons do
-            ult_weapon = ult_weapons[j]
-            menu.add_player_feature(ult_weapon.name, "action", ult_categoryParent, function()                   
-                callback(ult_weapon.hash)
+        local parent = menu.add_player_feature(name, "parent", parent, nil).id
+
+        for j = 1, #children do
+            subChildren = children[j]
+            menu.add_player_feature(subChildren.name, "action", parent, function()                   
+                callback(subChildren.hash)
             end)
         end
-
-
+        
     end
     
 end
 
-function weaponController.byCategory(parent, category)
+-- function weaponController.byCategory(parent, category)
 
-end
-
-
-function weaponController.byName()
-
-end
+-- end
 
 
-function weaponControllers(category)
+-- function weaponController.byName()
 
-    -- check if category exists, if not throw out notification/error
+-- end
 
-end
+
+-- function weaponControllers(category)
+
+--     -- check if category exists, if not throw out notification/error
+
+-- end
 
 
 return weaponController

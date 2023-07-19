@@ -4,8 +4,12 @@ local entityHelper = require('UltimateMenu.src.helpers.entityHelper')
 function carAccident(parent)
 
     local playerPos = player.get_player_coords(player.player_id())
+
+    local randomOffsetX = math.random(-50, 50)
+    local yOffset = 0
+    local zOffset = 0
     
-    local car = spawnModel.vehicle(-2048333973, player.get_player_coords(player.player_id()) + v3(math.random(-50, 50), math.random(0, 0), math.random(0, 0)))
+    local car = spawnModel.vehicle(-2048333973, playerPos + v3(randomOffsetX, yOffset, zOffset))
     local driver = spawnModel.ped(-413447396)
     
     local drivingMode = 17039360

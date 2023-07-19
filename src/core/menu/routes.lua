@@ -16,6 +16,7 @@
     require("UltimateMenu.src.views.trolling.road.policeChase")
     require("UltimateMenu.src.views.trolling.road.militaryChase")
     require("UltimateMenu.src.views.trolling.road.carAccident")
+    require("UltimateMenu.src.views.trolling.road.policeBlockade")
 
 ---------------------------------------------------------------------
 -- Pedestrians
@@ -24,6 +25,7 @@
     -- Weapons
     ---------------------------------------------------------------------
     require("UltimateMenu.src.views.pedestrians.weapons.pedSetWeapon")
+    local weaponsData = require('UltimateMenu.src.data.weaponsData')
 
 local routes = {
     {
@@ -63,6 +65,10 @@ local routes = {
             {
                 name = "Car Addicent",
                 component = carAccident
+            },
+            {
+                name = "Police Blockade",
+                component = policeBlockade
             }
         }
     },
@@ -83,6 +89,7 @@ local routes = {
                     {
                         name = "Set Weapon",
                         type = "parent",
+                        data = weaponsData,
                         component = pedSetWeapon,
                     }
                 }

@@ -12,7 +12,7 @@ It offers a robust amount of **highly customisable** features, changing how the 
 - Once opened, you will see a folder called `2Take1Menu`, open it. 
 - Once opened, search for a folder called `scripts` and open it. 
 - Now that you're in the folder where custom scritpts live, create a folder called `UltimateMenu`
-- Download the files of this repo (https://github.com/AurelianSpodarec/GTA_UltimateMenu/archive/refs/heads/master.zip) and copy paste in the newly folder you just created
+- Download the files of this repo: https://github.com/AurelianSpodarec/GTA_UltimateMenu/archive/refs/heads/master.zip - and copy paste in the newly folder you just created
 - Go inside the folder you created, go find a folder named `src` and copy cut `_dev.lua`
 - Now, go back to folder `scripts` and put `_dev.lua` inside. 
 - Rename the file to `UltimateMenu.lua`
