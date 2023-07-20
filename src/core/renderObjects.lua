@@ -66,7 +66,9 @@ function render.vehicle(data, pid)
         return
     end
 
-    local machine = spawnModel.vehicle(data.modelHash, player.get_player_coords(pid) + v3(math.random(-20, 20), math.random(-20, 20), math.random(50, 60)), math.random(0, 0))
+    -- local machine = spawnModel.vehicle(data.modelHash, player.get_player_coords(pid) + v3(math.random(-20, 20), math.random(-20, 20), math.random(50, 60)), math.random(0, 0))
+    local machine = spawnModel.vehicle(data.modelHash, player.get_player_coords(pid) + v3(math.random(-50, 50), math.random(0, 0), math.random(0, 0)), math.random(0, 0))
+    
     if(machine) then
         vehicle.set_vehicle_engine_on(machine, true, true, false)
         vehicle.control_landing_gear(machine, 3)
