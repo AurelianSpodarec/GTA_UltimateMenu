@@ -9,7 +9,7 @@ local data = {
     squads = {
         relationship = 1, -- protect, attack, follow, 
         vehicles = {
-            modelHash = -2048333973,
+            modelHash = 0x79FBB0C5,---2048333973,
             drivingMode = 17039360,
             speed = 200,
             engine = {
@@ -21,7 +21,19 @@ local data = {
             {
                 name = "Driver",
                 modelHash = -413447396,
-                seat = -1,
+                seat =  -1,
+                mode = "follow"
+            },
+            {
+                name = "Passanger",
+                modelHash = -413447396,
+                seat = 1,
+                mode = "follow"
+            }, 
+            {
+                name = "Passanger",
+                modelHash = -413447396,
+                seat = 2,
                 mode = "follow"
             }
         }
@@ -29,12 +41,28 @@ local data = {
 }
 
 function carAccident(parent, name, pid)
+    player.send_player_sms(pid, data.sms.initial)
     local machine = data.squads.vehicles
     local members = data.squads.members
 
-    player.send_player_sms(pid, data.sms.initial)
+    local car = render.vehicle(machine, pid)
 
-    local car = render.vehicle(machine, npcs, pid)
-    local npcs = render.npc(members, car, pid)
+    for index, item in ipairs(members) do
+        local npc = render.npc(item, car, pid)
+
+
+        if(npc) then
+
+            if(item.seat == -1) then
+                if entityHelper.request_control(npc, 25) then
+                    ai.task_vehicle_follow(npc, car, player.get_player_ped(pid), machine.speed, machine.drivingMode, 0)
+                end
+                system.wait(100)
+            end
+
+        end
+        
+
+    end
 
 end
