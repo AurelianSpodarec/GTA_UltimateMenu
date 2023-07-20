@@ -66,8 +66,16 @@ function render.vehicle(data, pid)
         return
     end
 
-    -- local machine = spawnModel.vehicle(data.modelHash, player.get_player_coords(pid) + v3(math.random(-20, 20), math.random(-20, 20), math.random(50, 60)), math.random(0, 0))
-    local machine = spawnModel.vehicle(data.modelHash, player.get_player_coords(pid) + v3(math.random(-50, 50), math.random(0, 0), math.random(0, 0)), math.random(0, 0))
+
+    -- data.spawn = {
+    --     radius = {200, 200},
+    --     x = {50, 50},
+    --     z = {50, 50}
+    -- },
+    -- v3(math.random(-50, 50), math.random(0, 0), math.random(0, 0)), math.random(0, 0)
+
+    -- x is from player distance
+    local machine = spawnModel.vehicle(data.modelHash, player.get_player_coords(pid) + v3(math.random(data.spawn.x[1], data.spawn.x[2]), math.random(0, 0), math.random(0, 0)), math.random(0, 0))
     
     if(machine) then
         vehicle.set_vehicle_engine_on(machine, true, true, false)

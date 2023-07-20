@@ -4,7 +4,7 @@ local render = require('UltimateMenu.src.core.renderObjects')
 
 local squadKamikadzePlane = {
     sms = { 
-        initial = "Mayday Mayday! We got shot! Engine down, ENGINE DO..."
+        initial = "Mayday Mayday! We got shot! Engine down, ENGINE D..."
     },
     squads = {
         relationship = 1, -- protect, attack, follow, 
@@ -12,6 +12,16 @@ local squadKamikadzePlane = {
             modelHash = -1214505995,
             drivingMode = 17039360,
             speed = 200,
+            spawn = {
+                radius = 200,
+                x = 50,
+                z = 50
+            },
+            -- spawn = {
+            --     radius = {200, 200},
+            --     x = {50, 50},
+            --     z = {50, 50}
+            -- },
             engine = {
                 on = true,
             }
@@ -27,25 +37,31 @@ local squadKamikadzePlane = {
 }
 
 function kamikadzePlane(parent, name, pid)
-    local machine = squadKamikadzePlane.squads.vehicles
-    local members = squadKamikadzePlane.squads.members
+    local plane = render.vehicle(squadKamikadzePlane.squads.vehicles, pid)
 
-    player.send_player_sms(pid, squadKamikadzePlane.sms.initial)
+    for index, item in ipairs(squadKamikadzePlane.squads.members) do
+        local npc = render.npc(item, plane, pid)
 
-    local plane = render.vehicle(squadKamikadzePlane.squads.vehicles.modelHash, pid)
-    render.npc(members, plane)
+        if(npc) then
 
-    while not entity.is_entity_dead(plane) do
-        if entityHelper.request_control(plane, 0) then
-
-            entityHelper.pointEntityTowards(plane, player.get_player_ped(pid))
-            vehicle.set_vehicle_on_ground_properly(plane)
-            vehicle.control_landing_gear(plane, 3)
-            system.yield(15)
-            
-            vehicle.set_vehicle_forward_speed(plane, 200)
+            while not entity.is_entity_dead(plane) do -- this can be abstracted
+                if entityHelper.request_control(plane, 0) then -- and this
+        
+                    entityHelper.pointEntityTowards(plane, player.get_player_ped(pid))
+                    vehicle.set_vehicle_on_ground_properly(plane)
+                    vehicle.control_landing_gear(plane, 3)
+                    system.yield(15)
+                    
+                    vehicle.set_vehicle_forward_speed(plane, 200)
+        
+                end
+                system.wait(0)
+            end
 
         end
-        system.wait(0)
+        
+
     end
+
+
 end

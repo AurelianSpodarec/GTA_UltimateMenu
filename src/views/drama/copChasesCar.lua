@@ -40,7 +40,7 @@ local dataCop = {
         members = {
             {
                 name = "Driver",
-                modelHash = -413447396,
+                modelHash = 1581098148,
                 seat =  -1,
                 mode = "follow"
             }
@@ -64,15 +64,27 @@ function copChasesCar(parent, name, pid)
             if(item.seat == -1) then
                 if entityHelper.request_control(criminalNpc, 25) then
                     ai.task_vehicle_follow(criminalNpc, criminalCar, player.get_player_ped(pid), criminalMachine.speed, criminalMachine.drivingMode, 0)
+                    -- ai.set_task_vehicle_chase_ideal_persuit_distance(player.get_player_ped(pid), 30)
                 end
                 system.wait(100)
+
+                -- task_vehicle_drive_wander(Ped ped, Vehicle vehicle, float speed, int driveStyle)
+                -- task_vehicle_drive_to_coord_longrange(Ped ped, Vehicle vehicle, v3 pos, float speed, int mode, float stopRange)
+                -- task_vehicle_escort(Ped ped, Vehicle vehicle, Vehicle targetVehicle, int mode, float speed, int drivingStyle, float minDistance, int a8, float noRoadsDistance)
+                -- task_vehicle_follow(Ped driver, Vehicle vehicle, Entity targetEntity, float speed, int drivingStyle, int minDistance)
+                -- task_vehicle_drive_to_coord(Ped ped, Vehicle vehicle, v3 coord, float speed, int a5, Hash vehicleModel, int driveMode, float stopRange, float a9)
+                -- task_vehicle_shoot_at_coord(Ped ped, v3 coord, float a3)
+                -- task_vehicle_shoot_at_ped(Ped ped, Ped target, float a3)
+                -- task_vehicle_aim_at_coord(Ped ped, v3 coord)
+                -- task_vehicle_aim_at_ped(Ped ped, Ped target)
+                -- task_vehicle_chase(Ped driver, Entity target)
+                -- set_task_vehicle_chase_behaviour_flag
+                -- set_task_vehicle_chase_ideal_persuit_distance(pd, float
             end
 
         end
 
     end
-
-
 
 
     local copMachine = dataCop.squads.vehicles
@@ -87,7 +99,6 @@ function copChasesCar(parent, name, pid)
 
             if(copItem.seat == -1) then
                 if entityHelper.request_control(copNpc, 25) then
-                    print("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm", criminalNpc)
                     ai.task_vehicle_follow(copNpc, copCar, criminalNpc, copMachine.speed, copMachine.drivingMode, 0)
                 end
                 system.wait(100)
@@ -97,42 +108,5 @@ function copChasesCar(parent, name, pid)
 
     end
 
-
-
-
-
-
-
-
-
-    -- local criminalMachine = dataCriminal.squads.vehicles
-    -- local criminalMembers = dataCriminal.squads.members
-
-    -- local car = render.vehicle(criminalMachine, pid)
-
-    -- for index, item in ipairs(criminalMembers) do
-    --     local npc = render.npc(item, car, pid)
-
-    --     if(npc) then
-
-    --         if(item.seat == -1) then
-    --             if entityHelper.request_control(npc, 25) then
-    --                 ai.task_vehicle_follow(npc, car, player.get_player_ped(pid), criminalMachine.speed, criminalMachine.drivingMode, 0)
-    --             end
-    --             system.wait(100)
-    --         end
-
-    --     end
-        
-
-    -- end
-
-
-
-
-
-
-
-
-
+    -- follow close porximity
 end

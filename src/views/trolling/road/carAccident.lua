@@ -15,6 +15,11 @@ local data = {
             engine = {
                 on = true,
             },
+            spawn = {
+                radius = {200, 200},
+                x = {-50, 50},
+                z = {50, 50}
+            },
             mode = "follow"
         },
         members = {
@@ -56,6 +61,8 @@ function carAccident(parent, name, pid)
             if(item.seat == -1) then
                 if entityHelper.request_control(npc, 25) then
                     ai.task_vehicle_follow(npc, car, player.get_player_ped(pid), machine.speed, machine.drivingMode, 0)
+                    vehicle.start_vehicle_horn(car, 1, 0xF4924635A19EB37D, true)
+                    native.call(0xF4924635A19EB37D, car, true ) -- turn on sirens
                 end
                 system.wait(100)
             end
