@@ -14,8 +14,8 @@ local squadKamikadzePlane = {
             speed = 200,
             spawn = {
                 radius = 200,
-                x = 50,
-                z = 50
+                x = {50, 100},
+                z = {50}
             },
             -- spawn = {
             --     radius = {200, 200},

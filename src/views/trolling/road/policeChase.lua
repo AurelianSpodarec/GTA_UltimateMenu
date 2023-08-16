@@ -65,10 +65,14 @@ riotAdvanced = {
     -- }
 }
 
-function spawnUnit(data, ult_player) 
-    local unitVehicle = spawnModel.vehicle(data.vehicle, player.get_player_coords(ult_player) + v3(math.random(-50, 50), math.random(0, 0), math.random(0, 0)))
-    vehicle.set_vehicle_engine_on(unitVehicle, true, true, false) 
-    vehicle.set_vehicle_mod_kit_type(unitVehicle, 0)
+function spawnUnit(data, pid) 
+    local machine = spawnModel.vehicle(data.vehicle, player.get_player_coords(pid) + v3(math.random(-50, 50), math.random(0, 0), math.random(0, 0)))
+    vehicle.set_vehicle_engine_on(machine, true, true, false) 
+    vehicle.set_vehicle_mod_kit_type(machine, 0)
+    if(machine) then
+        native.call(0xF4924635A19EB37D, machine, true )
+        system.wait(100)
+    end
 
     local drivingMode = 17039360
     local speed = 200
@@ -79,11 +83,11 @@ function spawnUnit(data, ult_player)
     end
 
     for i = 1, #pedestrians do
-        ped.set_ped_into_vehicle(pedestrians[i], unitVehicle, i - 2)
+        ped.set_ped_into_vehicle(pedestrians[i], machine, i - 2)
     end
 
     if entityHelper.request_control(pedestrians[1], 25) then
-        ai.task_vehicle_follow(pedestrians[1], unitVehicle, player.get_player_ped(ult_player), speed, drivingMode, 0)
+        ai.task_vehicle_follow(pedestrians[1], machine, player.get_player_ped(pid), speed, drivingMode, 0)
     end
 end
 
@@ -91,7 +95,7 @@ end
         -- ped.set_ped_can_ragdoll(bikeDriver, false)
         -- vehicle.set_vehicle_engine_on(bike, true, true, false) 
         -- vehicle.set_vehicle_mod_kit_type(bike, 0)
-function policeChase(parent)
+function policeChase(parent, name, pid)
 
     -- idea: on shot shots firework - griefing
     --TODO: Divide logic from view
@@ -99,12 +103,12 @@ function policeChase(parent)
 
     -- local__pedsMenu_carram = menu.add_player_feature("Police Chase", "action", parent, function(feat) 
 
-        local playerPos = player.get_player_coords(player.player_id())
+        local playerPos = player.get_player_coords(pid)
 
-        spawnUnit(lawUnits, player.player_id())
-        spawnUnit(lawUnits, player.player_id())
-        spawnUnit(highwaypatrol, player.player_id())
-        spawnUnit(highwaypatrol, player.player_id())
+        spawnUnit(lawUnits, pid)
+        spawnUnit(lawUnits, pid)
+        spawnUnit(highwaypatrol, pid)
+        spawnUnit(highwaypatrol, pid)
        
         system.wait(100)
  

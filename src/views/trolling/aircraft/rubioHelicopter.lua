@@ -1,13 +1,21 @@
 local spawnModel = require('UltimateMenu.src.models.spawnModel')
 local render = require('UltimateMenu.src.core.renderObjects')
+local entityHelper = require('UltimateMenu.src.helpers.entityHelper')
 
-local squadRubio = {
+local data = {
     sms = { 
         initial = "Mr Rubio is not happy!"
     },
     squads = {
         vehicles = {
             modelHash = 0xA09E15FD,
+            speed = 200,
+            drivingMode = 23232323,
+            spawn = {
+                radius = 200,
+                x = {50, 100},
+                z = {50}
+            },
         },
         members = {
             {
@@ -55,6 +63,15 @@ local squadRubio = {
 }
 
 function rubioHelicopter(feat, name, pid)
-    local heli = render.vehicle(squadRubio.squads.vehicles.modelHash, pid)
-    render.npc(squadRubio.squads.members, heli, pid)
+    local machine = render.vehicle(data.squads.vehicles, pid)
+
+    for index, item in ipairs(data.squads.members) do
+        local npc = render.npc(item, machine, pid)
+         -- if(data.mode == "follow") then
+            if entityHelper.request_control(npc, 25) then
+                ai.task_vehicle_follow(npc, machine, player.get_player_ped(pid), data.squads.vehicles.speed, data.squads.vehicles.drivingMode, 0)
+            end
+            system.wait(100)
+        -- end
+    end
 end

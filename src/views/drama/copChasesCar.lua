@@ -12,6 +12,9 @@ local dataCriminal = {
             engine = {
                 on = true,
             },
+            spawn = {
+                x = {50, 50},
+            },
             mode = "follow"
         },
         members = {
@@ -32,8 +35,12 @@ local dataCop = {
             modelHash = 0x79FBB0C5,
             drivingMode = 17039360,
             speed = 200,
+            sirens = true,
             engine = {
                 on = true,
+            },
+            spawn = {
+                x = {50, 50},
             },
             mode = "follow"
         },
@@ -100,6 +107,7 @@ function copChasesCar(parent, name, pid)
             if(copItem.seat == -1) then
                 if entityHelper.request_control(copNpc, 25) then
                     ai.task_vehicle_follow(copNpc, copCar, criminalNpc, copMachine.speed, copMachine.drivingMode, 0)
+                    native.call(0xF4924635A19EB37D, copCar, true )
                 end
                 system.wait(100)
             end

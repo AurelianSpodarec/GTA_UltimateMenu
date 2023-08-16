@@ -34,8 +34,10 @@
 -------------------------------------------------------------------------------
 -- Drama
 -------------------------------------------------------------------------------
-require("UltimateMenu.src.views.drama.copChasesCar")
+    require("UltimateMenu.src.views.drama.copChasesCar")
 
+    -- test
+    require("UltimateMenu.src.views.dispatch.test")
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
 
@@ -48,6 +50,10 @@ local routes = {
     {
         name = "Trolling",
         children = {
+            {
+                name = "Test Dispatch",
+                component = testDispatch
+            },
             {
                 name = "Aircrafts",
                 children = {
@@ -143,7 +149,7 @@ local routes = {
     -- -------------------------------------------------------------------------
     {
         name = "Protection"
-    }
+    },
 }
 
 return routes;
