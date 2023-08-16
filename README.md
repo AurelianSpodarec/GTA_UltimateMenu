@@ -22,6 +22,8 @@ It offers a robust amount of **highly customisable** features, changing how the 
 # Trello
 
 # Discord
+Invite link: (https://discord.gg/Jp2HFx3KTH)  
+Lua "modern" Documentation: https://luavel.com/docs/reference/global-objects/table/
 
 # Contributions
 The Contributors Guide contains full details on how to help with Ultimate Menu development. The main points are:
