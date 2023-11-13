@@ -101,91 +101,102 @@ local routes = {
     -- -------------------------------------------------------------------------
     -- Trolling
     -- -------------------------------------------------------------------------
-    -- {
-    --     name = "Trolling",
-    --     children = {
-    --         {
-    --             name = "Test Dispatch",
-    --             component = testDispatch
-    --         },
-    --         {
-    --             name = "Aircrafts",
-    --             children = {
-    --                 {
-    --                     name = "Kamikadze Plane",
-    --                     component = kamikadzePlane
-    --                 },
-    --                 {
-    --                     name = "Spawn Rubios Attack Chopper",
-    --                     component = rubioHelicopter
-    --                 }
-    --             }
-    --         },
-    --         {
-    --             name = "Enviroment",
-    --             children = {
-    --                 {
-    --                     name = "Floating Vehicles",
-    --                     type = "toggle",
-    --                     component = floatingVehicles
-    --                 }
-    --             }
-    --         },
-    --         {
-    --             name = "Police Chase",
-    --             component = policeChase
-    --         },
-    --         {
-    --             name = "Military Chase",
-    --             component = militaryChase
-    --         },
-    --         {
-    --             name = "Car Addicent",
-    --             component = carAccident
-    --         },
-    --         {
-    --             name = "Police Blockade",
-    --             component = policeBlockade
-    --         },
-    --         -- {
-    --         --     name = "Suicide Bomber",
-    --         --     component = suicideBomber
-    --         -- }
-    --     },
-    -- },
+  {
+    name = "Trolling",
+    children = {
+      {
+        name = "Aircrafts",
+        children = {
+          -- {
+          --   name = "Kamikadze Plane",
+          --   component = kamikadzePlane
+          -- },
+          {
+            name = "Spawn Rubios Attack Chopper",
+            component = rubioHelicopter
+          }
+        }
+      }
+    }
+  --     children = {
+  --       {
+  --         name = "Aircrafts",
+  --         children = {
+  --           {
+  --             name = "Kamikadze Plane",
+  --             component = kamikadzePlane
+  --           },
+  --           {
+  --             name = "Spawn Rubios Attack Chopper",
+  --             component = rubioHelicopter
+  --           }
+  --         }
+  --       }
+  --         {
+  --             name = "Enviroment",
+  --             children = {
+  --                 {
+  --                     name = "Floating Vehicles",
+  --                     type = "toggle",
+  --                     component = floatingVehicles
+  --                 }
+  --             }
+  --         },
+  --         {
+  --             name = "Police Chase",
+  --             component = policeChase
+  --         },
+  --         {
+  --             name = "Military Chase",
+  --             component = militaryChase
+  --         },
+  --         {
+  --             name = "Car Addicent",
+  --             component = carAccident
+  --         },
+  --         {
+  --             name = "Police Blockade",
+  --             component = policeBlockade
+  --         },
+  --         -- {
+  --         --     name = "Suicide Bomber",
+  --         --     component = suicideBomber
+  --         -- }
+      -- },
+    },
     -- -- -------------------------------------------------------------------------
     -- -- Pedestrians
     -- -- -------------------------------------------------------------------------
-    -- {
-    --     name = "Pedestrian",
-    --     children = {
-    --         {
-    --             name = "Action",
-    --             children = {
-    --                 {
-    --                     name = "Attack Player",
-    --                 }
-    --             }
-    --         },
-    --         {
-    --             name = "Weapons",
-    --             children = {
-    --                 {
-    --                     name = "Set Weapon",
-    --                     type = "parent",
-    --                     data = dataWeapons,
-    --                     component = pedSetWeapon,
-    --                 }
-    --             }
-    --         },
-    --         {
-    --             name = "GodMode",
-    --         },
-    --         {
-    --             name = "Weapon",
-    --         }
-    --     }
-    -- },
+    {
+      name = "Pedestrian",
+      children = {
+        {
+          name = "Action",
+          children = {
+            {
+              name = "Attack Player",
+            }
+          }
+        },
+        {
+          name = "Weapons",
+          children = {
+            {
+              name = "Set Weapon",
+              type = "parent",
+              data = dataWeapons,
+              component = pedSetWeapon,
+            }
+          }
+        },
+        {
+            name = "GodMode",
+        },
+        {
+            name = "Weapon",
+        }
+      }
+    },
     -- -- -------------------------------------------------------------------------
     -- -- Drama
     -- -- -------------------------------------------------------------------------

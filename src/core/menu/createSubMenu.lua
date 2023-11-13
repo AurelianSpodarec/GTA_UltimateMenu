@@ -1,4 +1,4 @@
-local function createSubMenu(category, parent)
+function createSubMenu(category, parent)
   for _, subCategory in pairs(category) do
     local categoryName = subCategory.name
     local categoryChildren = subCategory.children

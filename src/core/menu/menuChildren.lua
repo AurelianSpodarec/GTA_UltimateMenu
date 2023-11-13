@@ -17,30 +17,41 @@ local testData =  {
   }
 }
 
+function createList(data, parent) 
+  if not data then
+
+  end
+  for _, item in pairs(data) do
+    menu.add_player_feature(item.name, "action", parent, function(feat, pid)
+      -- Functionality 
+    end, name)
+  end
+end
+
+
+
 local function createFeature(item, parent)
   local name = item.name
-  local subMenu = item.children
   local component = item.component
-  local type = item.type
+  local type = item.type or "action"
   local data = item.data
 
     -- Menu Item
-    if not data then
+    if data then
+      local subParent = menu.add_player_feature(name, "parent", parent, nil).id
+      if not state.viewsLoaded then
+        createList(data, subParent)
+      end
+      state.viewsLoaded = true
+    else  
       menu.add_player_feature(name, type, parent, function(feat, pid)
         component(feat, name, pid)
       end, name)
-    else
-      local subParent = menu.add_player_feature(name, "parent", parent, nil).id
-        -- for _, item in pairs(testData) do
-          -- createFeature(item, subParent)
-        menu.add_player_feature("hi", "action", subParent, function(feat, pid)
-          -- component(feat, name, pid)
-        end, name)
-      -- end, name)
     end
 
-
 end
+
+
 
 function menuChildren(subMenuItem, parent)
   if not subMenuItem then
@@ -48,7 +59,14 @@ function menuChildren(subMenuItem, parent)
   end
 
   for _, item in pairs(subMenuItem) do
-    createFeature(item, parent)
+    local subMenu = item.children
+
+    if(subMenu) then  
+      local name = menu.add_player_feature(item.name, "parent",  parent, nil).id
+      menuChildren(subMenu, name)
+    else
+      createFeature(item, parent)
+    end
   end
 end
 
