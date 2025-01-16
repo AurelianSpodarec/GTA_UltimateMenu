@@ -2,6 +2,8 @@
 # The Ultimate Menu - GTA5 Feature Enhancement
 ![image](https://i.imgur.com/HaGvlUb.png)
 
+Lua Documentation: https://luadocs.com/
+
 The *Ultimate Menu* is open source enhancement for GTA5 game, based on the 2take1 Lua script.
 
 It offers a robust amount of **highly customisable** features, changing how the pedestrian walks, vehicle MAX speed to a *kAmiKadzE* plane sent by you on a player of your choice 😜
@@ -23,7 +25,7 @@ It offers a robust amount of **highly customisable** features, changing how the 
 
 # Discord
 Invite link: (https://discord.gg/Jp2HFx3KTH)  
-Lua "modern" Documentation: https://luavel.com/docs/reference/global-objects/table/
+Lua "modern" Documentation: https://luadocs.com/
 
 # Contributions
 The Contributors Guide contains full details on how to help with Ultimate Menu development. The main points are:
