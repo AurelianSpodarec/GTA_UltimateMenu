@@ -39,7 +39,7 @@ Written something cool with 2take1 Lua API? Please tell us about it in the disco
 
 ![image](https://i.imgur.com/7OhXRXB.jpg)
 
-Created by *Aurelian Spodarec* . Powered by...
+Created by *Aurelian Spodarec* . Powered by... [LuaDocs.](https://luadocs.com/)
  
 
 
